@@ -1,0 +1,133 @@
+{
+  "s0": {
+    "title": "SciFarm",
+    "hello": "Hello! Choose your language.",
+    "privacy": "No sign-in. Your farm stays on your phone.",
+    "later": "You can change the language later in Settings."
+  },
+  "s1": {
+    "title": "SciFarm",
+    "where": "Where is your farm?",
+    "useLocation": "Use my location",
+    "locating": "Looking for you…",
+    "denied": "We could not find you. Tap the map instead.",
+    "orPick": "Or pick a place",
+    "tapMap": "Tap the map to place your farm",
+    "locate": "Locate me",
+    "ask": "Ask",
+    "layers": "Layers",
+    "menu": "Menu",
+    "search": "Search a place",
+    "privacy": "Your location is rounded and never sent with your name.",
+    "nav": {
+      "advisor": "Advisor",
+      "farms": "My Farms",
+      "help": "Help",
+      "settings": "Settings"
+    }
+  },
+  "s2": {
+    "title": "Your farm",
+    "question": "Is this your farm?",
+    "yes": "Yes, this is my farm",
+    "move": "Move pin",
+    "name": "Name your farm (optional)",
+    "namePlaceholder": "My farm"
+  },
+  "s3": {
+    "title": "Your land today",
+    "hazards": "Dangers for your crops",
+    "drought": "Dry",
+    "flood": "Flood",
+    "heat": "Heat",
+    "erosion": "Erosion",
+    "level": "level {{n}} of 5",
+    "rain": "Rain through the year",
+    "soil": "Your soil",
+    "twins": "Farms like yours",
+    "months": "Months to watch",
+    "passport": "Where data comes from",
+    "outsideTitle": "This place is outside Africa",
+    "outsideBody": "SciFarm works for farms in Africa. Pick a place on the map.",
+    "pickAgain": "Pick another place",
+    "error": "We could not load your land. Try again.",
+    "retry": "Try again",
+    "mockNote": "Demo data for now."
+  },
+  "s4": {
+    "title": "Last crop",
+    "question": "What did you grow last?",
+    "none": "Nothing / I don't know"
+  },
+  "s5": {
+    "title": "What matters most?",
+    "question": "What matters most? Tap up to two.",
+    "money": "Money",
+    "water": "Water",
+    "soil": "Soil",
+    "safety": "Safety",
+    "picked_one": "You chose {{a}}.",
+    "picked_two": "You chose {{a}} and {{b}}.",
+    "max": "Two choices only. Tap one to remove it."
+  },
+  "s6": {
+    "title": "Two questions",
+    "water": "Can you water your field?",
+    "fertilizer": "Can you buy fertilizer?",
+    "see": "Show my routes"
+  },
+  "s7": {
+    "title": "Your routes",
+    "intro": "Three ways to plant. The best one for you is on top.",
+    "best": "Best for you",
+    "safest": "Safest",
+    "soil": "Soil-rebuilder",
+    "money": "Money-first",
+    "season": "Season {{n}}",
+    "compare": "Compare routes",
+    "loading": "Finding your routes…",
+    "error": "We could not make your routes. Try again.",
+    "needFarm": "Pick your farm first.",
+    "open": "See the steps",
+    "legend": {
+      "good": "Good",
+      "warn": "Careful",
+      "bad": "Risky"
+    }
+  },
+  "s8": {
+    "title": "Route details",
+    "tabs": {
+      "steps": "Steps",
+      "water": "Water",
+      "whatif": "What if?",
+      "why": "Why"
+    },
+    "next": "Next step",
+    "plantIn": "Plant {{crop}} in {{month}}",
+    "then": "Then",
+    "waterEnough": "Enough water",
+    "waterRisky": "Water is risky",
+    "waterNot": "Not enough water",
+    "year": {
+      "dry": "Dry year",
+      "normal": "Normal year",
+      "wet": "Wet year"
+    },
+    "whatifIntro": "What if the weather changes? Tap a picture.",
+    "scoreLabel": "How well this route works",
+    "whyTitle": "Why this route",
+    "warningsTitle": "Be careful",
+    "share": "Share this plan",
+    "notFound": "We could not find this route.",
+    "backToRoutes": "Back to routes"
+  },
+  "intro": {
+    "voiceAsk": "Continue with voice?",
+    "voiceNote": "You can still turn the voice on or off in Settings.",
+    "pickVoice": "Choose a voice",
+    "feminine": "Feminine voices",
+    "masculine": "Masculine voices",
+    "sample": "Hello, I am {{name}}. I will guide you."
+  }
+}

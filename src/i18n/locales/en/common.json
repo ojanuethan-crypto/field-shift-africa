@@ -1,0 +1,17 @@
+{
+  "back": "Back",
+  "home": "Home",
+  "common": {
+    "back": "Back",
+    "home": "Home",
+    "mute": "Turn sound off",
+    "unmute": "Turn sound on",
+    "listen": "Listen",
+    "continue": "Continue",
+    "skip": "Skip",
+    "yes": "Yes",
+    "no": "No",
+    "disclaimer": "Indicative advice from satellite data and general crop knowledge. Ask an agronomist for your field.",
+    "offline": "Offline"
+  }
+}

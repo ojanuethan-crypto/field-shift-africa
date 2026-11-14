@@ -1,0 +1,17 @@
+{
+  "back": "Retour",
+  "home": "Accueil",
+  "common": {
+    "back": "Retour",
+    "home": "Accueil",
+    "mute": "Couper le son",
+    "unmute": "Activer le son",
+    "listen": "Écouter",
+    "continue": "Continuer",
+    "skip": "Passer",
+    "yes": "Oui",
+    "no": "Non",
+    "disclaimer": "Conseil indicatif basé sur des données satellite et des connaissances générales sur les cultures. Demandez à un agronome pour votre champ.",
+    "offline": "Hors ligne"
+  }
+}
