@@ -16,6 +16,7 @@ const initial = {
   canWater: null,      // true | false | null
   canBuyFertilizer: null,
   selectedPlanId: null,
+  farms: [],           // S17 My Farms: saved plots [{ id, name, lat, lon, plan? }]
 }
 
 const Ctx = createContext(null)

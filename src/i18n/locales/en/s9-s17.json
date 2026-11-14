@@ -1,0 +1,171 @@
+{
+  "s9s17": {
+    "mock": "Example data for the demo.",
+    "loading": "Loading...",
+    "error": "Something went wrong.",
+    "retry": "Try again"
+  },
+  "s9": {
+    "title": "See from space",
+    "subtitle": "Pictures taken by NASA satellites.",
+    "layers": {
+      "vegetation": "Plants",
+      "rain": "Rain",
+      "off": "Off"
+    },
+    "seeing": "What you see",
+    "what": {
+      "vegetation": "Green means healthy plants. Brown means few plants.",
+      "rain": "Blue and purple show where rain is falling."
+    },
+    "scale": {
+      "vegetation": {
+        "low": "Few plants",
+        "high": "Many plants"
+      },
+      "rain": {
+        "low": "Light rain",
+        "high": "Heavy rain"
+      }
+    },
+    "date": "Date",
+    "latest": "Latest picture available",
+    "source": "Source",
+    "sources": {
+      "vegetation": "NASA GIBS, MODIS Terra vegetation index (8-day)",
+      "rain": "NASA GIBS, GPM IMERG rain rate"
+    },
+    "tilesFailed": "The satellite picture did not load. The map still works. Try again later."
+  },
+  "s10": {
+    "title": "Land zones",
+    "subtitle": "Places that share rain, soil and risks.",
+    "tapHint": "Tap a zone to learn about it.",
+    "hazards": "Main risks",
+    "rotation": "What farmers rotate",
+    "examples": "Examples",
+    "draftNote": "Draft zones for the demo. Points are examples, not final data.",
+    "list": {
+      "1": {
+        "name": "Dry Sahel",
+        "pattern": "Short, unreliable rains. Sandy soils.",
+        "hazards": "Drought, flash floods, heat, wind",
+        "rotation": "Millet or sorghum with cowpea or groundnut",
+        "examples": "Maroua, Niamey, Bamako"
+      },
+      "2": {
+        "name": "Savanna",
+        "pattern": "One rainy season. Soils low in nutrients.",
+        "hazards": "Dry spells, poor soil, erosion",
+        "rotation": "Maize or sorghum, then soybean or groundnut",
+        "examples": "Ngaoundéré, Garoua, Tamale"
+      },
+      "3": {
+        "name": "Wet forest",
+        "pattern": "Very wet all year. Acid soils.",
+        "hazards": "Flooding, erosion, washed-out soil",
+        "rotation": "Cassava, plantain, cocoyam with legumes",
+        "examples": "Douala, Yaoundé, Libreville"
+      },
+      "4": {
+        "name": "Highlands",
+        "pattern": "Cool, often two rainy seasons. Rich soils.",
+        "hazards": "Slope erosion, landslides, uneven rain",
+        "rotation": "Maize and beans, potato, vegetables",
+        "examples": "Bamenda, Addis Ababa, Nairobi"
+      },
+      "5": {
+        "name": "Southern woodland",
+        "pattern": "One rainy season, November to April.",
+        "hazards": "Droughts, dry spells, cyclone floods",
+        "rotation": "Maize with legumes",
+        "examples": "Lusaka, Harare, Lilongwe"
+      },
+      "6": {
+        "name": "Very dry land",
+        "pattern": "Very little rain.",
+        "hazards": "Constant drought",
+        "rotation": "Few options. Drought-tolerant crops or irrigation",
+        "examples": "Lodwar, Garissa, Windhoek"
+      },
+      "7": {
+        "name": "Floodplains",
+        "pattern": "Land floods each season. Rich soils.",
+        "hazards": "Floods, but fertile soil after",
+        "rotation": "Rice, dry-season sorghum, vegetables",
+        "examples": "Logone, Mopti, Niger Delta"
+      }
+    }
+  },
+  "s11": {
+    "title": "Climate twins",
+    "subtitle": "Farms elsewhere in Africa like yours.",
+    "yourFarm": "Your farm",
+    "demoPlace": "example: {{place}}",
+    "growsThere": "Grows there",
+    "empty": "We found no twin places for this spot yet."
+  },
+  "s12": {
+    "title": "Months to watch",
+    "subtitle": "Usual weather problems, month by month.",
+    "legend": {
+      "dry": "Dry spell",
+      "flood": "Too much rain",
+      "heat": "Very hot"
+    },
+    "none": "none",
+    "calm": "Calm",
+    "now": "Now",
+    "pastNote": "Based on past years. This is not a forecast."
+  },
+  "s14": {
+    "title": "Ask the Advisor",
+    "subtitle": "Ask about soil, seeds, rain and more.",
+    "placeholder": "Type your question",
+    "ask": "Ask",
+    "mic": "Speak your question",
+    "listening": "Listening...",
+    "searchOnly": "Search only: simple answers from saved advice.",
+    "sources": "Sources",
+    "dontKnow": "I don't know. Please ask an agronomist.",
+    "useful": "Was this useful?",
+    "yes": "Yes",
+    "no": "No",
+    "thanks": "Thank you!",
+    "followUp": "You can also ask",
+    "common": "Common questions"
+  },
+  "s15": {
+    "title": "Common questions",
+    "subtitle": "Tap a picture to read and hear the answer.",
+    "askOther": "Ask something else"
+  },
+  "s16": {
+    "title": "Source",
+    "subtitle": "Where this advice comes from.",
+    "document": "Document",
+    "page": "Page",
+    "licence": "Licence",
+    "sample": "Sample text for the demo. It is not from a real document yet.",
+    "notFound": "We could not find this source.",
+    "back": "Back to the Advisor"
+  },
+  "s17": {
+    "title": "My farms",
+    "subtitle": "Saved on this phone only.",
+    "empty": "No saved farms yet.",
+    "add": "Add a farm",
+    "saveCurrent": "Save this farm",
+    "unnamed": "My farm",
+    "noPlan": "No plan yet",
+    "use": "Use this farm",
+    "current": "In use",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "confirmTitle": "Delete this farm?",
+    "confirmText": "This cannot be undone.",
+    "yes": "Yes, delete",
+    "example": "Add example farm (testing only)",
+    "privacy": "Nothing is sent to a server."
+  }
+}

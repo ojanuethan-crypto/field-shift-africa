@@ -1,0 +1,171 @@
+{
+  "s9s17": {
+    "mock": "Données d'exemple pour la démo.",
+    "loading": "Chargement...",
+    "error": "Un problème est survenu.",
+    "retry": "Réessayer"
+  },
+  "s9": {
+    "title": "Vu de l'espace",
+    "subtitle": "Images prises par les satellites de la NASA.",
+    "layers": {
+      "vegetation": "Plantes",
+      "rain": "Pluie",
+      "off": "Sans"
+    },
+    "seeing": "Ce que vous voyez",
+    "what": {
+      "vegetation": "Le vert montre des plantes en bonne santé. Le brun, peu de plantes.",
+      "rain": "Le bleu et le violet montrent où il pleut."
+    },
+    "scale": {
+      "vegetation": {
+        "low": "Peu de plantes",
+        "high": "Beaucoup de plantes"
+      },
+      "rain": {
+        "low": "Pluie légère",
+        "high": "Forte pluie"
+      }
+    },
+    "date": "Date",
+    "latest": "Dernière image disponible",
+    "source": "Source",
+    "sources": {
+      "vegetation": "NASA GIBS, indice de végétation MODIS Terra (8 jours)",
+      "rain": "NASA GIBS, intensité de pluie GPM IMERG"
+    },
+    "tilesFailed": "L'image satellite ne s'est pas chargée. La carte fonctionne encore. Réessayez plus tard."
+  },
+  "s10": {
+    "title": "Zones de terres",
+    "subtitle": "Des lieux qui partagent pluie, sol et risques.",
+    "tapHint": "Touchez une zone pour en savoir plus.",
+    "hazards": "Risques principaux",
+    "rotation": "Ce que les paysans alternent",
+    "examples": "Exemples",
+    "draftNote": "Zones provisoires pour la démo. Les points sont des exemples, pas des données finales.",
+    "list": {
+      "1": {
+        "name": "Sahel sec",
+        "pattern": "Pluies courtes et irrégulières. Sols sableux.",
+        "hazards": "Sécheresse, crues soudaines, chaleur, vent",
+        "rotation": "Mil ou sorgho avec niébé ou arachide",
+        "examples": "Maroua, Niamey, Bamako"
+      },
+      "2": {
+        "name": "Savane",
+        "pattern": "Une saison des pluies. Sols pauvres.",
+        "hazards": "Périodes sèches, sol pauvre, érosion",
+        "rotation": "Maïs ou sorgho, puis soja ou arachide",
+        "examples": "Ngaoundéré, Garoua, Tamale"
+      },
+      "3": {
+        "name": "Forêt humide",
+        "pattern": "Très humide toute l'année. Sols acides.",
+        "hazards": "Inondations, érosion, sol lessivé",
+        "rotation": "Manioc, plantain, macabo avec légumineuses",
+        "examples": "Douala, Yaoundé, Libreville"
+      },
+      "4": {
+        "name": "Hautes terres",
+        "pattern": "Frais, souvent deux saisons des pluies. Sols riches.",
+        "hazards": "Érosion des pentes, glissements, pluie irrégulière",
+        "rotation": "Maïs et haricots, pomme de terre, légumes",
+        "examples": "Bamenda, Addis-Abeba, Nairobi"
+      },
+      "5": {
+        "name": "Savane du sud",
+        "pattern": "Une saison des pluies, de novembre à avril.",
+        "hazards": "Sécheresses, périodes sèches, inondations de cyclone",
+        "rotation": "Maïs avec légumineuses",
+        "examples": "Lusaka, Harare, Lilongwe"
+      },
+      "6": {
+        "name": "Terres très sèches",
+        "pattern": "Très peu de pluie.",
+        "hazards": "Sécheresse constante",
+        "rotation": "Peu de choix. Cultures résistantes ou irrigation",
+        "examples": "Lodwar, Garissa, Windhoek"
+      },
+      "7": {
+        "name": "Plaines inondables",
+        "pattern": "La terre est inondée chaque saison. Sols riches.",
+        "hazards": "Inondations, mais sol fertile ensuite",
+        "rotation": "Riz, sorgho de saison sèche, légumes",
+        "examples": "Logone, Mopti, delta du Niger"
+      }
+    }
+  },
+  "s11": {
+    "title": "Jumeaux climatiques",
+    "subtitle": "Des fermes ailleurs en Afrique, comme la vôtre.",
+    "yourFarm": "Votre ferme",
+    "demoPlace": "exemple : {{place}}",
+    "growsThere": "Ce qui pousse là-bas",
+    "empty": "Nous n'avons pas encore trouvé de lieux jumeaux ici."
+  },
+  "s12": {
+    "title": "Mois à surveiller",
+    "subtitle": "Les problèmes de météo habituels, mois par mois.",
+    "legend": {
+      "dry": "Période sèche",
+      "flood": "Trop de pluie",
+      "heat": "Très chaud"
+    },
+    "none": "aucun",
+    "calm": "Calme",
+    "now": "Maintenant",
+    "pastNote": "Basé sur les années passées. Ce n'est pas une prévision."
+  },
+  "s14": {
+    "title": "Demander au Conseiller",
+    "subtitle": "Posez une question sur le sol, les semences, la pluie...",
+    "placeholder": "Écrivez votre question",
+    "ask": "Demander",
+    "mic": "Dites votre question",
+    "listening": "J'écoute...",
+    "searchOnly": "Recherche seulement : réponses simples des conseils enregistrés.",
+    "sources": "Sources",
+    "dontKnow": "Je ne sais pas. Demandez à un agronome.",
+    "useful": "C'était utile ?",
+    "yes": "Oui",
+    "no": "Non",
+    "thanks": "Merci !",
+    "followUp": "Vous pouvez aussi demander",
+    "common": "Questions courantes"
+  },
+  "s15": {
+    "title": "Questions courantes",
+    "subtitle": "Touchez une image pour lire et écouter la réponse.",
+    "askOther": "Poser une autre question"
+  },
+  "s16": {
+    "title": "Source",
+    "subtitle": "D'où vient ce conseil.",
+    "document": "Document",
+    "page": "Page",
+    "licence": "Licence",
+    "sample": "Texte d'exemple pour la démo. Il ne vient pas encore d'un vrai document.",
+    "notFound": "Nous n'avons pas trouvé cette source.",
+    "back": "Retour au Conseiller"
+  },
+  "s17": {
+    "title": "Mes fermes",
+    "subtitle": "Enregistrées sur ce téléphone seulement.",
+    "empty": "Aucune ferme enregistrée.",
+    "add": "Ajouter une ferme",
+    "saveCurrent": "Enregistrer cette ferme",
+    "unnamed": "Ma ferme",
+    "noPlan": "Pas encore de plan",
+    "use": "Utiliser cette ferme",
+    "current": "En cours",
+    "delete": "Supprimer",
+    "cancel": "Annuler",
+    "confirmTitle": "Supprimer cette ferme ?",
+    "confirmText": "Cette action est définitive.",
+    "yes": "Oui, supprimer",
+    "example": "Ajouter une ferme d'exemple (test)",
+    "privacy": "Rien n'est envoyé à un serveur."
+  }
+}
