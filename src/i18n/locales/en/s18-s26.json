@@ -1,0 +1,160 @@
+{
+  "crops": {
+    "maize": "Maize", "groundnut": "Groundnut", "cassava": "Cassava", "beans": "Beans",
+    "tomato": "Tomato", "fallow": "Rest the soil"
+  },
+  "plans": {
+    "season": "Season {{n}}",
+    "status": { "ok": "Good", "warn": "Be careful", "bad": "Not good" },
+    "water": { "enough": "Enough water", "risky": "Water is risky", "notEnough": "Not enough water" },
+    "safest": { "name": "Safest route", "why": "Fewer losses in bad years." },
+    "soil": { "name": "Soil-rebuilder", "why": "Beans and rest give soil strength." },
+    "money": { "name": "Money-first", "why": "More income, but needs more water." }
+  },
+  "share": {
+    "title": "Share your plan",
+    "speak": "Send your plan to friends and family. Tap the green button.",
+    "share": "Share the picture",
+    "whatsapp": "Send on WhatsApp",
+    "copy": "Copy link",
+    "copied": "Link copied",
+    "copyManual": "Copy this link:",
+    "text": "Field Navigator plan for {{place}}: {{plan}}. {{reason}}",
+    "imageNote": "Advice only. Ask an agronomist.",
+    "privacy": "Only the plan is shared. Your name and exact place are not."
+  },
+  "compare": {
+    "title": "Compare routes",
+    "speak": "Pick two routes. See them side by side.",
+    "pick": "Tap two routes to compare"
+  },
+  "passport": {
+    "title": "Data Passport",
+    "speak": "Here is where every number in this app comes from.",
+    "intro": "Every number has a source. Here they are.",
+    "switch": "Français",
+    "dataset": "Data",
+    "resolution": "Detail",
+    "period": "Years",
+    "accessed": "Taken on",
+    "method": "How we use it",
+    "rows": {
+      "rain": { "label": "Rain", "method": "Monthly rain, typical and dry/wet years (20th to 80th percentile)." },
+      "temp": { "label": "Heat", "method": "Monthly average temperature, used for heat risk." },
+      "soil": { "label": "Soil", "method": "Sand, clay and acidity at your spot, written in plain words." },
+      "veg": { "label": "Plants from space", "method": "Plant greenness, used to check our risk map against real years." }
+    },
+    "limitsTitle": "What this cannot do",
+    "limits": [
+      "It is not a weather forecast. It shows what is usual from past years.",
+      "Data is a map of a large square, not your exact field.",
+      "It does not promise any harvest or money.",
+      "Always ask a local agronomist before you decide."
+    ],
+    "toProof": "Did it work in the past?"
+  },
+  "proof": {
+    "title": "Proof",
+    "speak": "We checked our risk map against real past droughts and floods.",
+    "intro": "We compared our risk map with real bad years. We show the misses too.",
+    "ours": "Our map",
+    "chance": "By chance",
+    "events": {
+      "drought1516": "Southern Africa drought",
+      "flood2019": "Eastern Africa floods",
+      "drought2022": "Horn of Africa drought"
+    },
+    "misses": "It missed {{n}} of {{of}} places.",
+    "ndviTitle": "Plants check",
+    "ndviBody": "When our risk goes up, plant greenness (NDVI) should go down.",
+    "hazard": "Our risk",
+    "reviewTitle": "Not yet reviewed",
+    "review": "An agronomist has not yet checked these results."
+  },
+  "settings": {
+    "title": "Settings",
+    "speak": "Change language, text size and voice here.",
+    "language": "Language",
+    "textSize": "Text size",
+    "sizeNormal": "Normal text",
+    "sizeLarge": "Large text",
+    "sizeXlarge": "Very large text",
+    "voice": "Voice",
+    "on": "On",
+    "off": "Off",
+    "offlineTitle": "Use without internet",
+    "offlineBody": "Save the app and advice on this phone.",
+    "offline": {
+      "idle": "Save for offline",
+      "busy": "Saving…",
+      "done": "Saved on this phone",
+      "fail": "Could not save. Try again."
+    },
+    "clearTitle": "Clear my data",
+    "clearBody": "Removes saved farms, plans and settings from this phone.",
+    "clear": "Clear my data",
+    "sure": "Remove everything from this phone?",
+    "yesClear": "Yes, remove",
+    "cancel": "No, keep it"
+  },
+  "about": {
+    "title": "About",
+    "speak": "Who we are, and what we do with your data. Nothing about you is kept.",
+    "pitch": "A map-first guide that helps farmers choose what to plant next, using NASA satellite data.",
+    "team": "Team",
+    "partners": "Partners",
+    "partnersNone": "No partners confirmed yet.",
+    "privacy": "Your privacy",
+    "no": "No",
+    "yes": "Yes",
+    "notCollected": [
+      "No account, no name, no phone number.",
+      "No exact location. Places are rounded.",
+      "Saved farms stay on your phone only."
+    ],
+    "collected": [
+      "Anonymous counts of visits, plans and shares.",
+      "Thumbs up or down, without any name."
+    ],
+    "licences": "Data and licences",
+    "licenceList": [
+      "NASA data (GIBS, POWER, MODIS): open data, credit NASA.",
+      "CHIRPS rainfall: open data, credit UCSB Climate Hazards Center.",
+      "SoilGrids: open data, credit ISRIC."
+    ],
+    "sources": "Where the numbers come from",
+    "proof": "Did it work in the past?"
+  },
+  "help": {
+    "title": "How it works",
+    "step": "Step {{n}}",
+    "steps": {
+      "farm": "Pick your farm on the map",
+      "matters": "Say what matters most",
+      "route": "Follow your route"
+    },
+    "start": "Start"
+  },
+  "feedback": {
+    "title": "Your opinion",
+    "question": "Was this useful?",
+    "yes": "Yes",
+    "no": "No",
+    "optional": "Anything to tell us? (optional)",
+    "send": "Send",
+    "thanks": "Thank you!",
+    "thanksBody": "You help us make this better for farmers.",
+    "privacy": "Anonymous. No name is asked or kept."
+  },
+  "states": {
+    "header": "Oops",
+    "retry": "Try again",
+    "pickAnother": "Choose another place",
+    "offline": { "title": "No internet", "body": "Showing your saved plan. Connect later to see more." },
+    "error": { "title": "Something went wrong", "body": "It is not your fault. Please try again." },
+    "desert": { "title": "This is mostly desert", "body": "Crops are hard to grow here. Try another place." },
+    "ocean": { "title": "This is the sea", "body": "Please tap a spot on land." },
+    "outside": { "title": "Outside Africa", "body": "We only know farms in Africa for now." },
+    "nodata": { "title": "No data here", "body": "We have no satellite data for this spot. Try a place nearby." }
+  }
+}

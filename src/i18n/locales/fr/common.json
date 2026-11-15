@@ -1,0 +1,11 @@
+{
+  "common": {
+    "back": "Retour",
+    "home": "Accueil",
+    "listen": "Écouter",
+    "soon": "Bientôt disponible",
+    "disclaimer": "Conseils issus de données satellites et de connaissances générales sur les cultures. Demandez à un agronome pour votre champ.",
+    "sample": "Données d'exemple"
+  },
+  "nav": { "help": "Aide", "routes": "Parcours", "home": "Carte", "farms": "Mes fermes", "settings": "Réglages" }
+}

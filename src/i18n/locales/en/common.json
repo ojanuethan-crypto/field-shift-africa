@@ -1,0 +1,11 @@
+{
+  "common": {
+    "back": "Back",
+    "home": "Home",
+    "listen": "Listen",
+    "soon": "Coming soon",
+    "disclaimer": "Advice from satellite data and general crop knowledge. Ask an agronomist for your field.",
+    "sample": "Sample data"
+  },
+  "nav": { "help": "Help", "routes": "Routes", "home": "Home map", "farms": "My farms", "settings": "Settings" }
+}
