@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Crosshair, Layers, LocateFixed, Menu, Headset } from 'lucide-react'
+import { Crosshair, Headset, Layers, LocateFixed, Lock, Menu, TriangleAlert } from 'lucide-react'
+import Pic from '../../components/Pic.jsx'
 import Screen from '../../components/Screen.jsx'
 import BottomNav from '../../components/BottomNav.jsx'
 import FarmMap from '../../components/FarmMap.jsx'
@@ -56,7 +57,7 @@ export default function S1Home() {
           </div>
           <div className="absolute right-3 top-20 z-[500] flex flex-col gap-3">
             <RoundBtn label={t('s1.locate')} onClick={locate}><LocateFixed size={24} /></RoundBtn>
-            <RoundBtn label={t('s1.ask')} onClick={() => nav('/advisor')}><Headset size={24} /></RoundBtn>
+            <RoundBtn label={t('s1.ask')} onClick={() => nav('/advisor')}><Pic name="advisor" fallback={<Headset size={24} />} size={30} /></RoundBtn>
             <RoundBtn label={t('s1.layers')} onClick={() => nav('/space')}><Layers size={24} /></RoundBtn>
           </div>
 
@@ -68,19 +69,19 @@ export default function S1Home() {
               {status === 'locating' ? t('s1.locating') : t('s1.useLocation')}
             </PrimaryButton>
             {status === 'denied' && (
-              <p role="alert" className="mt-2 rounded-xl bg-amber-100 px-3 py-2 text-sm font-medium">⚠️ {t('s1.denied')}</p>
+              <p role="alert" className="mt-2 rounded-xl bg-amber-100 px-3 py-2 text-sm font-medium"><TriangleAlert size={16} className="mr-1 inline" /> {t('s1.denied')}</p>
             )}
             <p className="mb-2 mt-3 text-sm font-medium text-ink-soft">{t('s1.orPick')}</p>
             <div className="-mx-4 flex gap-3 overflow-x-auto px-4 pb-1">
               {SITES.map((s) => (
                 <button key={s.id} type="button" onClick={() => choose(s.lat, s.lon)}
                   className="tap flex shrink-0 flex-col items-center gap-1 rounded-2xl bg-brand-50 px-4 py-2 active:scale-95">
-                  <span className="text-3xl" aria-hidden>{s.icon}</span>
+                  <Pic name={s.pic} emoji={s.icon} size={44} />
                   <span className="text-sm font-medium">{s.name[i18n.language]}</span>
                 </button>
               ))}
             </div>
-            <p className="mt-2 text-xs text-ink-soft">🔒 {t('s1.privacy')}</p>
+            <p className="mt-2 text-xs text-ink-soft"><Lock size={12} className="mr-1 inline" /> {t('s1.privacy')}</p>
           </section>
         </div>
         <BottomNav />

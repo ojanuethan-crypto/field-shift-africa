@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Cloud, CloudRain, Droplets, Footprints, Lightbulb, CloudSun, Share2, Sun } from 'lucide-react'
+import { Cloud, CloudRain, Compass, Droplets, Footprints, Lightbulb, CloudSun, Share2, Sun, TriangleAlert } from 'lucide-react'
+import { CropPic } from '../../components/Pic.jsx'
 import Screen from '../../components/Screen.jsx'
 import PrimaryButton from '../../components/PrimaryButton.jsx'
 import StatusMark from '../../components/StatusMark.jsx'
@@ -46,7 +47,7 @@ export default function S8RouteDetail() {
   if (!plan)
     return (
       <Screen title={t('s8.title')} speak={t('s8.notFound')}>
-        <Friendly icon="🧭" title={t('s8.notFound')}>
+        <Friendly icon={<Compass size={72} strokeWidth={1.5} className="text-brand-700" />} title={t('s8.notFound')}>
           <PrimaryButton onClick={() => nav('/routes')}>{t('s8.backToRoutes')}</PrimaryButton>
         </Friendly>
       </Screen>
@@ -89,10 +90,12 @@ export default function S8RouteDetail() {
           {plan.sequence.map((s, i) => (
             <li key={i} className={`rounded-3xl p-4 shadow-sm ${i === 0 ? 'bg-brand-900 text-white' : 'bg-white'}`}>
               <p className={`text-sm font-semibold ${i === 0 ? 'text-amber-accent' : 'text-brand-700'}`}>
-                {i === 0 ? `➡️ ${t('s8.next')}` : t('s8.then')} · {t('s7.season', { n: i + 1 })}
+                {i === 0 ? `${t('s8.next')} →` : t('s8.then')} · {t('s7.season', { n: i + 1 })}
               </p>
               <div className="mt-2 flex items-center gap-4">
-                <span className="text-5xl" aria-hidden>{CROPS[s.crop].emoji}</span>
+                <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-white">
+                  <CropPic id={s.crop} size={52} />
+                </span>
                 <p className="flex-1 text-xl font-semibold leading-snug">{stepText(s)}</p>
                 <StatusMark status={plan.statuses[i]} size={28} label={t(`s7.legend.${plan.statuses[i]}`)} />
               </div>
@@ -109,7 +112,7 @@ export default function S8RouteDetail() {
             return (
               <li key={i} className="rounded-3xl bg-white p-4 shadow-sm">
                 <p className="flex items-center gap-3 text-lg font-semibold">
-                  <span className="text-3xl" aria-hidden>{CROPS[s.crop].emoji}</span>{crop(s)}
+                  <CropPic id={s.crop} size={40} />{crop(s)}
                 </p>
                 <WaterMeter level={w} />
                 <p className="mt-2 flex items-center gap-2 font-medium">
@@ -147,7 +150,7 @@ export default function S8RouteDetail() {
                 const w = s.water[yIdx]
                 return (
                   <li key={i} className="flex items-center gap-3">
-                    <span className="text-2xl" aria-hidden>{CROPS[s.crop].emoji}</span>
+                    <CropPic id={s.crop} size={32} />
                     <span className="flex-1 font-medium">{crop(s)}</span>
                     <StatusMark status={WATER_STATUS[w]} size={22} />
                     <span className="text-sm text-ink-soft">{t(`s8.${WATER_LABEL[w]}`)}</span>
@@ -156,7 +159,7 @@ export default function S8RouteDetail() {
               })}
             </ul>
             {plan.scen[year] < 0.6 && plan.warnings[0] && (
-              <p className="mt-3 rounded-xl bg-amber-100 px-3 py-2 text-sm font-medium">⚠️ {plan.warnings[0][lang]}</p>
+              <p className="mt-3 rounded-xl bg-amber-100 px-3 py-2 text-sm font-medium"><TriangleAlert size={16} className="mr-1 inline" /> {plan.warnings[0][lang]}</p>
             )}
           </section>
         </div>
@@ -165,7 +168,7 @@ export default function S8RouteDetail() {
       {tab === 'why' && (
         <div className="space-y-4">
           <section className="rounded-3xl bg-white p-4 shadow-sm">
-            <h2 className="mb-2 text-lg font-semibold text-brand-900">💡 {t('s8.whyTitle')}</h2>
+            <h2 className="mb-2 text-lg font-semibold text-brand-900"><Lightbulb size={20} className="mr-1 inline text-amber-accent" /> {t('s8.whyTitle')}</h2>
             <ul className="space-y-2">
               {plan.why.map((w, i) => (
                 <li key={i} className="flex gap-2 text-base"><StatusMark status="good" size={20} />{w[lang]}</li>
@@ -174,7 +177,7 @@ export default function S8RouteDetail() {
           </section>
           {plan.warnings.length > 0 && (
             <section className="rounded-3xl bg-white p-4 shadow-sm">
-              <h2 className="mb-2 text-lg font-semibold text-brand-900">⚠️ {t('s8.warningsTitle')}</h2>
+              <h2 className="mb-2 text-lg font-semibold text-brand-900"><TriangleAlert size={16} className="mr-1 inline" /> {t('s8.warningsTitle')}</h2>
               <ul className="space-y-2">
                 {plan.warnings.map((w, i) => (
                   <li key={i} className="flex gap-2 text-base"><StatusMark status="warn" size={20} />{w[lang]}</li>

@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Volume2 } from 'lucide-react'
 import Screen from '../../components/Screen.jsx'
+import Pic from '../../components/Pic.jsx'
 import PrimaryButton from '../../components/PrimaryButton.jsx'
 import { VOICES, speakText } from '../../components/speech.js'
 import { useFarm } from '../../state/FarmContext.jsx'
@@ -31,7 +32,7 @@ export default function VoicePick() {
             className={`tap flex flex-col items-center gap-1 rounded-3xl border-2 bg-white py-5 shadow-sm transition active:scale-[.97] ${
               voice === v.id ? 'border-brand-700 bg-brand-50' : 'border-transparent'
             }`}>
-            <span className="text-4xl" aria-hidden>{gender === 'f' ? '👩' : '👨'}</span>
+            <Pic name={`voice-${v.id}`} emoji={gender === 'f' ? '👩' : '👨'} size={64} />
             <span className="text-lg font-medium text-ink">{v.name}</span>
             <Volume2 size={18} className="text-brand-600" strokeWidth={1.8} />
           </button>

@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { ChevronRight, Columns2, Volume2 } from 'lucide-react'
+import { ChevronRight, Columns2, Star, Volume2, WifiOff } from 'lucide-react'
+import { CropPic } from '../../components/Pic.jsx'
 import Screen from '../../components/Screen.jsx'
 import PrimaryButton from '../../components/PrimaryButton.jsx'
 import StatusMark from '../../components/StatusMark.jsx'
@@ -44,7 +45,7 @@ export default function S7Routes() {
   if (error)
     return (
       <Screen title={t('s7.title')} speak={t('s7.error')}>
-        <Friendly icon="📡" title={t('s7.error')}><PrimaryButton onClick={retry}>{t('s3.retry')}</PrimaryButton></Friendly>
+        <Friendly icon={<WifiOff size={72} strokeWidth={1.5} className="text-brand-700" />} title={t('s7.error')}><PrimaryButton onClick={retry}>{t('s3.retry')}</PrimaryButton></Friendly>
       </Screen>
     )
 
@@ -65,7 +66,7 @@ export default function S7Routes() {
           <li key={p.id}>
             <article className={`relative overflow-hidden rounded-3xl bg-white shadow-sm ${idx === 0 ? 'ring-4 ring-brand-600' : ''}`}>
               {idx === 0 && (
-                <div className="bg-brand-600 px-4 py-1.5 text-sm font-semibold text-white">⭐ {t('s7.best')}</div>
+                <div className="bg-brand-600 px-4 py-1.5 text-sm font-semibold text-white"><span className="inline-flex items-center gap-1.5"><Star size={16} className="fill-white" /> {t('s7.best')}</span></div>
               )}
               <button type="button" onClick={() => open(p)} className="block w-full p-4 text-left active:bg-brand-50">
                 <div className="flex items-start justify-between gap-2">
@@ -78,7 +79,7 @@ export default function S7Routes() {
                     <div key={i} className="flex flex-1 items-center">
                       <div className="flex flex-1 flex-col items-center gap-1 rounded-2xl bg-surface py-2">
                         <span className="text-xs font-medium text-ink-soft">{t('s7.season', { n: i + 1 })}</span>
-                        <span className="text-4xl" aria-hidden>{CROPS[s.crop].emoji}</span>
+                        <CropPic id={s.crop} size={48} />
                         <span className="text-sm font-medium">{CROPS[s.crop][lang]}</span>
                         <StatusMark status={p.statuses[i]} size={22} label={t(`s7.legend.${p.statuses[i]}`)} />
                       </div>

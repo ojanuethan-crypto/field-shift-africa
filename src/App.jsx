@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { appRoutes } from './routes.jsx'
 import { launch } from './state/launch.js'
+import DevGallery from './components/DevGallery.jsx'
 
 export default function App() {
   const location = useLocation()
@@ -15,6 +16,7 @@ export default function App() {
       {appRoutes.map((r) => (
         <Route key={r.path} path={r.path} element={r.element} />
       ))}
+      {import.meta.env.DEV && <Route path="/dev" element={<DevGallery routes={appRoutes} />} />}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

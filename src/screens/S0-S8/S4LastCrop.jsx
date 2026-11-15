@@ -1,6 +1,8 @@
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { CircleHelp } from 'lucide-react'
 import Screen from '../../components/Screen.jsx'
+import { CropPic } from '../../components/Pic.jsx'
 import ChoiceCard from '../../components/ChoiceCard.jsx'
 import PrimaryButton from '../../components/PrimaryButton.jsx'
 import { useSpeak } from '../../components/speech.js'
@@ -31,11 +33,11 @@ export default function S4LastCrop() {
       <h2 className="mb-4 text-2xl font-semibold text-brand-900">{t('s4.question')}</h2>
       <div className="grid grid-cols-3 gap-3">
         {Object.entries(CROPS).map(([id, c]) => (
-          <ChoiceCard key={id} size="sm" icon={c.emoji} label={c[lang]} selected={lastCrop === id} onClick={() => pick(id)} />
+          <ChoiceCard key={id} size="sm" icon={<CropPic id={id} size={52} />} label={c[lang]} selected={lastCrop === id} onClick={() => pick(id)} />
         ))}
       </div>
       <div className="mt-3">
-        <ChoiceCard size="sm" icon="🤷" label={t('s4.none')} selected={lastCrop === 'none'} onClick={() => pick('none')} />
+        <ChoiceCard size="sm" icon={<CircleHelp size={40} strokeWidth={1.5} className="text-brand-700" />} label={t('s4.none')} selected={lastCrop === 'none'} onClick={() => pick('none')} />
       </div>
     </Screen>
   )

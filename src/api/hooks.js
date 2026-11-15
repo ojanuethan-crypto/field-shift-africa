@@ -9,7 +9,7 @@ export function isInsideAfrica(lat, lon) {
 
 // MOCK ONLY: crude latitude-band zone guess. The real backend returns the zone.
 export function mockZoneId(lat) {
-  if (lat >= 12) return 1
+  if (lat >= 10) return 1
   if (lat >= 7.5) return 2
   if (lat <= -8) return 2
   return 3

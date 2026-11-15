@@ -17,9 +17,15 @@ export default function ChoiceCard({ icon, label, selected, onClick, size = 'lg'
           <Check size={16} strokeWidth={2.5} />
         </span>
       )}
-      <span className={size === 'lg' ? 'text-5xl' : 'text-3xl'} aria-hidden>
-        {icon}
-      </span>
+      {typeof icon === 'string' ? (
+        <span className={size === 'lg' ? 'text-5xl' : 'text-3xl'} aria-hidden>
+          {icon}
+        </span>
+      ) : (
+        <span aria-hidden className="grid place-items-center">
+          {icon}
+        </span>
+      )}
       <span className="text-base font-medium text-ink">{label}</span>
       {sub && <span className="text-sm text-ink-soft">{sub}</span>}
     </button>

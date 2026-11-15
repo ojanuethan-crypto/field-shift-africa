@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { TriangleAlert } from 'lucide-react'
 import Screen from '../../components/Screen.jsx'
+import Pic from '../../components/Pic.jsx'
 import ChoiceCard from '../../components/ChoiceCard.jsx'
 import PrimaryButton from '../../components/PrimaryButton.jsx'
 import { speakText, useSpeak } from '../../components/speech.js'
 import { useFarm } from '../../state/FarmContext.jsx'
 
 const CARDS = [
-  { key: 'money', icon: '💰' },
-  { key: 'water', icon: '💧' },
-  { key: 'soil', icon: '🌱' },
-  { key: 'safety', icon: '🛡️' },
+  { key: 'money', icon: <Pic name="priority-money" emoji="💰" size={72} /> },
+  { key: 'water', icon: <Pic name="priority-water" emoji="💧" size={72} /> },
+  { key: 'soil', icon: <Pic name="priority-soil" emoji="🌱" size={72} /> },
+  { key: 'safety', icon: <Pic name="priority-safety" emoji="🛡️" size={72} /> },
 ]
 
 // S5 What matters most? 4 big cards, tap up to 2, spoken confirmation. Maps to weights in data/scoring.js.
@@ -63,7 +65,7 @@ export default function S5Priorities() {
         ))}
       </div>
       <p aria-live="polite" className="mt-5 min-h-[3rem] text-center text-lg font-medium text-brand-700">
-        {full ? <span className="text-ink">⚠️ {t('s5.max')}</span> : sentence(priorities)}
+        {full ? <span className="text-ink"><TriangleAlert size={16} className="mr-1 inline" /> {t('s5.max')}</span> : sentence(priorities)}
       </p>
     </Screen>
   )

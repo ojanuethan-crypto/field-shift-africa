@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { CalendarDays, Database, Globe2, Mountain, Sun, Thermometer, Waves } from 'lucide-react'
+import { CalendarDays, Database, Globe, Globe2, Mountain, Sun, Thermometer, Waves, WifiOff } from 'lucide-react'
+import Pic from '../../components/Pic.jsx'
 import Screen from '../../components/Screen.jsx'
 import PrimaryButton from '../../components/PrimaryButton.jsx'
 import StatusMark from '../../components/StatusMark.jsx'
@@ -38,7 +39,7 @@ export default function S3Land() {
   if (error)
     return (
       <Screen title={t('s3.title')} speak={t('s3.error')}>
-        <Friendly icon="📡" title={t('s3.error')}>
+        <Friendly icon={<WifiOff size={72} strokeWidth={1.5} className="text-brand-700" />} title={t('s3.error')}>
           <PrimaryButton onClick={() => setRetry((r) => r + 1)}>{t('s3.retry')}</PrimaryButton>
         </Friendly>
       </Screen>
@@ -47,7 +48,7 @@ export default function S3Land() {
   if (data?.outside)
     return (
       <Screen title={t('s3.title')} speak={t('s3.outsideTitle')}>
-        <Friendly icon="🌍" title={t('s3.outsideTitle')} body={t('s3.outsideBody')}>
+        <Friendly icon={<Globe size={72} strokeWidth={1.5} className="text-brand-700" />} title={t('s3.outsideTitle')} body={t('s3.outsideBody')}>
           <PrimaryButton onClick={() => nav('/')}>{t('s3.pickAgain')}</PrimaryButton>
         </Friendly>
       </Screen>
@@ -66,7 +67,9 @@ export default function S3Land() {
     >
       <div className="space-y-4 pb-2">
         <section className="flex items-center gap-4 rounded-3xl bg-brand-900 p-4 text-white shadow">
-          <span className="text-6xl" aria-hidden>{data.zone.icon}</span>
+          <span className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl bg-white">
+            <Pic name={data.zone.pic} emoji={data.zone.icon} size={64} />
+          </span>
           <div>
             <p className="text-sm opacity-80">{farm.nickname || farm.name}</p>
             <h2 className="text-2xl font-semibold leading-tight">{data.zone.name[lang]}</h2>
@@ -110,7 +113,7 @@ export default function S3Land() {
         </Card>
 
         <Card title={t('s3.soil')}>
-          <p className="flex items-center gap-3 text-lg"><span className="text-3xl" aria-hidden>🪱</span>{data.soil[lang]}</p>
+          <p className="flex items-center gap-3 text-lg"><Pic name="priority-soil" emoji="🌱" size={40} />{data.soil[lang]}</p>
         </Card>
 
         <div className="grid grid-cols-3 gap-2">
@@ -144,7 +147,7 @@ const Link3 = ({ Icon, label, onClick }) => (
 export function Friendly({ icon, title, body, children }) {
   return (
     <div className="flex min-h-[60%] flex-col items-center justify-center gap-4 text-center">
-      <span className="text-7xl" aria-hidden>{icon}</span>
+      <div aria-hidden>{typeof icon === 'string' ? <span className="text-7xl">{icon}</span> : icon}</div>
       <h2 className="text-xl font-semibold">{title}</h2>
       {body && <p className="max-w-xs text-ink-soft">{body}</p>}
       <div className="w-full max-w-xs">{children}</div>

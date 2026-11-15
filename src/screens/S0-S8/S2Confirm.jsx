@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { MapPin, Move } from 'lucide-react'
+import { Check, Hand, MapPin, Move } from 'lucide-react'
 import Screen from '../../components/Screen.jsx'
 import FarmMap from '../../components/FarmMap.jsx'
 import PrimaryButton from '../../components/PrimaryButton.jsx'
@@ -40,7 +40,9 @@ export default function S2Confirm() {
       flush
       footer={
         <div className="grid gap-2">
-          <PrimaryButton onClick={confirm}>✓ {t('s2.yes')}</PrimaryButton>
+          <PrimaryButton onClick={confirm}>
+            <span className="inline-flex items-center justify-center gap-2"><Check size={22} /> {t('s2.yes')}</span>
+          </PrimaryButton>
           <PrimaryButton variant="outline" onClick={() => setMoving((m) => !m)}>
             <span className="inline-flex items-center justify-center gap-2"><Move size={20} /> {t('s2.move')}</span>
           </PrimaryButton>
@@ -52,7 +54,7 @@ export default function S2Confirm() {
           <FarmMap center={[farm.lat, farm.lon]} zoom={9} pin={farm} onPick={move} flyZoom={9} />
           {moving && (
             <p className="absolute inset-x-4 top-3 z-[500] rounded-xl bg-amber-100 px-3 py-2 text-center text-sm font-medium shadow">
-              👆 {t('s1.tapMap')}
+              <span className="inline-flex items-center justify-center gap-2"><Hand size={18} /> {t('s1.tapMap')}</span>
             </p>
           )}
         </div>
