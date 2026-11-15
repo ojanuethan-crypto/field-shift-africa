@@ -54,7 +54,10 @@
     "pickAgain": "Choisir un autre lieu",
     "error": "Impossible de charger votre terre. Réessayez.",
     "retry": "Réessayer",
-    "mockNote": "Données de démonstration pour l'instant."
+    "mockNote": "Données de démonstration pour l'instant.",
+    "windowTitle": "Période de semis",
+    "windowStarts": "Les semis commencent en général en {{months}}.",
+    "windowNote": "D'après la pluie des années passées. Ce n'est pas une prévision."
   },
   "s4": {
     "title": "Dernière culture",

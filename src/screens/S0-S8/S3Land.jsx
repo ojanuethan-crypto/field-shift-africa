@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { CalendarDays, Database, Globe, Globe2, Mountain, Sun, Thermometer, Waves, WifiOff } from 'lucide-react'
+import { CalendarDays, Database, Globe, Globe2, Mountain, Sprout, Sun, Thermometer, Waves, WifiOff } from 'lucide-react'
 import Pic from '../../components/Pic.jsx'
 import Screen from '../../components/Screen.jsx'
 import PrimaryButton from '../../components/PrimaryButton.jsx'
 import StatusMark from '../../components/StatusMark.jsx'
 import { useSpeak } from '../../components/speech.js'
-import { useProfile } from '../../api/hooks.js'
+import { useProfile, useWindow } from '../../api/hooks.js'
 import StateScreen from '../S18-S26/StateScreen.jsx'
 import { USE_MOCK } from '../../api/config.js'
 import { useFarm } from '../../state/FarmContext.jsx'
@@ -30,7 +30,18 @@ export default function S3Land() {
   const [retry, setRetry] = useState(0)
   const { data, loading, error } = useProfile(farm, retry, lang)
 
-  const speakText = data?.zone ? `${data.zone.name[lang]}. ${data.soil[lang]}` : t('s3.title')
+  // Planting window (F10): optional card, never blocks the screen
+  const { data: win } = useWindow(farm, retry, lang)
+  const monthName = (m) => new Intl.DateTimeFormat(lang, { month: 'long' }).format(new Date(2026, m - 1, 1))
+  const windowText = win
+    ? (win.text && (typeof win.text === 'object' ? win.text[lang] : win.text)) ||
+      t('s3.windowStarts', {
+        months: win.start_month === win.end_month ? monthName(win.start_month) : `${monthName(win.start_month)}⁠–⁠${monthName(win.end_month)}`,
+      })
+    : null
+  const inWindow = (m) => (win ? (win.start_month <= win.end_month ? m >= win.start_month && m <= win.end_month : m >= win.start_month || m <= win.end_month) : false)
+
+  const speakText = data?.zone ? `${data.zone.name[lang]}. ${data.soil[lang]}${windowText ? `. ${windowText}` : ''}` : t('s3.title')
   useSpeak(speakText)
 
   if (!farm) return <Navigate to="/" replace />
@@ -79,6 +90,29 @@ export default function S3Land() {
             <p className="text-base opacity-90">{data.description[lang]}</p>
           </div>
         </section>
+
+        {windowText && (
+          <Card title={t('s3.windowTitle')}>
+            <p className="flex items-center gap-3 text-lg">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-brand-100 text-brand-700">
+                <Sprout size={26} />
+              </span>
+              {windowText}
+            </p>
+            <ol className="mt-3 grid grid-cols-12 gap-1" aria-label={t('s3.windowTitle')}>
+              {months.map((m, i) => (
+                <li
+                  key={i}
+                  aria-label={`${monthName(i + 1)}${inWindow(i + 1) ? ' ✓' : ''}`}
+                  className={`grid h-9 place-items-center rounded-lg text-xs ${inWindow(i + 1) ? 'bg-brand-700 font-semibold text-white' : 'bg-surface text-ink-soft'}`}
+                >
+                  {m}
+                </li>
+              ))}
+            </ol>
+            <p className="mt-2 text-xs text-ink-soft">{t('s3.windowNote')}</p>
+          </Card>
+        )}
 
         <Card title={t('s3.hazards')}>
           <ul className="grid grid-cols-2 gap-3">

@@ -28,6 +28,14 @@ export const PASSPORT_ROWS = [
     accessed: '2026-11-13',
   },
   {
+    id: 'window',
+    dataset: 'CHIRPS + NASA POWER',
+    version: 'v2.0 / v9',
+    resolution: '0.05° to 0.5°',
+    period: '1991–2020',
+    accessed: '2026-11-13',
+  },
+  {
     id: 'veg',
     dataset: 'MODIS NDVI (MOD13Q1)',
     version: 'v061',

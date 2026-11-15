@@ -43,6 +43,10 @@
       "veg": {
         "label": "Plantes vues de l'espace",
         "method": "Verdure des plantes, pour vérifier notre carte de risque sur des années réelles."
+      },
+      "window": {
+        "label": "Période de semis",
+        "method": "Premiers mois où la pluie habituelle couvre les besoins des cultures. Années passées seulement, pas une prévision."
       }
     },
     "limitsTitle": "Ce que ça ne fait pas",

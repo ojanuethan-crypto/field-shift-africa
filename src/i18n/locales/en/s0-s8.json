@@ -54,7 +54,10 @@
     "pickAgain": "Pick another place",
     "error": "We could not load your land. Try again.",
     "retry": "Try again",
-    "mockNote": "Demo data for now."
+    "mockNote": "Demo data for now.",
+    "windowTitle": "Planting window",
+    "windowStarts": "Planting usually starts in {{months}}.",
+    "windowNote": "From the rain of past years. Not a forecast."
   },
   "s4": {
     "title": "Last crop",

@@ -84,3 +84,13 @@ export function normalizeRotations(raw) {
   const list = Array.isArray(raw) ? raw : raw?.plans ?? []
   return list.map(normalizePlan)
 }
+
+// GET /api/window  ->  { start_month, end_month, text? } | null   (months 1-12; the window may wrap the year, e.g. 11 -> 1)
+// `text` is optional (a string in the requested language, or { en, fr }); without it the app builds the sentence.
+export function normalizeWindow(raw) {
+  if (!raw) return null
+  const start = Number(raw.start_month ?? raw.start)
+  const end = Number(raw.end_month ?? raw.end)
+  if (!(start >= 1 && start <= 12 && end >= 1 && end <= 12)) return null
+  return { start_month: start, end_month: end, text: raw.text || null }
+}

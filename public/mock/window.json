@@ -1,0 +1,6 @@
+{
+  "_note": "MOCK planting windows for UI development only (months 1-12), keyed by the mock zone id. Real: GET /api/window?lat&lon&lang -> { start_month, end_month, text? }. Consistent with the plant months in rotations.json.",
+  "1": { "start_month": 6, "end_month": 7 },
+  "2": { "start_month": 5, "end_month": 6 },
+  "3": { "start_month": 3, "end_month": 4 }
+}

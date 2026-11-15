@@ -43,6 +43,10 @@
       "veg": {
         "label": "Plants from space",
         "method": "Plant greenness, used to check our risk map against real years."
+      },
+      "window": {
+        "label": "Planting window",
+        "method": "First months when the usual rain covers what crops need. Past years only, not a forecast."
       }
     },
     "limitsTitle": "What this cannot do",

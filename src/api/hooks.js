@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { api } from './client.js'
 import { USE_MOCK } from './config.js'
-import { normalizeProfile, normalizeRotations } from './adapters.js'
+import { normalizeProfile, normalizeRotations, normalizeWindow } from './adapters.js'
 
 // Rough Africa bounding box. Real edge cases (ocean, desert, no data) belong to S26.
 export function isInsideAfrica(lat, lon) {
@@ -83,4 +83,20 @@ export function useRotations(farm, retryKey = 0, answers = {}, lang = 'en') {
       return normalizeRotations(await api('/api/rotations', { method: 'POST', body: JSON.stringify(body) }))
     }, retryKey > 0)
   }, [farm?.lat, farm?.lon, retryKey, key])
+}
+
+// Planting window for S3 (F10): when planting usually starts, from past climate (never a forecast).
+// Optional: while it is loading or if it fails the screen simply does not show the card.
+export function useWindow(farm, retryKey = 0, lang = 'en') {
+  const langKey = USE_MOCK ? '' : lang
+  return useAsync(async () => {
+    if (!farm || !isInsideAfrica(farm.lat, farm.lon)) return null
+    return cached(`window:${farm.lat},${farm.lon},${langKey}`, async () => {
+      if (USE_MOCK) {
+        const all = await api('', { mockFile: 'window.json' })
+        return normalizeWindow(all[mockZoneId(farm.lat)])
+      }
+      return normalizeWindow(await api(`/api/window?lat=${farm.lat}&lon=${farm.lon}&lang=${lang}`))
+    }, retryKey > 0)
+  }, [farm?.lat, farm?.lon, retryKey, langKey])
 }

@@ -106,7 +106,9 @@ coordinates `[lon, lat]`. Keep it under 600 KB (about 1 degree grid).
 ## 6. Needed next (screens exist or are planned, endpoint shape is a proposal)
 - **Planting window (F10, a MUST)**: `GET /api/window?lat=&lon=&lang=` -> `{ "start_month": 4, "end_month": 5, "text": "Planting usually starts in April-May." }`.
   Method: first months where median rainfall reaches a set share of evaporative demand. Never call it a forecast.
-  The UI for this is not built yet.
+  **The UI is built** (card + 12-month strip on the land screen, S3). `text` is optional: without it the app writes
+  "Planting usually starts in April-May." from the two months. The window may wrap the year (for example `start_month: 11, end_month: 1`).
+  If the call fails the card is simply not shown. A row for it is already on the Data Passport (S20); fill in the real dataset, version and access date.
 - **Proof (S21)** and **Data Passport (S20)** currently show static placeholder numbers (`src/screens/S18-S26/evidence.js`).
   Real numbers: `GET /api/proof` (events, hit rates, baseline) and the per-number source list.
 - **Anonymous counts**: `POST /api/event` `{ "name": "plan_viewed", "zone": 3 }`, no identifiers.
