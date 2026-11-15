@@ -25,7 +25,7 @@ export default function S12MonthsToWatch() {
   // Real API: profile.watch_months = { dry: [...], flood: [...], heat: [...] } (months 1-12). Mock: flat file.
   const query = useData(() => api(`/api/profile?lat=${lat}&lon=${lon}&lang=${lang}`, { mockFile: 'watch.json' }), [lat, lon, lang])
   const d = query.data
-  const wm = d?.watch_months ?? d
+  const wm = d?.watch_months ?? (d?.data_quality || d?.outside ? null : d) // no data / desert / outside: nothing to show
   const name = (m, style = 'short') => new Intl.DateTimeFormat(lang, { month: style }).format(new Date(2026, m - 1, 1))
   const months = Array.from({ length: 12 }, (_, i) => i + 1)
 

@@ -22,7 +22,7 @@ const STATE_OF = { ocean: 'ocean', desert: 'desert', outside: 'outside', no_data
 export function normalizeProfile(raw) {
   if (!raw || raw.outside || raw.state) return raw
   const dq = raw.data_quality
-  if (dq && dq !== 'ok') return { state: STATE_OF[dq] ?? 'nodata' }
+  if (dq && STATE_OF[dq]) return { state: STATE_OF[dq] } // only the "cannot advise" values; 'ok' / 'partial' / 'mock' are usable data
   if (raw.zone?.name && typeof raw.zone.name === 'object' && !raw.climate) return raw // internal (mock) shape
   const z = raw.zone ?? {}
   const soil = raw.soil
@@ -48,8 +48,11 @@ function guessKind(sub) {
   return 'safest'
 }
 
+// The backend scores with the farmer's priorities, last crop and conditions: its score (0-1 or 0-100) wins over the browser's.
+const serverScoreOf = (p) => (typeof p.score === 'number' ? (p.score > 1 ? p.score / 100 : p.score) : null)
+
 function normalizePlan(p) {
-  if (p.sub) return p // already the internal (mock) shape
+  if (p.sub) return { ...p, serverScore: serverScoreOf(p) } // already the internal shape (the Flask API sends it); mock files have no score
   const sub = p.subscores ?? {}
   const scen = p.scenarios ?? {}
   const reasons = p.reasons?.length ? p.reasons : [p.explanation].filter(Boolean)
@@ -75,12 +78,13 @@ function normalizePlan(p) {
     why: reasons.map(both),
     warnings: (p.warnings ?? []).map(both),
     // the backend scores with the farmer's priorities, last crop and conditions: its score wins
-    serverScore: typeof p.score === 'number' ? (p.score > 1 ? p.score / 100 : p.score) : null,
+    serverScore: serverScoreOf(p),
   }
 }
 
-// POST /api/rotations  ->  [plan, ...]
+// POST /api/rotations  ->  [plan, ...]  |  { state: 'desert' | 'nodata' }  (no plans for this place: the app shows a friendly screen)
 export function normalizeRotations(raw) {
+  if (raw?.low_potential) return { state: raw.state === 'desert' ? 'desert' : 'nodata' }
   const list = Array.isArray(raw) ? raw : raw?.plans ?? []
   return list.map(normalizePlan)
 }

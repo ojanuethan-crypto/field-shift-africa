@@ -56,7 +56,8 @@
       "Aucune promesse de récolte ni d'argent.",
       "Demandez toujours à un agronome local avant de décider."
     ],
-    "toProof": "Est-ce que ça a marché avant ?"
+    "toProof": "Est-ce que ça a marché avant ?",
+    "caveat": "Attention"
   },
   "s21": {
     "title": "Preuve",
@@ -74,7 +75,8 @@
     "ndviBody": "Quand notre risque monte, la verdure des plantes (NDVI) doit baisser.",
     "hazard": "Notre risque",
     "reviewTitle": "Pas encore relu",
-    "review": "Un agronome n'a pas encore vérifié ces résultats."
+    "review": "Un agronome n'a pas encore vérifié ces résultats.",
+    "ndviNone": "Pas encore calculé. Nous l'afficherons une fois vérifié."
   },
   "s22": {
     "title": "Réglages",

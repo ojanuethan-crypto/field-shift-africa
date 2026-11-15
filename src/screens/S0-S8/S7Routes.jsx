@@ -15,6 +15,7 @@ import { rankPlans } from '../../data/scoring.js'
 import { useFarm } from '../../state/FarmContext.jsx'
 import { Friendly } from './S3Land.jsx'
 import NeedFarm from '../S18-S26/NeedFarm.jsx'
+import StateScreen from '../S18-S26/StateScreen.jsx'
 
 export function useRankedPlans() {
   const { farm, priorities, canWater, canBuyFertilizer, lastCrop } = useFarm()
@@ -27,10 +28,11 @@ export function useRankedPlans() {
     i18n.language.startsWith('fr') ? 'fr' : 'en',
   )
   const plans = useMemo(
-    () => (data ? rankPlans(data, { priorities, canWater, lastCrop }) : []),
+    () => (Array.isArray(data) ? rankPlans(data, { priorities, canWater, lastCrop }) : []),
     [data, priorities, canWater, lastCrop],
   )
-  return { plans, loading, error, retry: () => setRetry((r) => r + 1) }
+  // `state` = the place has no plans (desert / no data): the screens show the same friendly screen as S3
+  return { plans, state: data?.state ?? null, loading, error, retry: () => setRetry((r) => r + 1) }
 }
 
 // S7 Routes: 3 plans (Safest / Soil-rebuilder / Money-first), best match first, tick/triangle/cross per season.
@@ -39,7 +41,7 @@ export default function S7Routes() {
   const lang = i18n.language
   const { farm, update, muted } = useFarm()
   const nav = useNavigate()
-  const { plans, loading, error, retry } = useRankedPlans()
+  const { plans, state, loading, error, retry } = useRankedPlans()
   useSpeak(t('s7.intro'), { auto: true })
 
   if (!farm) return <NeedFarm title={t('s7.title')} />
@@ -49,6 +51,7 @@ export default function S7Routes() {
     nav(`/routes/${p.id}`)
   }
 
+  if (!loading && !error && state) return <StateScreen type={state} />
   if (loading) return <Screen title={t('s7.title')}><p className="py-16 text-center text-lg">⏳ {t('s7.loading')}</p></Screen>
   if (error)
     return (

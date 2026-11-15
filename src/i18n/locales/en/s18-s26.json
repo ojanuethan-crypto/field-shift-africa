@@ -56,7 +56,8 @@
       "It does not promise any harvest or money.",
       "Always ask a local agronomist before you decide."
     ],
-    "toProof": "Did it work in the past?"
+    "toProof": "Did it work in the past?",
+    "caveat": "Be careful"
   },
   "s21": {
     "title": "Proof",
@@ -74,7 +75,8 @@
     "ndviBody": "When our risk goes up, plant greenness (NDVI) should go down.",
     "hazard": "Our risk",
     "reviewTitle": "Not yet reviewed",
-    "review": "An agronomist has not yet checked these results."
+    "review": "An agronomist has not yet checked these results.",
+    "ndviNone": "Not computed yet. We will show it once we have checked it."
   },
   "s22": {
     "title": "Settings",

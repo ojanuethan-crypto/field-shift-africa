@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { api } from '../../../api/client.js'
 import { useData } from './useData.js'
 
 // Data hooks. Real endpoints: GET /api/advice-index and GET /api/faq (Roadmap section 6).
-export const useAdviceIndex = () => useData(() => api('/api/advice-index', { mockFile: 'advice-index.json' }), [])
+// Real documents are stored one language per passage, so the index is asked for in the app language (mock passages have both).
+export function useAdviceIndex() {
+  const { i18n } = useTranslation()
+  const lang = i18n.language.startsWith('fr') ? 'fr' : 'en'
+  return useData(() => api(`/api/advice-index?lang=${lang}`, { mockFile: 'advice-index.json' }), [lang])
+}
 export const useFaq = (lang) => useData(() => api(`/api/faq?lang=${lang}`, { mockFile: 'faq.json' }), [lang])
 
 export function useOnline() {

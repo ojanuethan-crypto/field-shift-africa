@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import Screen from '../../components/Screen.jsx'
 import Pic from '../../components/Pic.jsx'
 import { api } from '../../api/client.js'
+import { USE_MOCK } from '../../api/config.js'
 import MapBox from './components/MapBox.jsx'
 import MockBadge from './components/MockBadge.jsx'
 import QueryState from './components/QueryState.jsx'
@@ -24,10 +25,16 @@ const icon = (zone, state) =>
 
 // S10 Zone legend and layer: map coloured by zone, picture legend, tap a zone for its summary.
 export default function S10ZoneLegend() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const lang = i18n.language.startsWith('fr') ? 'fr' : 'en'
   const [selected, setSelected] = useState(null)
   const query = useData(() => api('/api/zones', { mockFile: 'zones.geojson' }), [])
-  const zone = ZONES.find((z) => z.id === selected)
+  // Mock: the 7 draft zones (texts in the i18n file). Real: the zones the database lists (name, colour, emoji, description).
+  const fromApi = !USE_MOCK && query.data?.zones
+  const zones = fromApi
+    ? query.data.zones.map((z) => ({ id: z.id, color: z.color, emoji: z.icon ?? '🌍', name: z.name[lang], description: z.description?.[lang] }))
+    : ZONES.map((z) => ({ ...z, name: t(`s10.list.${z.id}.name`) }))
+  const zone = zones.find((z) => z.id === selected)
   const toggle = (id) => setSelected((s) => (s === id ? null : id))
 
   return (
@@ -38,7 +45,7 @@ export default function S10ZoneLegend() {
 
         <MapBox>
           {query.data?.features.map((f, i) => {
-            const z = ZONES.find((x) => x.id === f.properties.zone_id)
+            const z = zones.find((x) => x.id === f.properties.zone_id)
             if (!z) return null
             const state = selected == null ? 'normal' : selected === z.id ? 'on' : 'dim'
             return (
@@ -53,7 +60,7 @@ export default function S10ZoneLegend() {
         </MapBox>
 
         <div className="grid grid-cols-2 gap-2">
-          {ZONES.map((z) => (
+          {zones.map((z) => (
             <button
               key={z.id}
               type="button"
@@ -67,18 +74,24 @@ export default function S10ZoneLegend() {
                 {z.id}
               </span>
               <Pic name={z.pic} emoji={z.emoji} size={36} />
-              <span className="leading-tight text-brand-900">{t(`s10.list.${z.id}.name`)}</span>
+              <span className="leading-tight text-brand-900">{z.name}</span>
             </button>
           ))}
         </div>
 
         {zone ? (
           <div className="space-y-2 rounded-3xl bg-white p-4 shadow-sm" style={{ borderLeft: `8px solid ${zone.color}` }} aria-live="polite">
-            <h2 className="text-lg font-bold text-brand-900"><Pic name={zone.pic} emoji={zone.emoji} size={32} className="mr-1 align-middle" /> {zone.id}. {t(`s10.list.${zone.id}.name`)}</h2>
-            <p>{t(`s10.list.${zone.id}.pattern`)}</p>
-            <p><b>{t('s10.hazards')}:</b> {t(`s10.list.${zone.id}.hazards`)}</p>
-            <p><b>{t('s10.rotation')}:</b> {t(`s10.list.${zone.id}.rotation`)}</p>
-            <p><b>{t('s10.examples')}:</b> {t(`s10.list.${zone.id}.examples`)}</p>
+            <h2 className="text-lg font-bold text-brand-900"><Pic name={zone.pic} emoji={zone.emoji} size={32} className="mr-1 align-middle" /> {zone.id}. {zone.name}</h2>
+            {fromApi ? (
+              zone.description && <p>{zone.description}</p>
+            ) : (
+              <>
+                <p>{t(`s10.list.${zone.id}.pattern`)}</p>
+                <p><b>{t('s10.hazards')}:</b> {t(`s10.list.${zone.id}.hazards`)}</p>
+                <p><b>{t('s10.rotation')}:</b> {t(`s10.list.${zone.id}.rotation`)}</p>
+                <p><b>{t('s10.examples')}:</b> {t(`s10.list.${zone.id}.examples`)}</p>
+              </>
+            )}
           </div>
         ) : (
           <p className="text-center text-sm text-ink-soft">{t('s10.tapHint')}</p>

@@ -1,0 +1,40 @@
+# Render blueprint: the Flask API + the app. UNTESTED (no Render account/Docker was available while this was written):
+# follow docs/DEPLOY.md and run backend/scripts/smoke.sh against the public URL before trusting it.
+services:
+  - type: web
+    name: scifarm-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn backend.wsgi:app --bind 0.0.0.0:$PORT --workers 2 --timeout 60
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ENV
+        value: prod
+      - key: ENGINE_MODE
+        value: real
+      - key: DATABASE_URL        # Supabase SESSION POOLER string (IPv4), read-only user preferred. Paste in the Render dashboard.
+        sync: false
+      - key: ALLOWED_ORIGINS     # the app's public URL, e.g. https://scifarm-app.onrender.com (never *)
+        sync: false
+      - key: CACHE_BACKEND
+        value: memory
+      - key: ANTHROPIC_API_KEY   # optional: model wording for /api/ask and /api/explain
+        sync: false
+
+  - type: web
+    name: scifarm-app
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_USE_MOCK
+        value: "false"
+      - key: VITE_API_URL        # the API's public URL, e.g. https://scifarm-api.onrender.com  (baked in at build time)
+        sync: false
+    routes:
+      - type: rewrite            # single-page app: every path serves index.html
+        source: /*
+        destination: /index.html
