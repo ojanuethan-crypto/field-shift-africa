@@ -27,3 +27,6 @@ dist-ssr
 data/
 __pycache__/
 *.pyc
+
+# Office lock files
+~$*
