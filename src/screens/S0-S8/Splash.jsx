@@ -1,33 +1,29 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { launch } from '../../state/launch.js'
-import logo from '../../assets/scifarm-logo.png'
+import SciFarmLogoAnimation from '../../components/SciFarmLogoAnimation.jsx'
 
-// Loading screen shown every time the web app is opened: the SciFarm logo jiggles for 2 seconds.
+// Loading screen shown every time the web app is opened: the orbit draws around the leaf, then the
+// SciFarm wordmark appears. When it finishes we hold a moment, then continue to the requested page.
 export default function Splash() {
   const nav = useNavigate()
   const { state } = useLocation()
+  const timer = useRef(null)
 
-  useEffect(() => {
-    const id = setTimeout(() => {
+  // Must be stable, otherwise the logo animation restarts on every render.
+  const onComplete = useCallback(() => {
+    timer.current = setTimeout(() => {
       launch.splashDone = true
       const from = state?.from && state.from !== '/splash' ? state.from : '/'
       nav(from, { replace: true }) // Home decides: voice question, language, or the map
-    }, 2000)
-    return () => clearTimeout(id)
+    }, 900) // lets the wordmark fade in
   }, [nav, state])
 
+  useEffect(() => () => clearTimeout(timer.current), [])
+
   return (
-    <div className="mx-auto grid h-full w-full max-w-md place-items-center bg-white">
-      {/* Crop the logo's empty margins so it fills the frame */}
-      <div className="h-72 w-72 overflow-hidden" role="img" aria-label="SciFarm">
-        <img
-          src={logo}
-          alt=""
-          className="sf-jiggle max-w-none"
-          style={{ width: 690, marginLeft: -199, marginTop: -44 }}
-        />
-      </div>
+    <div className="grid h-full w-full place-items-center bg-white">
+      <SciFarmLogoAnimation showReplayButton={false} onComplete={onComplete} />
     </div>
   )
 }

@@ -26,16 +26,3 @@ body {
 button { font: inherit; cursor: pointer; }
 /* touch targets >= 48px for primary controls */
 .tap { min-height: 48px; min-width: 48px; }
-
-/* Splash logo jiggle (2s) */
-@keyframes sf-jiggle {
-  0%   { transform: rotate(0) scale(0.85); opacity: 0; }
-  12%  { transform: rotate(-7deg) scale(1.05); opacity: 1; }
-  28%  { transform: rotate(6deg) scale(1.02); }
-  44%  { transform: rotate(-5deg) scale(1.04); }
-  60%  { transform: rotate(4deg) scale(1.02); }
-  76%  { transform: rotate(-2deg) scale(1.03); }
-  100% { transform: rotate(0) scale(1); }
-}
-.sf-jiggle { animation: sf-jiggle 2s ease-in-out both; }
-@media (prefers-reduced-motion: reduce) { .sf-jiggle { animation: none; } }
