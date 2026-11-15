@@ -178,6 +178,8 @@
     }
   },
   "s18s26": {
-    "sample": "Sample data"
+    "sample": "Sample data",
+    "needFarm": "Pick your farm on the map first.",
+    "pickFarm": "Open the map"
   }
 }

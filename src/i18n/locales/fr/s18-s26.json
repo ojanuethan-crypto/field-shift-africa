@@ -178,6 +178,8 @@
     }
   },
   "s18s26": {
-    "sample": "Données d'exemple"
+    "sample": "Données d'exemple",
+    "needFarm": "Choisissez d'abord votre ferme sur la carte.",
+    "pickFarm": "Ouvrir la carte"
   }
 }

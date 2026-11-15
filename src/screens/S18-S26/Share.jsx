@@ -8,6 +8,7 @@ import Stars from '../../components/Stars.jsx'
 import { CROPS } from '../../data/crops.js'
 import { useFarm } from '../../state/FarmContext.jsx'
 import { useRankedPlans } from '../S0-S8/S7Routes.jsx'
+import NeedFarm from './NeedFarm.jsx'
 import { Button, Card, Disclaimer } from './parts.jsx'
 
 // S18 Share preview (MUST): the plan card as a picture, shared to WhatsApp via the phone share sheet,
@@ -62,7 +63,7 @@ export default function S18Share() {
   const [copied, setCopied] = useState(false)
   const [busy, setBusy] = useState(false)
 
-  if (!farm) return <Navigate to="/" replace />
+  if (!farm) return <NeedFarm title={t('s18.title')} />
   if (loading) return <Screen title={t('s18.title')}><p className="py-16 text-center text-lg">⏳</p></Screen>
   const plan = plans.find((p) => p.id === id) || plans[0]
   if (!plan) return <Navigate to="/routes" replace />

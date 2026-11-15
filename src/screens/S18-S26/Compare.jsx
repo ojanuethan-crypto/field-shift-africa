@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Navigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Droplets } from 'lucide-react'
 import Screen from '../../components/Screen.jsx'
@@ -8,6 +7,7 @@ import Stars from '../../components/Stars.jsx'
 import { CROPS } from '../../data/crops.js'
 import { useFarm } from '../../state/FarmContext.jsx'
 import { useRankedPlans } from '../S0-S8/S7Routes.jsx'
+import NeedFarm from './NeedFarm.jsx'
 import { Card, Disclaimer, WATER_LABEL, planWater } from './parts.jsx'
 
 // S19 Compare routes (COULD): two plans side by side by picture. Route: /compare (opened from S7).
@@ -44,7 +44,7 @@ export default function S19Compare() {
   const { plans, loading } = useRankedPlans()
   const [picked, setPicked] = useState([]) // ids; first two plans by default
 
-  if (!farm) return <Navigate to="/" replace />
+  if (!farm) return <NeedFarm title={t('s19.title')} />
   if (loading) return <Screen title={t('s19.title')}><p className="py-16 text-center text-lg">⏳</p></Screen>
 
   const ids = picked.length === 2 ? picked : plans.slice(0, 2).map((p) => p.id)
