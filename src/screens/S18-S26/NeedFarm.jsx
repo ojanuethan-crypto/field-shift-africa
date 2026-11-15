@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { MapPin } from 'lucide-react'
 import Screen from '../../components/Screen.jsx'
 import { Button } from './parts.jsx'
 
@@ -11,7 +12,7 @@ export default function NeedFarm({ title }) {
   return (
     <Screen title={title} speak={msg}>
       <div className="rounded-3xl bg-white px-6 py-10 text-center shadow-sm">
-        <div className="text-7xl" aria-hidden>📍</div>
+        <MapPin size={72} strokeWidth={1.5} className="mx-auto text-brand-700" aria-hidden />
         <p className="mt-4 text-xl font-semibold text-brand-900">{msg}</p>
       </div>
       <Link to="/" className="mt-5 block">

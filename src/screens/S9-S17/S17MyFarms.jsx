@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, MapPin, Plus, Trash2 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import Screen from '../../components/Screen.jsx'
-import { CROPS } from '../../data/crops.js'
+import { CropPic } from '../../components/Pic.jsx'
 import { useFarm } from '../../state/FarmContext.jsx'
 
 // S17 My Farms. Saved plots live only on the phone (FarmContext.farms -> localStorage).
@@ -61,7 +61,7 @@ export default function S17MyFarms() {
                       {f.plan.crops.map((c, i) => (
                         <span key={i} className="flex items-center gap-1">
                           {i > 0 && <ArrowRight size={16} className="text-gray-500" />}
-                          <span>{CROPS[c]?.emoji ?? '🌱'}</span>
+                          <CropPic id={c} size={40} />
                         </span>
                       ))}
                       <span className="ml-2 text-sm font-bold text-brand-700">{f.plan.name}</span>

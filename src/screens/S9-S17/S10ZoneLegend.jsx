@@ -3,6 +3,7 @@ import { Marker } from 'react-leaflet'
 import L from 'leaflet'
 import { useTranslation } from 'react-i18next'
 import Screen from '../../components/Screen.jsx'
+import Pic from '../../components/Pic.jsx'
 import { api } from '../../api/client.js'
 import MapBox from './components/MapBox.jsx'
 import MockBadge from './components/MockBadge.jsx'
@@ -65,7 +66,7 @@ export default function S10ZoneLegend() {
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white" style={{ background: z.color }}>
                 {z.id}
               </span>
-              <span className="text-xl" aria-hidden="true">{z.emoji}</span>
+              <Pic name={z.pic} emoji={z.emoji} size={36} />
               <span className="leading-tight text-brand-900">{t(`s10.list.${z.id}.name`)}</span>
             </button>
           ))}
@@ -73,7 +74,7 @@ export default function S10ZoneLegend() {
 
         {zone ? (
           <div className="space-y-2 rounded-3xl bg-white p-4 shadow-sm" style={{ borderLeft: `8px solid ${zone.color}` }} aria-live="polite">
-            <h2 className="text-lg font-bold text-brand-900">{zone.emoji} {zone.id}. {t(`s10.list.${zone.id}.name`)}</h2>
+            <h2 className="text-lg font-bold text-brand-900"><Pic name={zone.pic} emoji={zone.emoji} size={32} className="mr-1 align-middle" /> {zone.id}. {t(`s10.list.${zone.id}.name`)}</h2>
             <p>{t(`s10.list.${zone.id}.pattern`)}</p>
             <p><b>{t('s10.hazards')}:</b> {t(`s10.list.${zone.id}.hazards`)}</p>
             <p><b>{t('s10.rotation')}:</b> {t(`s10.list.${zone.id}.rotation`)}</p>

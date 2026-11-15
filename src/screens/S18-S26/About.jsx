@@ -14,7 +14,7 @@ export default function S23About() {
       <div className="space-y-4">
         <div className="rounded-3xl bg-brand-900 p-5 text-white">
           <p className="text-sm opacity-80">NASA Space Apps Challenge 2026 · Field Shift</p>
-          <h2 className="mt-1 text-2xl font-semibold">Field Navigator</h2>
+          <h2 className="mt-1 text-2xl font-semibold">SciFarm</h2>
           <p className="mt-2 text-base opacity-90">{t('s23.pitch')}</p>
         </div>
 

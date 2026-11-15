@@ -1,4 +1,4 @@
-# Field Navigator (Field Shift Africa)
+# SciFarm (Field Shift Africa)
 
 Map-first, no-login farm planning app for the NASA Space Apps Challenge. Specs are in `Doc/`, design references in `Doc/Ref_Pictures/`.
 

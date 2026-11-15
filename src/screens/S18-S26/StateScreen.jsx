@@ -1,6 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { CircleAlert, Globe, SearchX, Waves, WifiOff } from 'lucide-react'
 import Screen from '../../components/Screen.jsx'
+import Pic from '../../components/Pic.jsx'
 import { Button, Listen } from './parts.jsx'
 
 // S26 States: one friendly, spoken screen per case with a clear next action.
@@ -8,12 +10,12 @@ import { Button, Listen } from './parts.jsx'
 //   <StateScreen type="offline" embedded />   types: offline | error | desert | ocean | outside | nodata
 // embedded = no Screen wrapper (use inside a screen you already render).
 const CASES = {
-  offline: { icon: '📡', action: 'retry' },
-  error: { icon: '🙈', action: 'retry' },
-  desert: { icon: '🏜️', action: 'pick' },
-  ocean: { icon: '🌊', action: 'pick' },
-  outside: { icon: '🌍', action: 'pick' },
-  nodata: { icon: '🔍', action: 'pick' },
+  offline: { Icon: WifiOff, action: 'retry' },
+  error: { Icon: CircleAlert, action: 'retry' },
+  desert: { pic: 'zone-arid', emoji: '🏜️', action: 'pick' },
+  ocean: { Icon: Waves, action: 'pick' },
+  outside: { Icon: Globe, action: 'pick' },
+  nodata: { Icon: SearchX, action: 'pick' },
 }
 
 export default function StateScreen({ type = 'error', embedded = false }) {
@@ -27,7 +29,13 @@ export default function StateScreen({ type = 'error', embedded = false }) {
   const content = (
     <>
       <div className="rounded-3xl bg-brand-900 px-6 py-10 text-center text-white">
-        <div className="text-7xl" aria-hidden>{c.icon}</div>
+        <div className="flex justify-center" aria-hidden>
+          {c.pic ? (
+            <span className="grid h-24 w-24 place-items-center rounded-3xl bg-white"><Pic name={c.pic} emoji={c.emoji} size={72} /></span>
+          ) : (
+            <c.Icon size={72} strokeWidth={1.5} />
+          )}
+        </div>
         <h2 className="mt-5 text-2xl font-semibold">{title}</h2>
         <p className="mx-auto mt-2 max-w-xs text-lg leading-snug opacity-90">{body}</p>
         {embedded && (

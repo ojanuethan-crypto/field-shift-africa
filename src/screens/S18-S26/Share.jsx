@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { Check, Link as LinkIcon, MessageCircle, Share2 } from 'lucide-react'
 import Screen from '../../components/Screen.jsx'
 import StatusMark from '../../components/StatusMark.jsx'
+import { CropPic } from '../../components/Pic.jsx'
+import { iconToImage } from '../../components/iconImage.jsx'
 import Stars from '../../components/Stars.jsx'
 import { CROPS } from '../../data/crops.js'
 import { useFarm } from '../../state/FarmContext.jsx'
@@ -15,7 +17,9 @@ import { Button, Card, Disclaimer } from './parts.jsx'
 // with a link fallback. Route: /share/:id (id = plan id from S7/S8).
 
 // Draw the card to a PNG with plain canvas (no extra library, stays light).
-function drawCard({ plan, place, lang, kind, reason, note }) {
+async function drawCard({ plan, place, lang, kind, reason, note }) {
+  // SVG crop icons drawn onto the canvas (emoji only if an icon is missing)
+  const imgs = await Promise.all(plan.sequence.map((s) => iconToImage(`crop-${s.crop}`).catch(() => null)))
   const w = 720
   const h = 520
   const c = document.createElement('canvas')
@@ -30,15 +34,18 @@ function drawCard({ plan, place, lang, kind, reason, note }) {
   g.fill()
   g.fillStyle = '#fff'
   g.font = '600 26px system-ui, sans-serif'
-  g.fillText(`Field Navigator · ${place}`, 32, 56)
+  g.fillText(`SciFarm · ${place}`, 32, 56)
   g.font = '700 38px system-ui, sans-serif'
   g.fillText(kind, 32, 100)
   g.fillStyle = '#1f2a24'
   g.textAlign = 'center'
   plan.sequence.forEach((s, i) => {
     const x = 24 + ((w - 48) / plan.sequence.length) * (i + 0.5)
-    g.font = '80px serif'
-    g.fillText(CROPS[s.crop].emoji, x, 250)
+    if (imgs[i]) g.drawImage(imgs[i], x - 48, 160, 96, 96)
+    else {
+      g.font = '80px serif'
+      g.fillText(CROPS[s.crop].emoji, x, 250)
+    }
     g.font = '600 24px system-ui, sans-serif'
     g.fillText(CROPS[s.crop][lang], x, 296)
   })
@@ -79,7 +86,7 @@ export default function S18Share() {
     setBusy(true)
     try {
       const blob = await drawCard({ plan, place, lang, kind, reason, note: t('s18.imageNote') })
-      const file = new File([blob], 'field-navigator-plan.png', { type: 'image/png' })
+      const file = new File([blob], 'scifarm-plan.png', { type: 'image/png' })
       if (navigator.canShare?.({ files: [file] })) await navigator.share({ files: [file], text, url })
       else if (navigator.share) await navigator.share({ text, url })
       else window.open(waLink, '_blank', 'noopener')
@@ -106,7 +113,7 @@ export default function S18Share() {
         {/* The card people will receive */}
         <div className="overflow-hidden rounded-3xl bg-brand-900 text-white shadow-lg">
           <div className="px-5 pb-4 pt-5">
-            <p className="text-sm opacity-80">Field Navigator · {place}</p>
+            <p className="text-sm opacity-80">SciFarm · {place}</p>
             <h2 className="text-2xl font-semibold">{kind}</h2>
           </div>
           <div className="mx-3 mb-3 space-y-4 rounded-2xl bg-white p-4 text-ink">
@@ -114,7 +121,7 @@ export default function S18Share() {
               {plan.sequence.map((s, i) => (
                 <li key={i} className="flex min-w-0 flex-1 flex-col items-center gap-1 text-center">
                   <span className="text-xs text-ink-soft">{t('s7.season', { n: i + 1 })}</span>
-                  <span className="text-5xl" aria-hidden>{CROPS[s.crop].emoji}</span>
+                  <CropPic id={s.crop} size={60} />
                   <span className="text-sm font-medium">{CROPS[s.crop][lang]}</span>
                   <StatusMark status={plan.statuses[i]} size={22} label={t(`s7.legend.${plan.statuses[i]}`)} />
                 </li>

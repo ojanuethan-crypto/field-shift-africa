@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
+import { TriangleAlert } from 'lucide-react'
 import Screen from '../../components/Screen.jsx'
 import { NDVI_SERIES, PROOF_EVENTS } from './evidence.js'
 import { Card, Disclaimer, SampleBadge } from './parts.jsx'
@@ -43,7 +44,7 @@ export default function S21Proof() {
             <Bar label={t('s21.ours')} value={e.hit} tone="bg-brand-700" />
             <Bar label={t('s21.chance')} value={e.chance} tone="bg-ink-soft" pattern />
             <p className="rounded-2xl bg-surface px-3 py-2 text-sm">
-              <span aria-hidden>⚠️ </span>
+              <TriangleAlert size={16} aria-hidden className="mr-1 inline" />
               {t('s21.misses', { n: e.misses, of: e.of })}
             </p>
           </Card>

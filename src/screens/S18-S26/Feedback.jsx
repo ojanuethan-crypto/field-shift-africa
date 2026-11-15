@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ThumbsDown, ThumbsUp } from 'lucide-react'
 import Screen from '../../components/Screen.jsx'
+import Pic from '../../components/Pic.jsx'
 import { Button, Card } from './parts.jsx'
 
 // S25 Feedback (SHOULD): thumbs, optional one question, thank-you. Anonymous: no name, no id.
@@ -27,7 +28,9 @@ export default function S25Feedback() {
     return (
       <Screen title={t('s25.title')} speak={t('s25.thanks')}>
         <div className="rounded-3xl bg-brand-900 px-6 py-10 text-center text-white" role="status">
-          <div className="text-7xl" aria-hidden>🌱</div>
+          <div className="mx-auto grid h-24 w-24 place-items-center rounded-3xl bg-white" aria-hidden>
+            <Pic name="priority-soil" emoji="🌱" size={72} />
+          </div>
           <h2 className="mt-4 text-2xl font-semibold">{t('s25.thanks')}</h2>
           <p className="mt-2 opacity-90">{t('s25.thanksBody')}</p>
         </div>

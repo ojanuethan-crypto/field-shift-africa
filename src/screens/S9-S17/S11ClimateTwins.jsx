@@ -2,8 +2,9 @@ import { Marker } from 'react-leaflet'
 import L from 'leaflet'
 import { useTranslation } from 'react-i18next'
 import Screen from '../../components/Screen.jsx'
+import { CropPic } from '../../components/Pic.jsx'
 import { api } from '../../api/client.js'
-import { CROPS, cropName } from '../../data/crops.js'
+import { cropName } from '../../data/crops.js'
 import { useFarm } from '../../state/FarmContext.jsx'
 import MapBox from './components/MapBox.jsx'
 import MockBadge from './components/MockBadge.jsx'
@@ -79,7 +80,7 @@ export default function S11ClimateTwins() {
                       <b>{t('s11.growsThere')}:</b>
                       {x.crops.map((c) => (
                         <span key={c} className="rounded-full bg-brand-100 px-3 py-1 font-bold text-brand-900">
-                          {CROPS[c]?.emoji ?? '🌱'} {cropName(c, lang)}
+                          <CropPic id={c} size={24} className="mr-1 align-middle" /> {cropName(c, lang)}
                         </span>
                       ))}
                     </p>

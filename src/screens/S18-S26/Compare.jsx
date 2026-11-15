@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Droplets } from 'lucide-react'
 import Screen from '../../components/Screen.jsx'
 import StatusMark from '../../components/StatusMark.jsx'
+import { CropPic } from '../../components/Pic.jsx'
 import Stars from '../../components/Stars.jsx'
 import { CROPS } from '../../data/crops.js'
 import { useFarm } from '../../state/FarmContext.jsx'
@@ -22,7 +23,7 @@ function Column({ plan, lang }) {
         {plan.sequence.map((s, i) => (
           <div key={i} className="flex flex-col items-center gap-0.5 text-center">
             <span className="text-xs text-ink-soft">{t('s7.season', { n: i + 1 })}</span>
-            <span className="text-4xl" aria-hidden>{CROPS[s.crop].emoji}</span>
+            <CropPic id={s.crop} size={52} />
             <span className="text-sm font-medium">{CROPS[s.crop][lang]}</span>
             <StatusMark status={plan.statuses[i]} size={22} label={t(`s7.legend.${plan.statuses[i]}`)} />
           </div>

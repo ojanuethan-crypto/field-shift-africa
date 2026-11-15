@@ -18,5 +18,5 @@ export default function Pic({ name, emoji, fallback, size = 48, className = '' }
 }
 
 export function CropPic({ id, size = 48, className }) {
-  return <Pic name={`crop-${id}`} emoji={CROPS[id]?.emoji} size={size} className={className} />
+  return <Pic name={`crop-${id}`} emoji={CROPS[id]?.emoji ?? '🌱'} size={size} className={className} />
 }

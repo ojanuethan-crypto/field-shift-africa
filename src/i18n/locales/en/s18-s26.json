@@ -7,7 +7,7 @@
     "copy": "Copy link",
     "copied": "Link copied",
     "copyManual": "Copy this link:",
-    "text": "Field Navigator plan for {{place}}: {{plan}}. {{reason}}",
+    "text": "SciFarm plan for {{place}}: {{plan}}. {{reason}}",
     "imageNote": "Advice only. Ask an agronomist.",
     "privacy": "Only the plan is shared. Your name and exact place are not.",
     "myFarm": "My farm"
