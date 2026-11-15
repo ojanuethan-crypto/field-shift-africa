@@ -11,6 +11,7 @@ import { speakText, useSpeak } from '../../components/speech.js'
 import { CROPS } from '../../data/crops.js'
 import { useFarm } from '../../state/FarmContext.jsx'
 import { useRankedPlans } from './S7Routes.jsx'
+import MockBadge from '../S9-S17/components/MockBadge.jsx'
 import { Friendly } from './S3Land.jsx'
 
 const TABS = [
@@ -71,7 +72,9 @@ export default function S8RouteDetail() {
   const month = (m) => new Intl.DateTimeFormat(lang, { month: 'long' }).format(new Date(2026, m - 1, 1))
   const yIdx = YEARS.find((y) => y.key === year).idx
   const crop = (s) => CROPS[s.crop][lang]
-  const stepText = (s) => t('s8.plantIn', { crop: crop(s), month: month(s.month) })
+  // the backend may not know the planting month yet: then say which season instead
+  const stepText = (s, i) =>
+    s.month ? t('s8.plantIn', { crop: crop(s), month: month(s.month) }) : t('s8.plantInSeason', { crop: crop(s), n: i + 1 })
 
   const onWhatIf = (k) => {
     setYear(k)
@@ -88,6 +91,7 @@ export default function S8RouteDetail() {
         </PrimaryButton>
       }
     >
+      <MockBadge />
       <div role="tablist" className="mb-4 grid grid-cols-4 gap-2">
         {TABS.map(({ key, Icon }) => (
           <button key={key} role="tab" aria-selected={tab === key} type="button" onClick={() => setTab(key)}
@@ -111,7 +115,7 @@ export default function S8RouteDetail() {
                 <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-white">
                   <CropPic id={s.crop} size={52} />
                 </span>
-                <p className="flex-1 text-xl font-semibold leading-snug">{stepText(s)}</p>
+                <p className="flex-1 text-xl font-semibold leading-snug">{stepText(s, i)}</p>
                 <StatusMark status={plan.statuses[i]} size={28} label={t(`s7.legend.${plan.statuses[i]}`)} />
               </div>
               {i === 0 && <p className="mt-3 text-base opacity-90">{plan.reason[lang]}</p>}

@@ -9,6 +9,7 @@ import StatusMark from '../../components/StatusMark.jsx'
 import Stars from '../../components/Stars.jsx'
 import { speakText, useSpeak } from '../../components/speech.js'
 import { useRotations } from '../../api/hooks.js'
+import MockBadge from '../S9-S17/components/MockBadge.jsx'
 import { CROPS } from '../../data/crops.js'
 import { rankPlans } from '../../data/scoring.js'
 import { useFarm } from '../../state/FarmContext.jsx'
@@ -16,9 +17,15 @@ import { Friendly } from './S3Land.jsx'
 import NeedFarm from '../S18-S26/NeedFarm.jsx'
 
 export function useRankedPlans() {
-  const { farm, priorities, canWater, lastCrop } = useFarm()
+  const { farm, priorities, canWater, canBuyFertilizer, lastCrop } = useFarm()
+  const { i18n } = useTranslation()
   const [retry, setRetry] = useState(0)
-  const { data, loading, error } = useRotations(farm, retry)
+  const { data, loading, error } = useRotations(
+    farm,
+    retry,
+    { priorities, lastCrop, canWater, canBuyFertilizer },
+    i18n.language.startsWith('fr') ? 'fr' : 'en',
+  )
   const plans = useMemo(
     () => (data ? rankPlans(data, { priorities, canWater, lastCrop }) : []),
     [data, priorities, canWater, lastCrop],
@@ -60,6 +67,7 @@ export default function S7Routes() {
         </PrimaryButton>
       }
     >
+      <MockBadge />
       <p className="mb-4 text-lg font-medium text-brand-900">{t('s7.intro')}</p>
 
       <ul className="space-y-4">

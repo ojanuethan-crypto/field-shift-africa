@@ -33,6 +33,6 @@ export function scorePlan(plan, { priorities, canWater, lastCrop }) {
 // Returns plans with `score` and `statuses`, sorted best first.
 export function rankPlans(plans, ctx) {
   return plans
-    .map((p) => ({ ...p, score: scorePlan(p, ctx), statuses: seasonStatus(p, ctx.lastCrop) }))
+    .map((p) => ({ ...p, score: p.serverScore ?? scorePlan(p, ctx), statuses: seasonStatus(p, ctx.lastCrop) }))
     .sort((a, b) => b.score - a.score)
 }

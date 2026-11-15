@@ -8,6 +8,7 @@ import PrimaryButton from '../../components/PrimaryButton.jsx'
 import StatusMark from '../../components/StatusMark.jsx'
 import { useSpeak } from '../../components/speech.js'
 import { useProfile } from '../../api/hooks.js'
+import StateScreen from '../S18-S26/StateScreen.jsx'
 import { USE_MOCK } from '../../api/config.js'
 import { useFarm } from '../../state/FarmContext.jsx'
 
@@ -27,9 +28,9 @@ export default function S3Land() {
   const { farm } = useFarm()
   const nav = useNavigate()
   const [retry, setRetry] = useState(0)
-  const { data, loading, error } = useProfile(farm, retry)
+  const { data, loading, error } = useProfile(farm, retry, lang)
 
-  const speakText = data && !data.outside ? `${data.zone.name[lang]}. ${data.soil[lang]}` : t('s3.title')
+  const speakText = data?.zone ? `${data.zone.name[lang]}. ${data.soil[lang]}` : t('s3.title')
   useSpeak(speakText)
 
   if (!farm) return <Navigate to="/" replace />
@@ -44,6 +45,8 @@ export default function S3Land() {
         </Friendly>
       </Screen>
     )
+
+  if (data?.state) return <StateScreen type={data.state} />
 
   if (data?.outside)
     return (

@@ -107,6 +107,7 @@
     },
     "next": "Next step",
     "plantIn": "Plant {{crop}} in {{month}}",
+    "plantInSeason": "Plant {{crop}} in season {{n}}",
     "then": "Then",
     "waterEnough": "Enough water",
     "waterRisky": "Water is risky",
