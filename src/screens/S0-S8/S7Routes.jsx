@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ChevronRight, Columns2, Star, Volume2, WifiOff } from 'lucide-react'
 import { CropPic } from '../../components/Pic.jsx'
@@ -13,6 +13,7 @@ import { CROPS } from '../../data/crops.js'
 import { rankPlans } from '../../data/scoring.js'
 import { useFarm } from '../../state/FarmContext.jsx'
 import { Friendly } from './S3Land.jsx'
+import NeedFarm from '../S18-S26/NeedFarm.jsx'
 
 export function useRankedPlans() {
   const { farm, priorities, canWater, lastCrop } = useFarm()
@@ -34,7 +35,7 @@ export default function S7Routes() {
   const { plans, loading, error, retry } = useRankedPlans()
   useSpeak(t('s7.intro'), { auto: true })
 
-  if (!farm) return <Navigate to="/" replace />
+  if (!farm) return <NeedFarm title={t('s7.title')} />
 
   const open = (p) => {
     update({ selectedPlanId: p.id })

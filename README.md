@@ -1,16 +1,31 @@
-# React + Vite
+# Field Navigator (Field Shift Africa)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Map-first, no-login farm planning app for the NASA Space Apps Challenge. Specs are in `Doc/`, design references in `Doc/Ref_Pictures/`.
 
-Currently, two official plugins are available:
+```
+npm install
+npm run dev
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Needs Node 20.19+ (or 22.12+). If `npm run dev` says "Cannot find native binding", run
+`npm i --no-save @rolldown/binding-win32-x64-msvc @oxlint/binding-win32-x64-msvc` (known npm optional-dependency bug on Windows).
 
-## React Compiler
+## Working in parallel without merge conflicts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Each person owns one group of screens and only touches their own files:
 
-## Expanding the Oxlint configuration
+| Group | Screens | Folder |
+|---|---|---|
+| A | S0-S8 | `src/screens/s0-s8/` |
+| B | S9-S17 | `src/screens/s9-s17/` |
+| C | S18-S26 | `src/screens/s18-s26/` (done as the example) |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+1. **Routes** - add `src/screens/<your-folder>/routes.jsx` that default-exports `[{ path: '/xyz', element: <Xyz /> }]`. It is auto-registered; never edit `App.jsx`.
+2. **Text** - add your own `src/i18n/locales/en/<your-folder>.json` and `.../fr/<your-folder>.json`. Files are deep-merged. Use `t('key')`, never hardcode text.
+3. **Shared UI** (`src/components/`): `ScreenHeader` (back + title + speaker), `SpeakButton`, `Card`, `Button`, `Stars`, `StatusIcon`, `StateScreen` (offline/error/desert/ocean/outside/nodata), `BottomNav` (already global).
+4. **Settings** (`src/lib/settings.js`): `useSettings()` gives `{ lang, textSize, voice }`.
+5. **Mock data** goes in `src/mock/` until the backend is ready.
+6. Only change shared files (`index.css` tokens, `components/`, `lib/`) in small separate commits, and tell the others.
+
+## Design rules (from Doc 05)
+One decision per screen, pictures over words, a speaker button on every screen, 48px+ targets, colour AND shape (tick / triangle / cross), sentences under 10 words, honest "indicative advice" disclaimer.
