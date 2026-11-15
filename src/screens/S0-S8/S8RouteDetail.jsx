@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Cloud, CloudRain, Compass, Droplets, Footprints, Lightbulb, CloudSun, Share2, Sun, TriangleAlert } from 'lucide-react'
@@ -32,7 +32,7 @@ export default function S8RouteDetail() {
   const { id } = useParams()
   const { t, i18n } = useTranslation()
   const lang = i18n.language
-  const { farm, muted } = useFarm()
+  const { farm, farms, muted, update } = useFarm()
   const nav = useNavigate()
   const { plans, loading } = useRankedPlans()
   const [tab, setTab] = useState('steps')
@@ -41,6 +41,21 @@ export default function S8RouteDetail() {
   const plan = plans.find((p) => p.id === id)
   const kindLabel = plan ? t(`s7.${plan.kind}`) : t('s8.title')
   useSpeak(plan ? `${kindLabel}. ${plan.reason[lang]}` : '', { auto: true })
+
+  // Reaching a route saves this farm on the phone with the chosen plan, so My Farms (S17) shows it
+  // (same farm = same entry, updated; no duplicates). Nothing leaves the phone.
+  const planKey = plan ? `${plan.kind}:${plan.sequence.map((s) => s.crop).join(',')}` : ''
+  useEffect(() => {
+    if (!plan || !farm) return
+    const idOf = (f) => f.id ?? `${Number(f.lat).toFixed(2)},${Number(f.lon).toFixed(2)}`
+    const id = idOf(farm)
+    const saved = { kind: plan.kind, crops: plan.sequence.map((s) => s.crop) }
+    const existing = farms.find((f) => idOf(f) === id)
+    if (existing?.plan?.kind === saved.kind && existing.plan.crops?.join() === saved.crops.join()) return
+    const entry = { ...(existing || {}), id, name: farm.nickname || farm.name, lat: farm.lat, lon: farm.lon, plan: saved }
+    update({ farms: existing ? farms.map((f) => (f === existing ? entry : f)) : [...farms, entry] })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [planKey, farm?.lat, farm?.lon])
 
   if (!farm) return <Navigate to="/" replace />
   if (loading) return <Screen title={t('s8.title')}><p className="py-16 text-center text-lg">⏳ {t('s7.loading')}</p></Screen>

@@ -7,25 +7,33 @@ import PrimaryButton from '../../components/PrimaryButton.jsx'
 import { VOICES, speakText } from '../../components/speech.js'
 import { useFarm } from '../../state/FarmContext.jsx'
 
-// Intro 3/3: "Choose a voice": 2 feminine (Iris, Jarvis) + 2 masculine (Marc, Clark). Tap to hear and select.
+// "Choose a voice": 2 feminine (Iris, Jarvis) + 2 masculine (Marc, Clark). Tap to hear and select.
+// Two modes:
+//  - first run (no language chosen yet): bilingual, and Continue goes on to the language screen;
+//  - opened from Settings (language already chosen): one language, picking a voice also turns the
+//    voice on, and Done goes back to Settings (no onboarding flow).
 export default function VoicePick() {
-  const { i18n } = useTranslation()
-  const { voice, update } = useFarm()
+  const { t, i18n } = useTranslation()
+  const { voice, lang, update } = useFarm()
   const nav = useNavigate()
+  const fromSettings = !!lang
   const fr = i18n.getFixedT('fr')
   const en = i18n.getFixedT('en')
   const phoneLang = i18n.language.startsWith('fr') ? 'fr' : 'en'
 
   const pick = (v) => {
-    update({ voice: v.id })
+    update(fromSettings ? { voice: v.id, muted: false } : { voice: v.id })
     speakText(i18n.getFixedT(phoneLang)('intro.sample', { name: v.name }), phoneLang, v.id)
+  }
+
+  const groupTitle = (gender) => {
+    const key = `intro.${gender === 'f' ? 'feminine' : 'masculine'}`
+    return fromSettings ? t(key) : `${fr(key)} · ${en(key)}`
   }
 
   const group = (gender) => (
     <section>
-      <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-ink-soft">
-        {fr(`intro.${gender === 'f' ? 'feminine' : 'masculine'}`)} · {en(`intro.${gender === 'f' ? 'feminine' : 'masculine'}`)}
-      </h2>
+      <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-ink-soft">{groupTitle(gender)}</h2>
       <div className="grid grid-cols-2 gap-3">
         {VOICES.filter((v) => v.gender === gender).map((v) => (
           <button key={v.id} type="button" aria-pressed={voice === v.id} onClick={() => pick(v)}
@@ -41,20 +49,32 @@ export default function VoicePick() {
     </section>
   )
 
+  const footer = fromSettings ? (
+    <PrimaryButton onClick={() => nav('/settings')}>{t('common.done')}</PrimaryButton>
+  ) : (
+    <PrimaryButton onClick={() => nav('/language')}>{fr('common.continue')} / {en('common.continue')} →</PrimaryButton>
+  )
+
   return (
-    <Screen footer={<PrimaryButton onClick={() => nav('/language')}>{fr('common.continue')} / {en('common.continue')} →</PrimaryButton>}>
+    <Screen footer={footer}>
       <div className="space-y-5">
-        <div>
-          <h1 className="text-3xl font-semibold text-brand-900">{fr('intro.pickVoice')}</h1>
-          <p className="text-xl text-ink-soft">{en('intro.pickVoice')}</p>
-        </div>
+        {fromSettings ? (
+          <h1 className="text-3xl font-semibold text-brand-900">{t('intro.pickVoice')}</h1>
+        ) : (
+          <div>
+            <h1 className="text-3xl font-semibold text-brand-900">{fr('intro.pickVoice')}</h1>
+            <p className="text-xl text-ink-soft">{en('intro.pickVoice')}</p>
+          </div>
+        )}
         {group('f')}
         {group('m')}
-        <p className="text-center text-sm text-ink-soft">
-          {fr('intro.voiceNote')}
-          <br />
-          {en('intro.voiceNote')}
-        </p>
+        {!fromSettings && (
+          <p className="text-center text-sm text-ink-soft">
+            {fr('intro.voiceNote')}
+            <br />
+            {en('intro.voiceNote')}
+          </p>
+        )}
       </div>
     </Screen>
   )

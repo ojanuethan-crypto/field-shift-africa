@@ -17,6 +17,8 @@
     "ask": "Demander",
     "layers": "Couches",
     "menu": "Menu",
+    "sheetOpen": "Afficher les options",
+    "sheetClose": "Masquer les options",
     "search": "Chercher un lieu",
     "privacy": "Votre position est arrondie et jamais envoyée avec votre nom.",
     "nav": {

@@ -11,12 +11,14 @@
     "layers": {
       "vegetation": "Plants",
       "rain": "Rain",
+      "soil": "Soil",
       "off": "Off"
     },
     "seeing": "What you see",
     "what": {
       "vegetation": "Green means healthy plants. Brown means few plants.",
-      "rain": "Blue and purple show where rain is falling."
+      "rain": "Blue and purple show where rain is falling.",
+      "soil": "Each colour is a type of soil, for example sandy, clay-rich or acid soil. It is a computer estimate from soil samples, not a measure of your own field."
     },
     "scale": {
       "vegetation": {
@@ -30,10 +32,15 @@
     },
     "date": "Date",
     "latest": "Latest picture available",
+    "modelled": "Modelled map (not a daily picture)",
+    "legendTitle": "What the colours mean",
+    "legendAlt": "Legend of the soil groups",
+    "legendNote": "Soil group names follow the international WRB system.",
     "source": "Source",
     "sources": {
       "vegetation": "NASA GIBS, MODIS Terra vegetation index (8-day)",
-      "rain": "NASA GIBS, GPM IMERG rain rate"
+      "rain": "NASA GIBS, GPM IMERG rain rate",
+      "soil": "ISRIC SoilGrids (250 m), most probable soil group (WRB)"
     },
     "tilesFailed": "The satellite picture did not load. The map still works. Try again later."
   },

@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Crosshair, Headset, Layers, LocateFixed, Lock, Menu, TriangleAlert } from 'lucide-react'
+import { ChevronDown, ChevronUp, Crosshair, Headset, Layers, LocateFixed, Lock, TriangleAlert } from 'lucide-react'
 import Pic from '../../components/Pic.jsx'
 import Screen from '../../components/Screen.jsx'
 import BottomNav from '../../components/BottomNav.jsx'
@@ -18,6 +18,8 @@ export default function S1Home() {
   const nav = useNavigate()
   const [pin, setPin] = useState(farm)
   const [status, setStatus] = useState('idle') // idle | locating | denied
+  const [open, setOpen] = useState(true) // bottom sheet: tap or drag the handle to hide / show the options
+  const dragY = useRef(null)
   const speakText = t('s1.where')
   useSpeak(speakText)
 
@@ -52,36 +54,60 @@ export default function S1Home() {
         <div className="relative flex-1">
           <FarmMap pin={pin} onPick={choose} flyZoom={7} />
 
-          <div className="pointer-events-none absolute inset-x-0 top-0 z-[500] flex items-start justify-between p-3">
-            <RoundBtn label={t('s1.menu')} onClick={() => nav('/settings')}><Menu size={22} /></RoundBtn>
-          </div>
           <div className="absolute right-3 top-20 z-[500] flex flex-col gap-3">
             <RoundBtn label={t('s1.locate')} onClick={locate}><LocateFixed size={24} /></RoundBtn>
             <RoundBtn label={t('s1.ask')} onClick={() => nav('/advisor')}><Pic name="advisor" fallback={<Headset size={24} />} size={30} /></RoundBtn>
             <RoundBtn label={t('s1.layers')} onClick={() => nav('/space')}><Layers size={24} /></RoundBtn>
           </div>
 
-          <section className="absolute inset-x-0 bottom-0 z-[500] rounded-t-3xl bg-white px-4 pb-4 pt-3 shadow-[0_-6px_20px_rgba(0,0,0,0.15)]">
-            <div className="mx-auto mb-2 h-1.5 w-12 rounded-full bg-gray-300" />
-            <h2 className="text-xl font-semibold text-brand-900">{t('s1.where')}</h2>
-            <PrimaryButton onClick={locate} disabled={status === 'locating'} className="mt-3 flex items-center justify-center gap-2">
-              <Crosshair size={22} />
-              {status === 'locating' ? t('s1.locating') : t('s1.useLocation')}
-            </PrimaryButton>
-            {status === 'denied' && (
-              <p role="alert" className="mt-2 rounded-xl bg-amber-100 px-3 py-2 text-sm font-medium"><TriangleAlert size={16} className="mr-1 inline" /> {t('s1.denied')}</p>
+          <section className="absolute inset-x-0 bottom-0 z-[500] rounded-t-3xl bg-white px-4 pb-4 pt-1 shadow-[0_-6px_20px_rgba(0,0,0,0.15)]">
+            {/* The handle really works: tap it, press Enter, or drag up / down to show or hide the options */}
+            <button
+              type="button"
+              aria-expanded={open}
+              aria-label={open ? t('s1.sheetClose') : t('s1.sheetOpen')}
+              onPointerDown={(e) => {
+                dragY.current = e.clientY
+                e.currentTarget.setPointerCapture?.(e.pointerId)
+              }}
+              onPointerUp={(e) => {
+                const dy = e.clientY - (dragY.current ?? e.clientY)
+                dragY.current = null
+                if (dy > 30) setOpen(false)
+                else if (dy < -30) setOpen(true)
+                else setOpen((o) => !o)
+              }}
+              onClick={(e) => { if (e.detail === 0) setOpen((o) => !o) }}
+              className="block w-full touch-none pb-1 pt-2 text-left"
+            >
+              <span className="mx-auto mb-2 block h-1.5 w-12 rounded-full bg-gray-300" />
+              <span className="flex items-center justify-between">
+                <span className="text-xl font-semibold text-brand-900">{t('s1.where')}</span>
+                {open ? <ChevronDown size={24} className="text-ink-soft" /> : <ChevronUp size={24} className="text-ink-soft" />}
+              </span>
+            </button>
+            {open && (
+              <>
+                <PrimaryButton onClick={locate} disabled={status === 'locating'} className="mt-3 flex items-center justify-center gap-2">
+                  <Crosshair size={22} />
+                  {status === 'locating' ? t('s1.locating') : t('s1.useLocation')}
+                </PrimaryButton>
+                {status === 'denied' && (
+                  <p role="alert" className="mt-2 rounded-xl bg-amber-100 px-3 py-2 text-sm font-medium"><TriangleAlert size={16} className="mr-1 inline" /> {t('s1.denied')}</p>
+                )}
+                <p className="mb-2 mt-3 text-sm font-medium text-ink-soft">{t('s1.orPick')}</p>
+                <div className="no-scrollbar -mx-4 flex gap-3 overflow-x-auto px-4 pb-1">
+                  {SITES.map((s) => (
+                    <button key={s.id} type="button" onClick={() => choose(s.lat, s.lon)}
+                      className="tap flex shrink-0 flex-col items-center gap-1 rounded-2xl bg-brand-50 px-4 py-2 active:scale-95">
+                      <Pic name={s.pic} emoji={s.icon} size={44} />
+                      <span className="text-sm font-medium">{s.name[i18n.language]}</span>
+                    </button>
+                  ))}
+                </div>
+                <p className="mt-2 text-xs text-ink-soft"><Lock size={12} className="mr-1 inline" /> {t('s1.privacy')}</p>
+              </>
             )}
-            <p className="mb-2 mt-3 text-sm font-medium text-ink-soft">{t('s1.orPick')}</p>
-            <div className="-mx-4 flex gap-3 overflow-x-auto px-4 pb-1">
-              {SITES.map((s) => (
-                <button key={s.id} type="button" onClick={() => choose(s.lat, s.lon)}
-                  className="tap flex shrink-0 flex-col items-center gap-1 rounded-2xl bg-brand-50 px-4 py-2 active:scale-95">
-                  <Pic name={s.pic} emoji={s.icon} size={44} />
-                  <span className="text-sm font-medium">{s.name[i18n.language]}</span>
-                </button>
-              ))}
-            </div>
-            <p className="mt-2 text-xs text-ink-soft"><Lock size={12} className="mr-1 inline" /> {t('s1.privacy')}</p>
           </section>
         </div>
         <BottomNav />

@@ -11,12 +11,14 @@
     "layers": {
       "vegetation": "Plantes",
       "rain": "Pluie",
+      "soil": "Sol",
       "off": "Sans"
     },
     "seeing": "Ce que vous voyez",
     "what": {
       "vegetation": "Le vert montre des plantes en bonne santé. Le brun, peu de plantes.",
-      "rain": "Le bleu et le violet montrent où il pleut."
+      "rain": "Le bleu et le violet montrent où il pleut.",
+      "soil": "Chaque couleur est un type de sol, par exemple sableux, argileux ou acide. C'est une estimation faite par ordinateur à partir d'échantillons de sol, pas une mesure de votre champ."
     },
     "scale": {
       "vegetation": {
@@ -30,10 +32,15 @@
     },
     "date": "Date",
     "latest": "Dernière image disponible",
+    "modelled": "Carte modélisée (pas une image du jour)",
+    "legendTitle": "Que signifient les couleurs",
+    "legendAlt": "Légende des groupes de sol",
+    "legendNote": "Les noms des groupes de sol suivent le système international WRB.",
     "source": "Source",
     "sources": {
       "vegetation": "NASA GIBS, indice de végétation MODIS Terra (8 jours)",
-      "rain": "NASA GIBS, intensité de pluie GPM IMERG"
+      "rain": "NASA GIBS, intensité de pluie GPM IMERG",
+      "soil": "ISRIC SoilGrids (250 m), groupe de sol le plus probable (WRB)"
     },
     "tilesFailed": "L'image satellite ne s'est pas chargée. La carte fonctionne encore. Réessayez plus tard."
   },

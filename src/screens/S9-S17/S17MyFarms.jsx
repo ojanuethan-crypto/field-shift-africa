@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ArrowRight, MapPin, Plus, Trash2 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import Screen from '../../components/Screen.jsx'
@@ -8,11 +8,13 @@ import { useFarm } from '../../state/FarmContext.jsx'
 
 // S17 My Farms. Saved plots live only on the phone (FarmContext.farms -> localStorage).
 // Farm shape: { id?, name, lat, lon, plan?: { name, crops: ['maize', 'groundnut', ...] } }
+const planName = (t, p) => (p.kind ? t(`s7.${p.kind}`) : p.name)
 const farmId = (f) => f.id ?? `${Number(f.lat).toFixed(2)},${Number(f.lon).toFixed(2)}`
 
 export default function S17MyFarms() {
   const { t } = useTranslation()
   const { farm, farms, update } = useFarm()
+  const nav = useNavigate()
   const [toDelete, setToDelete] = useState(null)
   const currentSaved = farm && farms.some((f) => farmId(f) === farmId(farm))
 
@@ -57,14 +59,14 @@ export default function S17MyFarms() {
                   </div>
 
                   {f.plan?.crops?.length ? (
-                    <p className="flex flex-wrap items-center gap-1 text-2xl" aria-label={f.plan.name}>
+                    <p className="flex flex-wrap items-center gap-1 text-2xl" aria-label={planName(t, f.plan)}>
                       {f.plan.crops.map((c, i) => (
                         <span key={i} className="flex items-center gap-1">
                           {i > 0 && <ArrowRight size={16} className="text-gray-500" />}
                           <CropPic id={c} size={40} />
                         </span>
                       ))}
-                      <span className="ml-2 text-sm font-bold text-brand-700">{f.plan.name}</span>
+                      <span className="ml-2 text-sm font-bold text-brand-700">{planName(t, f.plan)}</span>
                     </p>
                   ) : (
                     <p className="text-sm text-ink-soft">{t('s17.noPlan')}</p>
@@ -72,7 +74,11 @@ export default function S17MyFarms() {
 
                   <div className="flex gap-2">
                     {!current && (
-                      <button type="button" onClick={() => update({ farm: { lat: f.lat, lon: f.lon, name: f.name } })}
+                      <button type="button" onClick={() => {
+                        // make it the current farm, clear the old answers, and open its land summary
+                        update({ farm: { lat: f.lat, lon: f.lon, name: f.name }, lastCrop: null, priorities: [], canWater: null, canBuyFertilizer: null })
+                        nav('/land')
+                      }}
                         className="tap flex-1 rounded-full bg-brand-700 font-bold text-white">{t('s17.use')}</button>
                     )}
                     <button type="button" onClick={() => setToDelete(f)} aria-label={`${t('s17.delete')} ${f.name}`}

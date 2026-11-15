@@ -17,6 +17,8 @@
     "ask": "Ask",
     "layers": "Layers",
     "menu": "Menu",
+    "sheetOpen": "Show the options",
+    "sheetClose": "Hide the options",
     "search": "Search a place",
     "privacy": "Your location is rounded and never sent with your name.",
     "nav": {

@@ -16,6 +16,14 @@ emoji is shown instead, so the app never breaks while the set is being completed
   (e.g. `crop-maize-g1`).
 - Keep each icon under about 3 KB. Add them in batches of 6 to 8.
 
+## Unified look (rules the whole set now follows)
+- Line weights, three levels only: outline `3.5`, secondary `3`, detail `2.5`. Do not use other values.
+- Size: each icon's `viewBox` is fitted to its drawing so every icon fills the same share (about 82%) of its frame,
+  centred. When you add or redraw an icon, keep the drawing inside roughly `10..86` of a 96 box; the fit can be
+  re-run by measuring each svg's `getBBox()` (side = longest side + 4.4, viewBox side = that / 0.86, centred).
+- All icons are filled illustrations with the `#134227` outline. The four faces differ by hair, shirt colour
+  (amber, leaf green, light green, dark green) and accessories.
+
 ## Status
 All 30 icons are in `SciFarmIcons.jsx`. See them all in the dev gallery (`/dev`, section "Icon set").
 The emoji fallback in `Pic.jsx` only applies to a name that is not in `ICONS`.

@@ -26,3 +26,7 @@ body {
 button { font: inherit; cursor: pointer; }
 /* touch targets >= 48px for primary controls */
 .tap { min-height: 48px; min-width: 48px; }
+
+/* swipeable rows: scrolling still works, the scrollbar is hidden */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
