@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ChevronDown, ChevronUp, Crosshair, Headset, Layers, LocateFixed, Lock, TriangleAlert } from 'lucide-react'
@@ -8,6 +8,7 @@ import BottomNav from '../../components/BottomNav.jsx'
 import FarmMap from '../../components/FarmMap.jsx'
 import PrimaryButton from '../../components/PrimaryButton.jsx'
 import { useSpeak } from '../../components/speech.js'
+import { findMe } from '../../data/geolocate.js'
 import { SITES, placeName, round2 } from '../../data/sites.js'
 import { useFarm } from '../../state/FarmContext.jsx'
 
@@ -17,7 +18,10 @@ export default function S1Home() {
   const { lang, farm, voiceSet, update } = useFarm()
   const nav = useNavigate()
   const [pin, setPin] = useState(farm)
-  const [status, setStatus] = useState('idle') // idle | locating | denied
+  const [status, setStatus] = useState('idle') // idle | locating | site | device | insecure | failed
+  const [geoInfo, setGeoInfo] = useState(null) // shown in development only, to diagnose a device
+  const stopLocating = useRef(null)
+  useEffect(() => () => stopLocating.current?.(), []) // stop looking if the screen closes
   const [open, setOpen] = useState(true) // bottom sheet: tap or drag the handle to hide / show the options
   const dragY = useRef(null)
   const speakText = t('s1.where')
@@ -35,17 +39,21 @@ export default function S1Home() {
     setTimeout(() => nav('/confirm'), 450) // let the pin show before moving on
   }
 
+  // Patient: a slow first fix is normal, so we keep waiting (see data/geolocate.js) and only complain when
+  // location is really blocked, or nothing arrived after 30 seconds.
   const locate = () => {
-    if (!navigator.geolocation) return setStatus('denied')
+    if (status === 'locating') return
     setStatus('locating')
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
+    stopLocating.current = findMe({
+      onFound: (pos) => {
         setStatus('idle')
         choose(pos.coords.latitude, pos.coords.longitude)
       },
-      () => setStatus('denied'),
-      { enableHighAccuracy: false, timeout: 10000 },
-    )
+      onFail: (reason, info) => {
+        setGeoInfo(info)
+        setStatus(reason === 'unavailable' ? 'failed' : reason)
+      },
+    })
   }
 
   return (
@@ -92,8 +100,18 @@ export default function S1Home() {
                   <Crosshair size={22} />
                   {status === 'locating' ? t('s1.locating') : t('s1.useLocation')}
                 </PrimaryButton>
-                {status === 'denied' && (
-                  <p role="alert" className="mt-2 rounded-xl bg-amber-100 px-3 py-2 text-sm font-medium"><TriangleAlert size={16} className="mr-1 inline" /> {t('s1.denied')}</p>
+                {['site', 'device', 'insecure', 'failed'].includes(status) && (
+                  <div role="alert" className="mt-2 rounded-xl bg-amber-100 px-3 py-2 text-sm font-medium">
+                    <p>
+                      <TriangleAlert size={16} className="mr-1 inline" />{' '}
+                      {t({ site: 's1.blocked', device: 's1.blockedDevice', insecure: 's1.insecure', failed: 's1.denied' }[status])}
+                    </p>
+                    {import.meta.env.DEV && geoInfo && (
+                      <p className="mt-1 font-mono text-[11px] font-normal opacity-70">
+                        dev: code={String(geoInfo.code)} permission={geoInfo.permission} secure={String(geoInfo.secure)} {geoInfo.origin}
+                      </p>
+                    )}
+                  </div>
                 )}
                 <p className="mb-2 mt-3 text-sm font-medium text-ink-soft">{t('s1.orPick')}</p>
                 <div className="no-scrollbar -mx-4 flex gap-3 overflow-x-auto px-4 pb-1">
