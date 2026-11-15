@@ -1,31 +1,26 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
-import { getSettings } from '../lib/settings'
 
-/*
- * Translation files are auto-loaded from ./locales/<lang>/*.json and deep-merged.
- * TEAM RULE: add your OWN file per screen group (e.g. locales/en/s0-s8.json + locales/fr/s0-s8.json)
- * so nobody edits the same file. Never hardcode user-facing text in components.
- */
-const isObj = (v) => v && typeof v === 'object' && !Array.isArray(v)
-function deepMerge(target, src) {
-  for (const k of Object.keys(src)) {
-    if (isObj(src[k]) && isObj(target[k])) deepMerge(target[k], src[k])
-    else target[k] = src[k]
-  }
-  return target
-}
+// SHARED: each owner adds ONE JSON file per language and ONE line in each list.
+import enCommon from './locales/en/common.json'
+import frCommon from './locales/fr/common.json'
+import enS0S8 from './locales/en/s0-s8.json'
+import frS0S8 from './locales/fr/s0-s8.json'
+import enS9S17 from './locales/en/s9-s17.json'
+import frS9S17 from './locales/fr/s9-s17.json'
+import enS18S26 from './locales/en/s18-s26.json'
+import frS18S26 from './locales/fr/s18-s26.json'
 
-const files = import.meta.glob('./locales/*/*.json', { eager: true, import: 'default' })
-const resources = { en: { translation: {} }, fr: { translation: {} } }
-for (const [path, json] of Object.entries(files)) {
-  const lang = path.split('/')[2]
-  if (resources[lang]) deepMerge(resources[lang].translation, json)
-}
+const en = { ...enCommon, ...enS0S8, ...enS9S17, ...enS18S26 }
+const fr = { ...frCommon, ...frS0S8, ...frS9S17, ...frS18S26 }
+
+const phoneLang = (navigator.language || 'en').toLowerCase().startsWith('fr') ? 'fr' : 'en'
+let saved = null
+try { saved = JSON.parse(localStorage.getItem('fieldnav.state.v1') || '{}').lang } catch { /* ignore */ }
 
 i18n.use(initReactI18next).init({
-  resources,
-  lng: getSettings().lang,
+  resources: { en: { translation: en }, fr: { translation: fr } },
+  lng: saved || phoneLang,
   fallbackLng: 'en',
   interpolation: { escapeValue: false },
 })

@@ -1,0 +1,99 @@
+import { useState } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { Crosshair, Layers, LocateFixed, Menu, Headset } from 'lucide-react'
+import Screen from '../../components/Screen.jsx'
+import BottomNav from '../../components/BottomNav.jsx'
+import FarmMap from '../../components/FarmMap.jsx'
+import PrimaryButton from '../../components/PrimaryButton.jsx'
+import { useSpeak } from '../../components/speech.js'
+import { SITES, placeName, round2 } from '../../data/sites.js'
+import { useFarm } from '../../state/FarmContext.jsx'
+
+// S1 Home = Map. Map of Africa, locate me, ask (mic), layers, bottom sheet "Where is your farm?"
+export default function S1Home() {
+  const { t, i18n } = useTranslation()
+  const { lang, farm, voiceSet, update } = useFarm()
+  const nav = useNavigate()
+  const [pin, setPin] = useState(farm)
+  const [status, setStatus] = useState('idle') // idle | locating | denied
+  const speakText = t('s1.where')
+  useSpeak(speakText)
+
+  // First run: voice question -> language -> map (the splash is handled globally in App.jsx)
+  if (!lang) return <Navigate to={voiceSet ? '/language' : '/voice'} replace />
+
+  const choose = (lat, lon) => {
+    const la = round2(lat)
+    const lo = round2(lon) // coordinates rounded before use or sending
+    const p = { lat: la, lon: lo, name: placeName(la, lo, i18n.language) }
+    setPin(p)
+    update({ farm: p, lastCrop: null, priorities: [], canWater: null, canBuyFertilizer: null })
+    setTimeout(() => nav('/confirm'), 450) // let the pin show before moving on
+  }
+
+  const locate = () => {
+    if (!navigator.geolocation) return setStatus('denied')
+    setStatus('locating')
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setStatus('idle')
+        choose(pos.coords.latitude, pos.coords.longitude)
+      },
+      () => setStatus('denied'),
+      { enableHighAccuracy: false, timeout: 10000 },
+    )
+  }
+
+  return (
+    <Screen flush speak={speakText} footer={null}>
+      <div className="flex h-full flex-col">
+        <div className="relative flex-1">
+          <FarmMap pin={pin} onPick={choose} flyZoom={7} />
+
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-[500] flex items-start justify-between p-3">
+            <RoundBtn label={t('s1.menu')} onClick={() => nav('/settings')}><Menu size={22} /></RoundBtn>
+          </div>
+          <div className="absolute right-3 top-20 z-[500] flex flex-col gap-3">
+            <RoundBtn label={t('s1.locate')} onClick={locate}><LocateFixed size={24} /></RoundBtn>
+            <RoundBtn label={t('s1.ask')} onClick={() => nav('/advisor')}><Headset size={24} /></RoundBtn>
+            <RoundBtn label={t('s1.layers')} onClick={() => nav('/space')}><Layers size={24} /></RoundBtn>
+          </div>
+
+          <section className="absolute inset-x-0 bottom-0 z-[500] rounded-t-3xl bg-white px-4 pb-4 pt-3 shadow-[0_-6px_20px_rgba(0,0,0,0.15)]">
+            <div className="mx-auto mb-2 h-1.5 w-12 rounded-full bg-gray-300" />
+            <h2 className="text-xl font-semibold text-brand-900">{t('s1.where')}</h2>
+            <PrimaryButton onClick={locate} disabled={status === 'locating'} className="mt-3 flex items-center justify-center gap-2">
+              <Crosshair size={22} />
+              {status === 'locating' ? t('s1.locating') : t('s1.useLocation')}
+            </PrimaryButton>
+            {status === 'denied' && (
+              <p role="alert" className="mt-2 rounded-xl bg-amber-100 px-3 py-2 text-sm font-medium">⚠️ {t('s1.denied')}</p>
+            )}
+            <p className="mb-2 mt-3 text-sm font-medium text-ink-soft">{t('s1.orPick')}</p>
+            <div className="-mx-4 flex gap-3 overflow-x-auto px-4 pb-1">
+              {SITES.map((s) => (
+                <button key={s.id} type="button" onClick={() => choose(s.lat, s.lon)}
+                  className="tap flex shrink-0 flex-col items-center gap-1 rounded-2xl bg-brand-50 px-4 py-2 active:scale-95">
+                  <span className="text-3xl" aria-hidden>{s.icon}</span>
+                  <span className="text-sm font-medium">{s.name[i18n.language]}</span>
+                </button>
+              ))}
+            </div>
+            <p className="mt-2 text-xs text-ink-soft">🔒 {t('s1.privacy')}</p>
+          </section>
+        </div>
+        <BottomNav />
+      </div>
+    </Screen>
+  )
+}
+
+function RoundBtn({ children, label, onClick }) {
+  return (
+    <button type="button" aria-label={label} onClick={onClick}
+      className="tap pointer-events-auto grid h-12 w-12 place-items-center rounded-full bg-white text-brand-900 shadow-lg active:scale-95">
+      {children}
+    </button>
+  )
+}

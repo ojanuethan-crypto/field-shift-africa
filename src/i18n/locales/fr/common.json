@@ -1,11 +1,17 @@
 {
+  "back": "Retour",
+  "home": "Accueil",
   "common": {
     "back": "Retour",
     "home": "Accueil",
+    "mute": "Couper le son",
+    "unmute": "Activer le son",
     "listen": "Écouter",
-    "soon": "Bientôt disponible",
-    "disclaimer": "Conseils issus de données satellites et de connaissances générales sur les cultures. Demandez à un agronome pour votre champ.",
-    "sample": "Données d'exemple"
-  },
-  "nav": { "help": "Aide", "routes": "Parcours", "home": "Carte", "farms": "Mes fermes", "settings": "Réglages" }
+    "continue": "Continuer",
+    "skip": "Passer",
+    "yes": "Oui",
+    "no": "Non",
+    "disclaimer": "Conseil indicatif basé sur des données satellite et des connaissances générales sur les cultures. Demandez à un agronome pour votre champ.",
+    "offline": "Hors ligne"
+  }
 }

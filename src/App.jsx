@@ -1,26 +1,21 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import AppShell from './components/AppShell'
-import ComingSoon from './components/ComingSoon'
-
-/*
- * ROUTES ARE AUTO-REGISTERED. Each screen group has its own file: src/screens/<group>/routes.jsx
- * that default-exports an array like [{ path: '/share', element: <Share /> }].
- * Nobody edits App.jsx => no merge conflicts. (Three groups: S0-S8, S9-S17, S18-S26.)
- */
-const groups = import.meta.glob('./screens/*/routes.jsx', { eager: true })
-const routes = Object.values(groups).flatMap((m) => m.default)
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { appRoutes } from './routes.jsx'
+import { launch } from './state/launch.js'
 
 export default function App() {
+  const location = useLocation()
+
+  // Every time the web app is entered (any URL), play the logo splash first, then continue to that URL.
+  if (!launch.splashDone && location.pathname !== '/splash') {
+    return <Navigate to="/splash" replace state={{ from: location.pathname + location.search }} />
+  }
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<AppShell />}>
-          {routes.map((r) => (
-            <Route key={r.path} path={r.path} element={r.element} />
-          ))}
-          <Route path="*" element={<ComingSoon />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      {appRoutes.map((r) => (
+        <Route key={r.path} path={r.path} element={r.element} />
+      ))}
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   )
 }

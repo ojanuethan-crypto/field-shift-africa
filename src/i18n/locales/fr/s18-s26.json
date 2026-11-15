@@ -1,17 +1,5 @@
 {
-  "crops": {
-    "maize": "Maïs", "groundnut": "Arachide", "cassava": "Manioc", "beans": "Haricots",
-    "tomato": "Tomate", "fallow": "Repos du sol"
-  },
-  "plans": {
-    "season": "Saison {{n}}",
-    "status": { "ok": "Bon", "warn": "Attention", "bad": "Pas bon" },
-    "water": { "enough": "Assez d'eau", "risky": "L'eau est risquée", "notEnough": "Pas assez d'eau" },
-    "safest": { "name": "Parcours le plus sûr", "why": "Moins de pertes les mauvaises années." },
-    "soil": { "name": "Sol en forme", "why": "Haricots et repos redonnent de la force au sol." },
-    "money": { "name": "Argent d'abord", "why": "Plus de revenus, mais plus d'eau nécessaire." }
-  },
-  "share": {
+  "s18": {
     "title": "Partager mon plan",
     "speak": "Envoyez votre plan à vos proches. Touchez le bouton vert.",
     "share": "Partager l'image",
@@ -21,14 +9,15 @@
     "copyManual": "Copiez ce lien :",
     "text": "Plan Field Navigator pour {{place}} : {{plan}}. {{reason}}",
     "imageNote": "Conseil indicatif. Voir un agronome.",
-    "privacy": "Seul le plan est partagé. Pas votre nom ni votre lieu exact."
+    "privacy": "Seul le plan est partagé. Pas votre nom ni votre lieu exact.",
+    "myFarm": "Ma ferme"
   },
-  "compare": {
+  "s19": {
     "title": "Comparer les parcours",
     "speak": "Choisissez deux parcours. Voyez-les côte à côte.",
     "pick": "Touchez deux parcours à comparer"
   },
-  "passport": {
+  "s20": {
     "title": "Passeport des données",
     "speak": "Voici d'où vient chaque chiffre de cette application.",
     "intro": "Chaque chiffre a une source. Les voici.",
@@ -39,10 +28,22 @@
     "accessed": "Récupérée le",
     "method": "Comment on l'utilise",
     "rows": {
-      "rain": { "label": "Pluie", "method": "Pluie mensuelle, année normale, sèche ou humide (percentiles 20 à 80)." },
-      "temp": { "label": "Chaleur", "method": "Température moyenne mensuelle, pour le risque de chaleur." },
-      "soil": { "label": "Sol", "method": "Sable, argile et acidité à votre endroit, en mots simples." },
-      "veg": { "label": "Plantes vues de l'espace", "method": "Verdure des plantes, pour vérifier notre carte de risque sur des années réelles." }
+      "rain": {
+        "label": "Pluie",
+        "method": "Pluie mensuelle, année normale, sèche ou humide (percentiles 20 à 80)."
+      },
+      "temp": {
+        "label": "Chaleur",
+        "method": "Température moyenne mensuelle, pour le risque de chaleur."
+      },
+      "soil": {
+        "label": "Sol",
+        "method": "Sable, argile et acidité à votre endroit, en mots simples."
+      },
+      "veg": {
+        "label": "Plantes vues de l'espace",
+        "method": "Verdure des plantes, pour vérifier notre carte de risque sur des années réelles."
+      }
     },
     "limitsTitle": "Ce que ça ne fait pas",
     "limits": [
@@ -53,7 +54,7 @@
     ],
     "toProof": "Est-ce que ça a marché avant ?"
   },
-  "proof": {
+  "s21": {
     "title": "Preuve",
     "speak": "Nous avons vérifié notre carte de risque avec de vraies sécheresses et inondations.",
     "intro": "Nous avons comparé notre carte aux vraies mauvaises années. Nous montrons aussi les erreurs.",
@@ -71,7 +72,7 @@
     "reviewTitle": "Pas encore relu",
     "review": "Un agronome n'a pas encore vérifié ces résultats."
   },
-  "settings": {
+  "s22": {
     "title": "Réglages",
     "speak": "Changez la langue, la taille du texte et la voix ici.",
     "language": "Langue",
@@ -95,9 +96,10 @@
     "clear": "Effacer mes données",
     "sure": "Tout supprimer de ce téléphone ?",
     "yesClear": "Oui, supprimer",
-    "cancel": "Non, garder"
+    "cancel": "Non, garder",
+    "chooseVoice": "Choisir une voix"
   },
-  "about": {
+  "s23": {
     "title": "À propos",
     "speak": "Qui nous sommes, et ce que nous faisons de vos données. Rien sur vous n'est gardé.",
     "pitch": "Un guide sur carte qui aide les agriculteurs à choisir quoi planter ensuite, avec les données satellites de la NASA.",
@@ -125,7 +127,7 @@
     "sources": "D'où viennent les chiffres",
     "proof": "Est-ce que ça a marché avant ?"
   },
-  "help": {
+  "s24": {
     "title": "Comment ça marche",
     "step": "Étape {{n}}",
     "steps": {
@@ -135,7 +137,7 @@
     },
     "start": "Commencer"
   },
-  "feedback": {
+  "s25": {
     "title": "Votre avis",
     "question": "Était-ce utile ?",
     "yes": "Oui",
@@ -146,15 +148,36 @@
     "thanksBody": "Vous nous aidez à mieux servir les agriculteurs.",
     "privacy": "Anonyme. Aucun nom demandé ni gardé."
   },
-  "states": {
+  "s26": {
     "header": "Oups",
     "retry": "Réessayer",
     "pickAnother": "Choisir un autre lieu",
-    "offline": { "title": "Pas d'internet", "body": "Votre plan enregistré s'affiche. Reconnectez-vous plus tard pour en voir plus." },
-    "error": { "title": "Un problème est survenu", "body": "Ce n'est pas votre faute. Réessayez." },
-    "desert": { "title": "Ici, c'est surtout du désert", "body": "Les cultures y sont difficiles. Essayez un autre lieu." },
-    "ocean": { "title": "Ici, c'est la mer", "body": "Touchez un point sur la terre." },
-    "outside": { "title": "Hors d'Afrique", "body": "Nous ne connaissons que les fermes d'Afrique pour l'instant." },
-    "nodata": { "title": "Pas de données ici", "body": "Nous n'avons pas de données satellite pour ce lieu. Essayez un lieu proche." }
+    "offline": {
+      "title": "Pas d'internet",
+      "body": "Votre plan enregistré s'affiche. Reconnectez-vous plus tard pour en voir plus."
+    },
+    "error": {
+      "title": "Un problème est survenu",
+      "body": "Ce n'est pas votre faute. Réessayez."
+    },
+    "desert": {
+      "title": "Ici, c'est surtout du désert",
+      "body": "Les cultures y sont difficiles. Essayez un autre lieu."
+    },
+    "ocean": {
+      "title": "Ici, c'est la mer",
+      "body": "Touchez un point sur la terre."
+    },
+    "outside": {
+      "title": "Hors d'Afrique",
+      "body": "Nous ne connaissons que les fermes d'Afrique pour l'instant."
+    },
+    "nodata": {
+      "title": "Pas de données ici",
+      "body": "Nous n'avons pas de données satellite pour ce lieu. Essayez un lieu proche."
+    }
+  },
+  "s18s26": {
+    "sample": "Données d'exemple"
   }
 }

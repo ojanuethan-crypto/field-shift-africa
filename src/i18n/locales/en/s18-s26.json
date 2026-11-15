@@ -1,17 +1,5 @@
 {
-  "crops": {
-    "maize": "Maize", "groundnut": "Groundnut", "cassava": "Cassava", "beans": "Beans",
-    "tomato": "Tomato", "fallow": "Rest the soil"
-  },
-  "plans": {
-    "season": "Season {{n}}",
-    "status": { "ok": "Good", "warn": "Be careful", "bad": "Not good" },
-    "water": { "enough": "Enough water", "risky": "Water is risky", "notEnough": "Not enough water" },
-    "safest": { "name": "Safest route", "why": "Fewer losses in bad years." },
-    "soil": { "name": "Soil-rebuilder", "why": "Beans and rest give soil strength." },
-    "money": { "name": "Money-first", "why": "More income, but needs more water." }
-  },
-  "share": {
+  "s18": {
     "title": "Share your plan",
     "speak": "Send your plan to friends and family. Tap the green button.",
     "share": "Share the picture",
@@ -21,14 +9,15 @@
     "copyManual": "Copy this link:",
     "text": "Field Navigator plan for {{place}}: {{plan}}. {{reason}}",
     "imageNote": "Advice only. Ask an agronomist.",
-    "privacy": "Only the plan is shared. Your name and exact place are not."
+    "privacy": "Only the plan is shared. Your name and exact place are not.",
+    "myFarm": "My farm"
   },
-  "compare": {
+  "s19": {
     "title": "Compare routes",
     "speak": "Pick two routes. See them side by side.",
     "pick": "Tap two routes to compare"
   },
-  "passport": {
+  "s20": {
     "title": "Data Passport",
     "speak": "Here is where every number in this app comes from.",
     "intro": "Every number has a source. Here they are.",
@@ -39,10 +28,22 @@
     "accessed": "Taken on",
     "method": "How we use it",
     "rows": {
-      "rain": { "label": "Rain", "method": "Monthly rain, typical and dry/wet years (20th to 80th percentile)." },
-      "temp": { "label": "Heat", "method": "Monthly average temperature, used for heat risk." },
-      "soil": { "label": "Soil", "method": "Sand, clay and acidity at your spot, written in plain words." },
-      "veg": { "label": "Plants from space", "method": "Plant greenness, used to check our risk map against real years." }
+      "rain": {
+        "label": "Rain",
+        "method": "Monthly rain, typical and dry/wet years (20th to 80th percentile)."
+      },
+      "temp": {
+        "label": "Heat",
+        "method": "Monthly average temperature, used for heat risk."
+      },
+      "soil": {
+        "label": "Soil",
+        "method": "Sand, clay and acidity at your spot, written in plain words."
+      },
+      "veg": {
+        "label": "Plants from space",
+        "method": "Plant greenness, used to check our risk map against real years."
+      }
     },
     "limitsTitle": "What this cannot do",
     "limits": [
@@ -53,7 +54,7 @@
     ],
     "toProof": "Did it work in the past?"
   },
-  "proof": {
+  "s21": {
     "title": "Proof",
     "speak": "We checked our risk map against real past droughts and floods.",
     "intro": "We compared our risk map with real bad years. We show the misses too.",
@@ -71,7 +72,7 @@
     "reviewTitle": "Not yet reviewed",
     "review": "An agronomist has not yet checked these results."
   },
-  "settings": {
+  "s22": {
     "title": "Settings",
     "speak": "Change language, text size and voice here.",
     "language": "Language",
@@ -95,9 +96,10 @@
     "clear": "Clear my data",
     "sure": "Remove everything from this phone?",
     "yesClear": "Yes, remove",
-    "cancel": "No, keep it"
+    "cancel": "No, keep it",
+    "chooseVoice": "Choose a voice"
   },
-  "about": {
+  "s23": {
     "title": "About",
     "speak": "Who we are, and what we do with your data. Nothing about you is kept.",
     "pitch": "A map-first guide that helps farmers choose what to plant next, using NASA satellite data.",
@@ -125,7 +127,7 @@
     "sources": "Where the numbers come from",
     "proof": "Did it work in the past?"
   },
-  "help": {
+  "s24": {
     "title": "How it works",
     "step": "Step {{n}}",
     "steps": {
@@ -135,7 +137,7 @@
     },
     "start": "Start"
   },
-  "feedback": {
+  "s25": {
     "title": "Your opinion",
     "question": "Was this useful?",
     "yes": "Yes",
@@ -146,15 +148,36 @@
     "thanksBody": "You help us make this better for farmers.",
     "privacy": "Anonymous. No name is asked or kept."
   },
-  "states": {
+  "s26": {
     "header": "Oops",
     "retry": "Try again",
     "pickAnother": "Choose another place",
-    "offline": { "title": "No internet", "body": "Showing your saved plan. Connect later to see more." },
-    "error": { "title": "Something went wrong", "body": "It is not your fault. Please try again." },
-    "desert": { "title": "This is mostly desert", "body": "Crops are hard to grow here. Try another place." },
-    "ocean": { "title": "This is the sea", "body": "Please tap a spot on land." },
-    "outside": { "title": "Outside Africa", "body": "We only know farms in Africa for now." },
-    "nodata": { "title": "No data here", "body": "We have no satellite data for this spot. Try a place nearby." }
+    "offline": {
+      "title": "No internet",
+      "body": "Showing your saved plan. Connect later to see more."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "body": "It is not your fault. Please try again."
+    },
+    "desert": {
+      "title": "This is mostly desert",
+      "body": "Crops are hard to grow here. Try another place."
+    },
+    "ocean": {
+      "title": "This is the sea",
+      "body": "Please tap a spot on land."
+    },
+    "outside": {
+      "title": "Outside Africa",
+      "body": "We only know farms in Africa for now."
+    },
+    "nodata": {
+      "title": "No data here",
+      "body": "We have no satellite data for this spot. Try a place nearby."
+    }
+  },
+  "s18s26": {
+    "sample": "Sample data"
   }
 }

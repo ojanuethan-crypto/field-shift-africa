@@ -1,11 +1,17 @@
 {
+  "back": "Back",
+  "home": "Home",
   "common": {
     "back": "Back",
     "home": "Home",
+    "mute": "Turn sound off",
+    "unmute": "Turn sound on",
     "listen": "Listen",
-    "soon": "Coming soon",
-    "disclaimer": "Advice from satellite data and general crop knowledge. Ask an agronomist for your field.",
-    "sample": "Sample data"
-  },
-  "nav": { "help": "Help", "routes": "Routes", "home": "Home map", "farms": "My farms", "settings": "Settings" }
+    "continue": "Continue",
+    "skip": "Skip",
+    "yes": "Yes",
+    "no": "No",
+    "disclaimer": "Indicative advice from satellite data and general crop knowledge. Ask an agronomist for your field.",
+    "offline": "Offline"
+  }
 }

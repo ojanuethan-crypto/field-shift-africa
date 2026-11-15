@@ -1,0 +1,133 @@
+{
+  "s0": {
+    "title": "SciFarm",
+    "hello": "Bonjour ! Choisissez votre langue.",
+    "privacy": "Sans compte. Votre ferme reste sur votre téléphone.",
+    "later": "Vous pourrez changer la langue plus tard dans les réglages."
+  },
+  "s1": {
+    "title": "SciFarm",
+    "where": "Où est votre ferme ?",
+    "useLocation": "Utiliser ma position",
+    "locating": "Recherche en cours…",
+    "denied": "Impossible de vous trouver. Touchez la carte.",
+    "orPick": "Ou choisissez un lieu",
+    "tapMap": "Touchez la carte pour placer votre ferme",
+    "locate": "Me localiser",
+    "ask": "Demander",
+    "layers": "Couches",
+    "menu": "Menu",
+    "search": "Chercher un lieu",
+    "privacy": "Votre position est arrondie et jamais envoyée avec votre nom.",
+    "nav": {
+      "advisor": "Conseiller",
+      "farms": "Mes fermes",
+      "help": "Aide",
+      "settings": "Réglages"
+    }
+  },
+  "s2": {
+    "title": "Votre ferme",
+    "question": "C'est votre ferme ?",
+    "yes": "Oui, c'est ma ferme",
+    "move": "Déplacer",
+    "name": "Nom de la ferme (facultatif)",
+    "namePlaceholder": "Ma ferme"
+  },
+  "s3": {
+    "title": "Votre terre aujourd'hui",
+    "hazards": "Dangers pour vos cultures",
+    "drought": "Sécheresse",
+    "flood": "Inondation",
+    "heat": "Chaleur",
+    "erosion": "Érosion",
+    "level": "niveau {{n}} sur 5",
+    "rain": "La pluie dans l'année",
+    "soil": "Votre sol",
+    "twins": "Fermes comme la vôtre",
+    "months": "Mois à surveiller",
+    "passport": "D'où viennent les données",
+    "outsideTitle": "Ce lieu est hors d'Afrique",
+    "outsideBody": "SciFarm fonctionne pour les fermes d'Afrique. Choisissez un lieu sur la carte.",
+    "pickAgain": "Choisir un autre lieu",
+    "error": "Impossible de charger votre terre. Réessayez.",
+    "retry": "Réessayer",
+    "mockNote": "Données de démonstration pour l'instant."
+  },
+  "s4": {
+    "title": "Dernière culture",
+    "question": "Qu'avez-vous cultivé en dernier ?",
+    "none": "Rien / Je ne sais pas"
+  },
+  "s5": {
+    "title": "Qu'est-ce qui compte ?",
+    "question": "Qu'est-ce qui compte le plus ? Touchez deux au maximum.",
+    "money": "Argent",
+    "water": "Eau",
+    "soil": "Sol",
+    "safety": "Sécurité",
+    "picked_one": "Vous avez choisi {{a}}.",
+    "picked_two": "Vous avez choisi {{a}} et {{b}}.",
+    "max": "Deux choix seulement. Touchez-en un pour l'enlever."
+  },
+  "s6": {
+    "title": "Deux questions",
+    "water": "Pouvez-vous arroser votre champ ?",
+    "fertilizer": "Pouvez-vous acheter de l'engrais ?",
+    "see": "Voir mes routes"
+  },
+  "s7": {
+    "title": "Vos routes",
+    "intro": "Trois façons de planter. La meilleure pour vous est en haut.",
+    "best": "Idéal pour vous",
+    "safest": "La plus sûre",
+    "soil": "Reconstruire le sol",
+    "money": "Argent d'abord",
+    "season": "Saison {{n}}",
+    "compare": "Comparer les routes",
+    "loading": "Recherche de vos routes…",
+    "error": "Impossible de créer vos routes. Réessayez.",
+    "needFarm": "Choisissez d'abord votre ferme.",
+    "open": "Voir les étapes",
+    "legend": {
+      "good": "Bon",
+      "warn": "Attention",
+      "bad": "Risqué"
+    }
+  },
+  "s8": {
+    "title": "Détails de la route",
+    "tabs": {
+      "steps": "Étapes",
+      "water": "Eau",
+      "whatif": "Et si ?",
+      "why": "Pourquoi"
+    },
+    "next": "Prochaine étape",
+    "plantIn": "Planter {{crop}} en {{month}}",
+    "then": "Ensuite",
+    "waterEnough": "Assez d'eau",
+    "waterRisky": "L'eau est risquée",
+    "waterNot": "Pas assez d'eau",
+    "year": {
+      "dry": "Année sèche",
+      "normal": "Année normale",
+      "wet": "Année humide"
+    },
+    "whatifIntro": "Et si le temps change ? Touchez une image.",
+    "scoreLabel": "Efficacité de cette route",
+    "whyTitle": "Pourquoi cette route",
+    "warningsTitle": "Attention",
+    "share": "Partager ce plan",
+    "notFound": "Route introuvable.",
+    "backToRoutes": "Retour aux routes"
+  },
+  "intro": {
+    "voiceAsk": "Continuer avec la voix ?",
+    "voiceNote": "Vous pourrez toujours activer ou désactiver la voix dans les réglages.",
+    "pickVoice": "Choisissez une voix",
+    "feminine": "Voix féminines",
+    "masculine": "Voix masculines",
+    "sample": "Bonjour, je suis {{name}}. Je vais vous guider."
+  }
+}
