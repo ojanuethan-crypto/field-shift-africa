@@ -42,7 +42,7 @@
       },
       "veg": {
         "label": "Plantes vues de l'espace",
-        "method": "Verdure des plantes, pour vérifier notre carte de risque sur des années réelles."
+        "method": "Prévu : verdure des plantes, pour vérifier notre carte de risque sur des années réelles. Pas encore calculé."
       },
       "window": {
         "label": "Période de semis",
@@ -66,9 +66,11 @@
     "ours": "Notre carte",
     "chance": "Au hasard",
     "events": {
+      "drought1011": "Sécheresse dans la Corne de l'Afrique",
       "drought1516": "Sécheresse en Afrique australe",
       "flood2019": "Inondations en Afrique de l'Est",
-      "drought2022": "Sécheresse dans la Corne de l'Afrique"
+      "drought2022": "Sécheresse dans la Corne de l'Afrique (5 saisons ratées)",
+      "flood2022": "Inondations au Nigeria"
     },
     "misses": "Erreur sur {{n}} lieux sur {{of}}.",
     "ndviTitle": "Contrôle des plantes",

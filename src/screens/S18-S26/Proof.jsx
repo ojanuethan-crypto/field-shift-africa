@@ -72,7 +72,7 @@ export default function S21Proof() {
         <Card>
           <h2 className="text-lg font-semibold text-brand-900">{t('s21.ndviTitle')}</h2>
           <p className="mb-2 text-sm text-ink-soft">{t('s21.ndviBody')}</p>
-          {live ? (
+          {live || NDVI_SERIES.length === 0 ? (
             <p className="rounded-2xl bg-surface px-3 py-2 text-sm">{t('s21.ndviNone')}</p>
           ) : (
           <div className="h-56" role="img" aria-label={t('s21.ndviTitle')}>

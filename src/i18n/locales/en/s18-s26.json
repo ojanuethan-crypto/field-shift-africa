@@ -42,7 +42,7 @@
       },
       "veg": {
         "label": "Plants from space",
-        "method": "Plant greenness, used to check our risk map against real years."
+        "method": "Planned: plant greenness, to check our risk map against real years. Not computed yet."
       },
       "window": {
         "label": "Planting window",
@@ -66,9 +66,11 @@
     "ours": "Our map",
     "chance": "By chance",
     "events": {
+      "drought1011": "Horn of Africa drought",
       "drought1516": "Southern Africa drought",
       "flood2019": "Eastern Africa floods",
-      "drought2022": "Horn of Africa drought"
+      "drought2022": "Horn of Africa drought (5 failed seasons)",
+      "flood2022": "Nigeria floods"
     },
     "misses": "It missed {{n}} of {{of}} places.",
     "ndviTitle": "Plants check",

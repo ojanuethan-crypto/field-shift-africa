@@ -1,58 +1,58 @@
-// PLACEHOLDER evidence for S20 (Data Passport) and S21 (Proof).
-// Dataset names/resolutions are the real products we plan to use; every VALUE (hit rates, NDVI, dates)
-// is a made-up placeholder until the AI/data teammates provide the real backtest and access dates.
-// Keep the "sample data" badge visible while this file is used.
+// Evidence shown by S20 (Data Passport) and S21 (Proof) in DEMO mode (no API).
+// With the real API both screens read the database instead (GET /api/passport, GET /api/proof).
+// These demo values are copied from that database (tables passport_sources and event_results, read 2026-11-15)
+// so the demo build tells the same story as the live app. Keep the "sample data" badge visible.
 export const PASSPORT_ROWS = [
   {
     id: 'rain',
-    dataset: 'CHIRPS',
-    version: 'v2.0',
-    resolution: '0.05° (~5 km)',
-    period: '1991–2020',
-    accessed: '2026-11-13',
+    dataset: 'NASA POWER, PRECTOTCORR',
+    version: 'Monthly API, AG community',
+    resolution: '0.5° × 0.625°, sampled at 1° cells',
+    period: '1981–2025',
+    accessed: '2026-11-15',
   },
   {
     id: 'temp',
-    dataset: 'NASA POWER',
-    version: 'v9',
-    resolution: '0.5° (~50 km)',
-    period: '1991–2020',
-    accessed: '2026-11-13',
+    dataset: 'NASA POWER, T2M / T2M_MAX / T2M_MIN',
+    version: 'Monthly API, AG community',
+    resolution: '0.5° × 0.625°, sampled at 1° cells',
+    period: '1981–2025',
+    accessed: '2026-11-15',
   },
   {
     id: 'soil',
-    dataset: 'SoilGrids',
-    version: '2.0',
-    resolution: '250 m',
-    period: 'Static map',
-    accessed: '2026-11-13',
+    dataset: 'ISRIC SoilGrids',
+    version: '2.0 (REST API)',
+    resolution: '250 m, sampled at 1 in 9 cells + pilots',
+    period: 'Static map (0–30 cm)',
+    accessed: '2026-11-15',
   },
   {
     id: 'window',
-    dataset: 'CHIRPS + NASA POWER',
-    version: 'v2.0 / v9',
-    resolution: '0.05° to 0.5°',
-    period: '1991–2020',
-    accessed: '2026-11-13',
+    dataset: 'Derived from NASA POWER',
+    version: 'Rain vs Hargreaves ET0 (FAO-56)',
+    resolution: '1° cell',
+    period: '1981–2025 climatology',
+    accessed: '2026-11-15',
   },
   {
     id: 'veg',
-    dataset: 'MODIS NDVI (MOD13Q1)',
-    version: 'v061',
-    resolution: '250 m, 16 days',
-    period: '2001–2025',
-    accessed: '2026-11-13',
+    dataset: 'MODIS NDVI (MOD13A3 v061, via AppEEARS)',
+    version: 'Planned',
+    resolution: '1 km, monthly',
+    period: 'Not loaded yet',
+    accessed: '—',
   },
 ]
 
+// Real backtest (hazard index vs known events). hit / chance in %, misses = places not flagged, of = places in the event area.
 export const PROOF_EVENTS = [
-  { id: 'drought1516', years: '2015–16', hit: 78, chance: 50, misses: 3, of: 14 },
-  { id: 'flood2019', years: '2019', hit: 71, chance: 50, misses: 4, of: 14 },
-  { id: 'drought2022', years: '2021–22', hit: 64, chance: 50, misses: 5, of: 14 },
+  { id: 'drought1011', years: '2010–11', hit: 57, chance: 17, misses: 57, of: 134 },
+  { id: 'drought1516', years: '2015–16', hit: 56, chance: 21, misses: 94, of: 215 },
+  { id: 'flood2019', years: '2019 (Cyclone Idai)', hit: 30, chance: 11, misses: 16, of: 23 },
+  { id: 'drought2022', years: '2020–22', hit: 3, chance: 16, misses: 130, of: 134 },
+  { id: 'flood2022', years: '2022', hit: 37, chance: 31, misses: 42, of: 67 },
 ]
 
-// Monthly hazard index vs NDVI anomaly (both 0-100, placeholder shape).
-export const NDVI_SERIES = [
-  ['J', 22, 70], ['F', 25, 66], ['M', 40, 55], ['A', 58, 42], ['M', 66, 36], ['J', 72, 31],
-  ['J', 60, 40], ['A', 48, 50], ['S', 36, 60], ['O', 30, 66], ['N', 24, 70], ['D', 20, 72],
-].map(([m, hazard, ndvi]) => ({ m, hazard, ndvi }))
+// NDVI check: not computed yet (no NDVI series loaded). Empty = the screen says so instead of drawing a curve.
+export const NDVI_SERIES = []
