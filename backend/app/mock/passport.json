@@ -1,0 +1,20 @@
+{
+  "_note": "FIXTURE, not measurements. Dataset names, resolutions and periods are copied from Master Guide section 7 (planned data map). value, version and accessed are null on purpose: nothing has been pulled yet. Limits are from Master Guide section 8.",
+  "rows": [
+    {"variable": {"en": "Monthly rainfall", "fr": "Pluie mensuelle"}, "value": null, "dataset": "NASA POWER (AG community)", "version": null, "resolution": "about 0.5 deg", "period": "from 1981", "accessed": null, "status": "planned"},
+    {"variable": {"en": "Temperature", "fr": "Température"}, "value": null, "dataset": "NASA POWER (AG community)", "version": null, "resolution": "about 0.5 deg", "period": "from 1981", "accessed": null, "status": "planned"},
+    {"variable": {"en": "Satellite rainfall and heavy-rain frequency", "fr": "Pluie satellite et fréquence des fortes pluies"}, "value": null, "dataset": "GPM IMERG", "version": "v07", "resolution": "0.1 deg", "period": "June 2000 onward", "accessed": null, "status": "planned"},
+    {"variable": {"en": "Soil moisture", "fr": "Humidité du sol"}, "value": null, "dataset": "SMAP", "version": null, "resolution": "about 9-36 km", "period": "from March 2015", "accessed": null, "status": "planned"},
+    {"variable": {"en": "Vegetation greenness (NDVI)", "fr": "Verdure de la végétation (NDVI)"}, "value": null, "dataset": "MODIS / VIIRS NDVI", "version": null, "resolution": "250 m - 1 km, 16-day or monthly", "period": "MODIS from 2000", "accessed": null, "status": "planned"},
+    {"variable": {"en": "Soil: clay, sand, pH, organic carbon", "fr": "Sol : argile, sable, pH, carbone organique"}, "value": null, "dataset": "SoilGrids (ISRIC)", "version": null, "resolution": "250 m (modeled)", "period": null, "accessed": null, "status": "planned"},
+    {"variable": {"en": "Crop requirement ranges", "fr": "Besoins des cultures"}, "value": null, "dataset": "FAO EcoCrop", "version": null, "resolution": "per crop", "period": null, "accessed": null, "status": "planned"}
+  ],
+  "limits": [
+    {"en": "Reanalysis rainfall has errors.", "fr": "La pluie issue des réanalyses comporte des erreurs."},
+    {"en": "SMAP has a short record (since 2015).", "fr": "SMAP a un historique court (depuis 2015)."},
+    {"en": "Crop requirement ranges are generic.", "fr": "Les besoins des cultures sont génériques."},
+    {"en": "The scoring model is transparent but simplified.", "fr": "Le modèle de notation est transparent mais simplifié."},
+    {"en": "No field trial has validated the recommendations yet.", "fr": "Aucun essai au champ n'a encore validé les recommandations."}
+  ],
+  "validation": {"status": "not_computed", "note": {"en": "No backtest has been run yet.", "fr": "Aucun test rétrospectif n'a encore été fait."}}
+}

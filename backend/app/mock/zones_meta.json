@@ -1,0 +1,62 @@
+{
+  "_mock": true,
+  "_note": "MOCK/DRAFT zone metadata copied from the frontend (src/screens/S9-S17/zones.js and s9-s17.json). Final zones come from Ojani's clustering.",
+  "zones": [
+    {
+      "id": 1,
+      "color": "#D98E04",
+      "name": {
+        "en": "Dry Sahel",
+        "fr": "Sahel sec"
+      }
+    },
+    {
+      "id": 2,
+      "color": "#7A8B1F",
+      "name": {
+        "en": "Savanna",
+        "fr": "Savane"
+      }
+    },
+    {
+      "id": 3,
+      "color": "#1B7F4B",
+      "name": {
+        "en": "Wet forest",
+        "fr": "Forêt humide"
+      }
+    },
+    {
+      "id": 4,
+      "color": "#7B5EA7",
+      "name": {
+        "en": "Highlands",
+        "fr": "Hautes terres"
+      }
+    },
+    {
+      "id": 5,
+      "color": "#C0562B",
+      "name": {
+        "en": "Southern woodland",
+        "fr": "Savane du sud"
+      }
+    },
+    {
+      "id": 6,
+      "color": "#8C7B6B",
+      "name": {
+        "en": "Very dry land",
+        "fr": "Terres très sèches"
+      }
+    },
+    {
+      "id": 7,
+      "color": "#2E86C1",
+      "name": {
+        "en": "Floodplains",
+        "fr": "Plaines inondables"
+      }
+    }
+  ]
+}

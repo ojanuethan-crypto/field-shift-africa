@@ -1,0 +1,640 @@
+{
+ "_note": "Answers recorded from the live SciFarm database functions on 2026-11-15 (trimmed). Used only by tests, with a stub in place of the database.",
+ "get_profile_douala": {
+  "soil": {
+   "en": "Acid soil. Rain washes nutrients away.",
+   "fr": "Sol acide. La pluie lave les nutriments."
+  },
+  "zone": {
+   "id": 4,
+   "icon": "🌴",
+   "name": {
+    "en": "Wet forest land",
+    "fr": "Terres de forêt humide"
+   },
+   "color": "#2E7D4F"
+  },
+  "place": "Douala",
+  "cell_id": 1034,
+  "country": "Cameroon",
+  "hazards": {
+   "heat": 1,
+   "flood": 5,
+   "drought": 1,
+   "erosion": 4
+  },
+  "rain_p20": [
+   10,
+   21,
+   85,
+   153,
+   159,
+   163,
+   188,
+   215,
+   248,
+   231,
+   102,
+   10
+  ],
+  "rain_p50": [
+   17,
+   41,
+   131,
+   195,
+   212,
+   260,
+   330,
+   333,
+   327,
+   312,
+   126,
+   23
+  ],
+  "rain_p80": [
+   46,
+   79,
+   210,
+   253,
+   261,
+   332,
+   410,
+   478,
+   419,
+   369,
+   203,
+   54
+  ],
+  "n_seasons": 1,
+  "description": {
+   "en": "Very wet most of the year. Short dry spell.",
+   "fr": "Très humide presque toute l'année. Courte saison sèche."
+  },
+  "watch_months": {
+   "dry": [
+    1,
+    2,
+    12
+   ],
+   "heat": [],
+   "flood": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  },
+  "low_farming_potential": false
+ },
+ "get_profile_desert": {
+  "soil": {
+   "en": "Tired soil. Low in nutrients.",
+   "fr": "Sol fatigué. Pauvre en nutriments."
+  },
+  "zone": {
+   "id": 10,
+   "icon": "🏜️",
+   "name": {
+    "en": "Desert",
+    "fr": "Désert"
+   },
+   "color": "#F2E3B3"
+  },
+  "place": null,
+  "cell_id": 2175,
+  "country": "Libya",
+  "hazards": {
+   "heat": 3,
+   "flood": 1,
+   "drought": 4,
+   "erosion": 1
+  },
+  "rain_p20": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "rain_p50": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "rain_p80": [
+   3,
+   1,
+   2,
+   1,
+   2,
+   4,
+   0,
+   3,
+   1,
+   0,
+   0,
+   0
+  ],
+  "n_seasons": 0,
+  "description": {
+   "en": "Almost no rain. Farming needs irrigation.",
+   "fr": "Presque pas de pluie. Il faut irriguer."
+  },
+  "watch_months": {
+   "dry": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "heat": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "flood": []
+  },
+  "low_farming_potential": true
+ },
+ "get_profile_outside": {
+  "no_data": true
+ },
+ "get_twins_douala": {
+  "twins": [
+   {
+    "lat": -0.5,
+    "lon": 9.5,
+    "name": "Gabon",
+    "crops": [
+     "cocoyam",
+     "rice",
+     "beans",
+     "plantain"
+    ],
+    "country": "Gabon",
+    "similarity": 0.69,
+    "reason": {
+     "en": "Like yours: one rainy season, similar yearly rain and the same dry season length.",
+     "fr": "Comme chez vous : une saison des pluies, pluie annuelle semblable et la même durée de saison sèche."
+    }
+   },
+   {
+    "lat": 1.5,
+    "lon": 18.5,
+    "name": "Dem. Rep. Congo",
+    "crops": [
+     "cocoyam",
+     "rice"
+    ],
+    "country": "Dem. Rep. Congo",
+    "similarity": 0.6,
+    "reason": {
+     "en": "Like yours: one rainy season, similar temperatures and the same flood risk.",
+     "fr": "Comme chez vous : une saison des pluies, des températures semblables et le même risque d'inondation."
+    }
+   },
+   {
+    "lat": 7.5,
+    "lon": 4.5,
+    "name": "Weak match",
+    "crops": [],
+    "country": "Nigeria",
+    "similarity": 0.31,
+    "reason": {
+     "en": "Only a loose match.",
+     "fr": "Correspondance faible."
+    }
+   }
+  ],
+  "origin": {
+   "lat": 4.05,
+   "lon": 9.7,
+   "name": "Douala",
+   "zone_id": 4
+  }
+ },
+ "get_zones_geojson": {
+  "type": "FeatureCollection",
+  "features": [
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      18.5,
+      -34.5
+     ]
+    },
+    "properties": {
+     "cell_id": 1,
+     "country": "South Africa",
+     "zone_id": 8
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      9.5,
+      4.5
+     ]
+    },
+    "properties": {
+     "cell_id": 1034,
+     "country": "Cameroon",
+     "zone_id": 4
+    }
+   }
+  ]
+ },
+ "get_proof": {
+  "ndvi": [],
+  "events": [
+   {
+    "id": "horn_2010_11",
+    "of": 134,
+    "hit": 57,
+    "kind": "drought",
+    "name": "2010-11 Horn of Africa drought",
+    "years": "2010–2011",
+    "chance": 17,
+    "misses": 57,
+    "name_fr": "Sécheresse 2010-11 dans la Corne de l'Afrique",
+    "reference": "https://earthobservatory.nasa.gov/images/51411/severe-drought-causes-famine-in-east-africa",
+    "misses_note": {
+     "en": "Flagged well above chance.",
+     "fr": "Bien au-dessus du hasard."
+    }
+   },
+   {
+    "id": "horn_2020_22",
+    "of": 134,
+    "hit": 3,
+    "kind": "drought",
+    "name": "2020-22 Horn of Africa multi-season drought",
+    "years": "2020–2022",
+    "chance": 16,
+    "misses": 130,
+    "name_fr": "Sécheresse 2020-22 sur plusieurs saisons dans la Corne de l'Afrique",
+    "reference": "https://wmo.int/media/news/greater-horn-of-africa-faces-5th-failed-rainy-season",
+    "misses_note": {
+     "en": "MISS. Below chance. We report it as is.",
+     "fr": "RATÉ. Sous le hasard. Nous le montrons tel quel."
+    }
+   }
+  ],
+  "reviews": []
+ },
+ "get_passport": {
+  "notes": [
+   {
+    "en": "Effective rainfall is taken as 80% of rainfall.",
+    "fr": "La pluie efficace est fixée à 80 % de la pluie.",
+    "kind": "assumption"
+   },
+   {
+    "en": "Reanalysis rainfall can be wrong locally, especially on coasts and mountains.",
+    "fr": "La pluie de réanalyse peut être fausse localement, surtout sur les côtes et en montagne.",
+    "kind": "limitation"
+   },
+   {
+    "en": "Rotation ranking is a transparent rule-based score, not machine learning.",
+    "fr": "Le classement des rotations est un score à règles transparent, pas de l'apprentissage automatique.",
+    "kind": "method"
+   }
+  ],
+  "config": [
+   {
+    "en": "Effective rainfall = 80% of rain (assumption).",
+    "fr": "Pluie efficace = 80 % de la pluie (hypothèse).",
+    "key": "effective_rain_share",
+    "unit": "fraction",
+    "value": "0.8",
+    "assumption": true
+   }
+  ],
+  "sources": [
+   {
+    "how": "Monthly mm/day x days in month.",
+    "url": "https://power.larc.nasa.gov/docs/services/api/temporal/monthly/",
+    "sort": 10,
+    "caveat": "Reanalysis rainfall can under- or over-estimate locally.",
+    "period": "1981-2025",
+    "dataset": "NASA POWER, PRECTOTCORR (bias-corrected precipitation)",
+    "licence": "NASA open data policy",
+    "version": "POWER monthly API, community AG",
+    "accessed": "2026-11-15",
+    "label_en": "Rainfall",
+    "label_fr": "Pluie",
+    "variable": "rain",
+    "source_id": 1,
+    "resolution": "0.5° x 0.625° (MERRA-2 native), sampled at 1° cell centres"
+   }
+  ]
+ },
+ "get_advice_index": {
+  "version": "20261115",
+  "passages": [
+   {
+    "id": 1,
+    "doc": "Save and Grow, Chapter 3: Soil health",
+    "lang": "en",
+    "page": 3,
+    "licence": "FAO website terms: non-commercial use with attribution (https://www.fao.org/contact-us/terms/en/). Confirm before launch.",
+    "keywords": {
+     "en": [
+      "mineral",
+      "fertilizers",
+      "extreme",
+      "nitrogen",
+      "soil",
+      "food",
+      "fundamental",
+      "today"
+     ]
+    },
+    "source_url": "https://fao.org/4/i2215e/i2215e02.pdf",
+    "text": {
+     "en": "Chapter 3: Soil Health 29 Soil is fundamental to crop production. Without soil, no food could be produced on a large scale, nor would livestock be fed. Because it is finite and fragile, soil is a precious resource that requires special care from its users. Many of today’s soil and crop management systems are unsustainable. At one extreme, overuse of fertilizer has led, in the European Union, to nitrogen (N) deposition that threatens the sustainability of an estimated 70 percent of nature. At the other extreme, in most parts of sub-Saharan Africa, the under-use of fertilizer means that soil nutrients exported with crops are not being replenished, leading to soil degradation and declining yields."
+    }
+   },
+   {
+    "id": 18,
+    "doc": "Save and Grow, Chapter 3: Soil health",
+    "lang": "en",
+    "page": 15,
+    "licence": "FAO website terms: non-commercial use with attribution (https://www.fao.org/contact-us/terms/en/). Confirm before launch.",
+    "keywords": {
+     "en": [
+      "varieties",
+      "currently",
+      "adapted",
+      "improve",
+      "diverse",
+      "adaptation",
+      "resistance",
+      "temperatures"
+     ]
+    },
+    "source_url": "https://fao.org/4/i2215e/i2215e02.pdf",
+    "text": {
+     "en": "Chapter 4: Crops and Varieties 41 Sustainable crop production intensification will use crops and varieties that are better adapted to ecologically based production practices than those currently available, which were bred for high-input agriculture. The targeted use of external inputs will require plants that are more productive, use nutrients and water more efficiently, have greater resistance to insect pests and diseases, and are more tolerant to drought, flood, frost and higher temperatures."
+    }
+   },
+   {
+    "id": 34,
+    "doc": "Save and Grow, Chapter 5: Water management",
+    "lang": "en",
+    "page": 3,
+    "licence": "FAO website terms: non-commercial use with attribution (https://www.fao.org/contact-us/terms/en/). Confirm before launch.",
+    "keywords": {
+     "en": [
+      "rainfed",
+      "water",
+      "yields",
+      "percent",
+      "timing",
+      "around",
+      "output",
+      "cropping"
+     ]
+    },
+    "source_url": "https://fao.org/4/i2215e/i2215e03.pdf",
+    "text": {
+     "en": "Chapter 5: Water Management 53 Crops are grown under a range of water management regimes, from simple soil tillage aimed at increasing the infiltration of rainfall, to sophisticated irrigation technologies and management. Of the estimated 1.4 billion ha of crop land worldwide, around 80 percent is rainfed and accounts for about 60 percent of global agricultural output. Under rainfed conditions, water management attempts to control the amount of water available to a crop through the opportunistic deviation of the rainwater pathway towards enhanced moisture storage in the root zone."
+    }
+   },
+   {
+    "id": 55,
+    "doc": "Save and Grow, Chapter 5: Water management",
+    "lang": "en",
+    "page": 17,
+    "licence": "FAO website terms: non-commercial use with attribution (https://www.fao.org/contact-us/terms/en/). Confirm before launch.",
+    "keywords": {
+     "en": [
+      "pest",
+      "pests",
+      "usually",
+      "pesticides",
+      "respond",
+      "every",
+      "occur",
+      "populations"
+     ]
+    },
+    "source_url": "https://fao.org/4/i2215e/i2215e03.pdf",
+    "text": {
+     "en": "Chapter 6: Plant Protection 67 Plant pests are often regarded as an external, introduced factor in crop production. That is a misperception, as in most cases pest species occur naturally within the agro-ecosystem. Pests and accompanying species – such as predators, parasites, pollinators, competitors and decomposers – are components of cropassociated agro-biodiversity that perform a wide range of ecosystem functions. Pest upsurges or outbreaks usually occur following the breakdown of natural processes of pest regulation."
+    }
+   },
+   {
+    "id": 132,
+    "doc": "Save and Grow, Chapter 1: The challenge",
+    "lang": "en",
+    "page": 22,
+    "licence": "FAO website terms: non-commercial use with attribution (https://www.fao.org/contact-us/terms/en/). Confirm before launch.",
+    "keywords": {
+     "en": [
+      "herbicides",
+      "tillage",
+      "tonne",
+      "zero",
+      "mulch",
+      "covered",
+      "equipment",
+      "insecticides"
+     ]
+    },
+    "source_url": "https://fao.org/4/i2215e/i2215e01.pdf",
+    "text": {
+     "en": "22 Save and Grow is caused by an impermeable soil horizon beyond the reach of tillage equipment, only biological means – such as tap roots, earthworms and termites – can break up such deep barriers to water percolation. Over time, these biological solutions are facilitated by minimal soil disturbance. In the second case, mulch-covered soils do take longer to warm up and dry, compared to ploughed land. However, zero tillage is practised successfully by farmers under very cold conditions in Canada and Finland."
+    }
+   },
+   {
+    "id": 149,
+    "doc": "Produire plus avec moins, Chapitre 5: La gestion de l'eau",
+    "lang": "fr",
+    "page": 3,
+    "licence": "FAO website terms: non-commercial use with attribution (https://www.fao.org/contact-us/terms/en/). Confirm before launch.",
+    "keywords": {
+     "fr": [
+      "cent",
+      "environ",
+      "intensité",
+      "accroître",
+      "calendrier",
+      "irrigation",
+      "superficie",
+      "cultivées"
+     ]
+    },
+    "source_url": "https://fao.org/4/i2215f/i2215f03.pdf",
+    "text": {
+     "fr": "Chapitre 5: La gestion de l’eau 53 Les plantes sont cultivées selon différents régimes de gestion de l’eau, allant du simple travail du sol pour accroître l’infiltration des pluies jusqu’aux technologies d’irrigation et méthodes de gestion de pointe. La superficie totale des terres cultivées est estimée à 1,4 milliard d’hectares, au niveau mondial, et environ 80 pour cent de cette superficie est cultivée en sec; elle assure environ 60 pour cent de la production agricole mondiale."
+    }
+   },
+   {
+    "id": 175,
+    "doc": "Produire plus avec moins, Chapitre 5: La gestion de l'eau",
+    "lang": "fr",
+    "page": 18,
+    "licence": "FAO website terms: non-commercial use with attribution (https://www.fao.org/contact-us/terms/en/). Confirm before launch.",
+    "keywords": {
+     "fr": [
+      "écosystèmes",
+      "ravageurs",
+      "protection",
+      "auraient",
+      "intérêt",
+      "principale",
+      "intégrée",
+      "contre"
+     ]
+    },
+    "source_url": "https://fao.org/4/i2215f/i2215f03.pdf",
+    "text": {
+     "fr": "pour lutter contre les ravageurs. Les agriculteurs auraient tout intérêt à mieux connaître le fonctionnement et la dynamique des écosystèmes, ainsi que le rôle des organismes nuisibles, en tant que partie intégrante de la biodiversité agricole. Les décideurs, auxquels sont souvent adressées des informations complexes concernant les ravageurs des plantes, auraient aussi intérêt à mieux comprendre les effets réels des ravageurs et des maladies dans les écosystèmes agricoles. La protection intégrée contre les ravageurs Au cours des 50 dernières années, la protection intégrée s’est imposée comme la principale stratégie de protection des plantes."
+    }
+   }
+  ]
+ },
+ "get_faq": {
+  "items": [
+   {
+    "id": "f1",
+    "emoji": "🔄",
+    "q": {
+     "en": "Why change crops?",
+     "fr": "Pourquoi changer de culture ?"
+    },
+    "a": {
+     "en": "(answer text, not used)",
+     "fr": "(texte de réponse, non utilisé)"
+    },
+    "audio": {
+     "en": null,
+     "fr": null
+    },
+    "status": "draft",
+    "passage": {
+     "en": 18,
+     "fr": 149
+    }
+   },
+   {
+    "id": "f3",
+    "emoji": "🌱",
+    "q": {
+     "en": "A question with no passage",
+     "fr": "Une question sans passage"
+    },
+    "a": {
+     "en": "(answer text, not used)",
+     "fr": "(texte de réponse, non utilisé)"
+    },
+    "audio": {
+     "en": null,
+     "fr": null
+    },
+    "status": "draft",
+    "passage": {
+     "en": null,
+     "fr": null
+    }
+   },
+   {
+    "id": "f8",
+    "emoji": "🐛",
+    "q": {
+     "en": "Pests are in my field.",
+     "fr": "Des ravageurs sont dans mon champ."
+    },
+    "a": {
+     "en": "(answer text, not used)",
+     "fr": "(texte de réponse, non utilisé)"
+    },
+    "audio": {
+     "en": null,
+     "fr": null
+    },
+    "status": "draft",
+    "passage": {
+     "en": 55,
+     "fr": 175
+    }
+   },
+   {
+    "id": "f10",
+    "emoji": "🍂",
+    "q": {
+     "en": "What is mulch?",
+     "fr": "Qu'est-ce que le paillage ?"
+    },
+    "a": {
+     "en": "(answer text, not used)",
+     "fr": "(texte de réponse, non utilisé)"
+    },
+    "audio": {
+     "en": null,
+     "fr": null
+    },
+    "status": "draft",
+    "passage": {
+     "en": 132,
+     "fr": null
+    }
+   },
+   {
+    "id": "f11",
+    "emoji": "💧",
+    "q": {
+     "en": "How do I keep water in the soil?",
+     "fr": "Comment garder l'eau dans le sol ?"
+    },
+    "a": {
+     "en": "(answer text, not used)",
+     "fr": "(texte de réponse, non utilisé)"
+    },
+    "audio": {
+     "en": null,
+     "fr": null
+    },
+    "status": "draft",
+    "passage": {
+     "en": 34,
+     "fr": null
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,22 @@
+{
+  "Bimodal754": {
+    "cell": {"hz": {"heat": 2, "flood": 4, "drought": 2}, "ph": 5.85, "soc": 10.65, "cell_id": 754, "n_seasons": 2, "rain_annual": 998.892},
+    "climate": [
+      {"et0": 189.513, "month": 1, "tmean": 26.3773, "rain_p20": 15.004, "rain_p50": 32.24, "rain_p80": 72.54},
+      {"et0": 184.054, "month": 2, "tmean": 27.0653, "rain_p20": 7.448, "rain_p50": 24.92, "rain_p80": 61.088},
+      {"et0": 191.723, "month": 3, "tmean": 26.6487, "rain_p20": 44.888, "rain_p50": 76.88, "rain_p80": 130.696},
+      {"et0": 156.905, "month": 4, "tmean": 25.0813, "rain_p20": 107.1, "rain_p50": 174, "rain_p80": 223.32},
+      {"et0": 141.023, "month": 5, "tmean": 23.63, "rain_p20": 80.414, "rain_p50": 137.64, "rain_p80": 243.226},
+      {"et0": 128.197, "month": 6, "tmean": 22.2967, "rain_p20": 30, "rain_p50": 47.4, "rain_p80": 76.02},
+      {"et0": 136.659, "month": 7, "tmean": 21.8507, "rain_p20": 21.08, "rain_p50": 34.72, "rain_p80": 59.024},
+      {"et0": 151.081, "month": 8, "tmean": 22.3438, "rain_p20": 19.22, "rain_p50": 29.76, "rain_p80": 54.684},
+      {"et0": 163.974, "month": 9, "tmean": 23.4204, "rain_p20": 18.3, "rain_p50": 26.4, "rain_p80": 58.62},
+      {"et0": 183.487, "month": 10, "tmean": 24.5542, "rain_p20": 23.312, "rain_p50": 53.94, "rain_p80": 137.95},
+      {"et0": 172.961, "month": 11, "tmean": 25.1891, "rain_p20": 72.84, "rain_p50": 115.2, "rain_p80": 171.84},
+      {"et0": 174.767, "month": 12, "tmean": 25.6209, "rain_p20": 68.448, "rain_p50": 104.78, "rain_p80": 139.748}
+    ],
+    "floodMonths": [],
+    "plantMonths": [4, 11]
+  },
+  "_note": "Bimodal754: a real two-season cell read from the live database on 2026-11-15 (the supplied test data has only one-season cells)."
+}

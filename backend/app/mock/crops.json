@@ -1,0 +1,138 @@
+{
+  "_mock": true,
+  "_note": "MOCK/FIXTURE: ids, names, emoji and legume flag copied from src/data/crops.js. family and season_length are null = unknown (no data yet; must come from the crop table Okani collects).",
+  "crops": [
+    {
+      "id": "maize",
+      "name": {
+        "en": "Maize",
+        "fr": "Maïs"
+      },
+      "emoji": "🌽",
+      "legume": false,
+      "family": null,
+      "season_length": null
+    },
+    {
+      "id": "groundnut",
+      "name": {
+        "en": "Groundnut",
+        "fr": "Arachide"
+      },
+      "emoji": "🥜",
+      "legume": true,
+      "family": null,
+      "season_length": null
+    },
+    {
+      "id": "cassava",
+      "name": {
+        "en": "Cassava",
+        "fr": "Manioc"
+      },
+      "emoji": "🍠",
+      "legume": false,
+      "family": null,
+      "season_length": null
+    },
+    {
+      "id": "plantain",
+      "name": {
+        "en": "Plantain",
+        "fr": "Plantain"
+      },
+      "emoji": "🍌",
+      "legume": false,
+      "family": null,
+      "season_length": null
+    },
+    {
+      "id": "cocoyam",
+      "name": {
+        "en": "Cocoyam",
+        "fr": "Macabo"
+      },
+      "emoji": "🥔",
+      "legume": false,
+      "family": null,
+      "season_length": null
+    },
+    {
+      "id": "cowpea",
+      "name": {
+        "en": "Cowpea",
+        "fr": "Niébé"
+      },
+      "emoji": "🫘",
+      "legume": true,
+      "family": null,
+      "season_length": null
+    },
+    {
+      "id": "soybean",
+      "name": {
+        "en": "Soybean",
+        "fr": "Soja"
+      },
+      "emoji": "🌱",
+      "legume": true,
+      "family": null,
+      "season_length": null
+    },
+    {
+      "id": "millet",
+      "name": {
+        "en": "Millet",
+        "fr": "Mil"
+      },
+      "emoji": "🌾",
+      "legume": false,
+      "family": null,
+      "season_length": null
+    },
+    {
+      "id": "sorghum",
+      "name": {
+        "en": "Sorghum",
+        "fr": "Sorgho"
+      },
+      "emoji": "🌾",
+      "legume": false,
+      "family": null,
+      "season_length": null
+    },
+    {
+      "id": "rice",
+      "name": {
+        "en": "Rice",
+        "fr": "Riz"
+      },
+      "emoji": "🍚",
+      "legume": false,
+      "family": null,
+      "season_length": null
+    },
+    {
+      "id": "tomato",
+      "name": {
+        "en": "Tomato",
+        "fr": "Tomate"
+      },
+      "emoji": "🍅",
+      "legume": false,
+      "family": null,
+      "season_length": null
+    },
+    {
+      "id": "beans",
+      "name": {
+        "en": "Beans",
+        "fr": "Haricot"
+      },
+      "emoji": "🫛",
+      "legume": true,
+      "family": null,
+      "season_length": null
+    }
+  ]
+}

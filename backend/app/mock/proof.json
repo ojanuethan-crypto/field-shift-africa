@@ -1,0 +1,12 @@
+{
+  "_note": "FIXTURE, not results. Event names come from Master Guide section 4 (events to backtest against). Hit rates and baselines are null on purpose: no backtest has been run.",
+  "events": [
+    {"id": "southern-africa-2015-16", "name": {"en": "2015-16 southern Africa drought", "fr": "Sécheresse 2015-16 en Afrique australe"}, "hit_rate": null, "baseline": null, "status": "not_computed"},
+    {"id": "idai-2019", "name": {"en": "2019 Cyclone Idai", "fr": "Cyclone Idai 2019"}, "hit_rate": null, "baseline": null, "status": "not_computed"},
+    {"id": "nigeria-floods-2022", "name": {"en": "2022 Nigeria floods", "fr": "Inondations 2022 au Nigeria"}, "hit_rate": null, "baseline": null, "status": "not_computed"},
+    {"id": "horn-2010-11", "name": {"en": "2010-11 Horn of Africa drought", "fr": "Sécheresse 2010-11 dans la Corne de l'Afrique"}, "hit_rate": null, "baseline": null, "status": "not_computed"},
+    {"id": "horn-2020-22", "name": {"en": "2020-22 Horn of Africa drought", "fr": "Sécheresse 2020-22 dans la Corne de l'Afrique"}, "hit_rate": null, "baseline": null, "status": "not_computed"}
+  ],
+  "ndvi_correlation": null,
+  "notes": {"en": "Backtest not run yet. It needs the hazard indices and the NDVI series from the database.", "fr": "Test rétrospectif pas encore fait. Il faut les indices de risque et les séries NDVI de la base de données."}
+}

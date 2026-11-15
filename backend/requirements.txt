@@ -1,0 +1,19 @@
+# Flask API (never FastAPI). Install: pip install -r backend/requirements.txt
+
+Flask>=3.0
+flask-cors
+flask-limiter           # rate limits on /api/rotations, /api/ask, /api/feedback, /api/event
+diskcache               # optional on-disk response cache (CACHE_BACKEND=disk)
+pydantic>=1.10,<2       # API request/response contract (schemas.py), v1 syntax on purpose
+SQLAlchemy>=1.4,<2.0    # database models (models.py): legacy 1.4 style on purpose, do NOT upgrade to 2.x
+python-dotenv
+httpx                  # optional live NASA POWER client (services/nasa_power.py); nothing depends on it
+anthropic             # OPTIONAL model for /api/ask and /api/explain (only used when ANTHROPIC_API_KEY is set)
+pytest
+
+# Production server (Docker/Linux only). On Windows use `flask run`.
+gunicorn; sys_platform != "win32"
+waitress; sys_platform == "win32"   # production-style server for the backup run on Windows (Flask's dev server resets large responses there)
+
+# Real mode (ENGINE_MODE=real): Postgres driver for the Supabase connection string in DATABASE_URL
+psycopg2-binary

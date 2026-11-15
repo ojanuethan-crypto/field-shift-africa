@@ -1,0 +1,159 @@
+{
+  "_note": "MOCK plans for UI development only. Weights are applied client-side while mocked. sub = money/water/soil/safety (0-1). water = [dry, normal, wet]. month = planting month (1-12).",
+  "3": [
+    {
+      "id": "3-safest", "kind": "safest",
+      "sequence": [
+        { "crop": "plantain", "month": 3, "water": ["risky", "enough", "enough"] },
+        { "crop": "groundnut", "month": 9, "water": ["risky", "enough", "risky"] },
+        { "crop": "cassava", "month": 3, "water": ["enough", "enough", "risky"] }
+      ],
+      "sub": { "money": 0.55, "water": 0.85, "soil": 0.6, "safety": 0.9 },
+      "scen": { "dry": 0.8, "normal": 0.85, "wet": 0.7 },
+      "reason": { "en": "Deep roots cope with heavy rain.", "fr": "Les racines profondes supportent les fortes pluies." },
+      "why": [
+        { "en": "Plantain and cassava stand strong in wet seasons.", "fr": "Plantain et manioc résistent bien aux saisons humides." },
+        { "en": "Planting avoids the peak flood months.", "fr": "Les semis évitent les mois de crue." }
+      ],
+      "warnings": [{ "en": "Season 3 is weaker in a very wet year.", "fr": "La saison 3 est plus faible en année très humide." }]
+    },
+    {
+      "id": "3-soil", "kind": "soil",
+      "sequence": [
+        { "crop": "maize", "month": 3, "water": ["risky", "enough", "enough"] },
+        { "crop": "groundnut", "month": 9, "water": ["risky", "enough", "risky"] },
+        { "crop": "cocoyam", "month": 3, "water": ["enough", "enough", "enough"] }
+      ],
+      "sub": { "money": 0.6, "water": 0.7, "soil": 0.92, "safety": 0.65 },
+      "scen": { "dry": 0.65, "normal": 0.82, "wet": 0.7 },
+      "reason": { "en": "Groundnut after maize puts nitrogen back in the soil.", "fr": "L'arachide après le maïs redonne de l'azote au sol." },
+      "why": [
+        { "en": "Groundnut is a legume. It feeds the next crop.", "fr": "L'arachide est une légumineuse. Elle nourrit la culture suivante." },
+        { "en": "Different crop families break pests and disease.", "fr": "Des familles de cultures différentes freinent les maladies." }
+      ],
+      "warnings": [{ "en": "Maize can rot if fields flood in season 1.", "fr": "Le maïs peut pourrir si le champ est inondé en saison 1." }]
+    },
+    {
+      "id": "3-money", "kind": "money",
+      "sequence": [
+        { "crop": "maize", "month": 3, "water": ["risky", "enough", "risky"] },
+        { "crop": "tomato", "month": 9, "water": ["not_enough", "risky", "not_enough"] },
+        { "crop": "cassava", "month": 3, "water": ["enough", "enough", "risky"] }
+      ],
+      "sub": { "money": 0.9, "water": 0.5, "soil": 0.45, "safety": 0.4 },
+      "scen": { "dry": 0.45, "normal": 0.78, "wet": 0.4 },
+      "reason": { "en": "Sells well, but risky in a very wet or dry year.", "fr": "Se vend bien, mais risqué en année très humide ou sèche." },
+      "why": [
+        { "en": "Tomato and maize are in demand at the market.", "fr": "La tomate et le maïs sont demandés au marché." },
+        { "en": "Tomato needs dry spells and good drainage.", "fr": "La tomate demande des périodes sèches et un bon drainage." }
+      ],
+      "warnings": [
+        { "en": "Tomato can fail in very wet seasons.", "fr": "La tomate peut échouer en saison très humide." },
+        { "en": "Soil gets less rest in this plan.", "fr": "Le sol se repose moins dans ce plan." }
+      ]
+    }
+  ],
+  "1": [
+    {
+      "id": "1-safest", "kind": "safest",
+      "sequence": [
+        { "crop": "millet", "month": 6, "water": ["risky", "enough", "enough"] },
+        { "crop": "cowpea", "month": 6, "water": ["enough", "enough", "enough"] },
+        { "crop": "sorghum", "month": 6, "water": ["risky", "enough", "enough"] }
+      ],
+      "sub": { "money": 0.45, "water": 0.85, "soil": 0.65, "safety": 0.92 },
+      "scen": { "dry": 0.75, "normal": 0.85, "wet": 0.8 },
+      "reason": { "en": "Millet and cowpea handle little rain.", "fr": "Le mil et le niébé supportent peu de pluie." },
+      "why": [
+        { "en": "These crops need little water to grow.", "fr": "Ces cultures ont besoin de peu d'eau." },
+        { "en": "Cowpea adds nitrogen between the cereals.", "fr": "Le niébé apporte de l'azote entre les céréales." }
+      ],
+      "warnings": [{ "en": "A very late start of rains still hurts yields.", "fr": "Un démarrage très tardif des pluies réduit quand même les récoltes." }]
+    },
+    {
+      "id": "1-soil", "kind": "soil",
+      "sequence": [
+        { "crop": "sorghum", "month": 6, "water": ["risky", "enough", "enough"] },
+        { "crop": "groundnut", "month": 6, "water": ["risky", "enough", "enough"] },
+        { "crop": "millet", "month": 6, "water": ["risky", "enough", "enough"] }
+      ],
+      "sub": { "money": 0.55, "water": 0.65, "soil": 0.88, "safety": 0.7 },
+      "scen": { "dry": 0.6, "normal": 0.8, "wet": 0.78 },
+      "reason": { "en": "Groundnut rebuilds tired sandy soil.", "fr": "L'arachide reconstruit un sol sableux fatigué." },
+      "why": [
+        { "en": "Legume in the middle gives the soil a rest.", "fr": "Une légumineuse au milieu repose le sol." },
+        { "en": "Leave crop residue on the field.", "fr": "Laissez les résidus de culture sur le champ." }
+      ],
+      "warnings": [{ "en": "Groundnut struggles in a dry year.", "fr": "L'arachide souffre en année sèche." }]
+    },
+    {
+      "id": "1-money", "kind": "money",
+      "sequence": [
+        { "crop": "maize", "month": 6, "water": ["not_enough", "risky", "enough"] },
+        { "crop": "groundnut", "month": 6, "water": ["risky", "enough", "enough"] },
+        { "crop": "tomato", "month": 11, "water": ["not_enough", "not_enough", "risky"] }
+      ],
+      "sub": { "money": 0.85, "water": 0.35, "soil": 0.5, "safety": 0.3 },
+      "scen": { "dry": 0.3, "normal": 0.65, "wet": 0.7 },
+      "reason": { "en": "Higher sales, but needs water you may not have.", "fr": "Meilleures ventes, mais demande de l'eau que vous n'avez peut-être pas." },
+      "why": [
+        { "en": "Maize and tomato sell well when rain is good.", "fr": "Le maïs et la tomate se vendent bien si la pluie est bonne." },
+        { "en": "Tomato needs watering in the dry months.", "fr": "La tomate doit être arrosée en saison sèche." }
+      ],
+      "warnings": [
+        { "en": "Likely to fail in a dry year.", "fr": "Risque d'échec en année sèche." },
+        { "en": "Needs a way to water the field.", "fr": "Il faut un moyen d'arroser le champ." }
+      ]
+    }
+  ],
+  "2": [
+    {
+      "id": "2-safest", "kind": "safest",
+      "sequence": [
+        { "crop": "sorghum", "month": 5, "water": ["risky", "enough", "enough"] },
+        { "crop": "cowpea", "month": 5, "water": ["enough", "enough", "enough"] },
+        { "crop": "maize", "month": 5, "water": ["risky", "enough", "enough"] }
+      ],
+      "sub": { "money": 0.55, "water": 0.8, "soil": 0.7, "safety": 0.85 },
+      "scen": { "dry": 0.72, "normal": 0.82, "wet": 0.8 },
+      "reason": { "en": "Tough crops that cope with dry spells mid-season.", "fr": "Cultures robustes qui supportent les pauses sèches." },
+      "why": [
+        { "en": "Sorghum survives dry spells better than maize.", "fr": "Le sorgho supporte mieux les pauses sèches que le maïs." },
+        { "en": "Cowpea keeps the soil alive.", "fr": "Le niébé garde le sol vivant." }
+      ],
+      "warnings": [{ "en": "Plant on time. A late start loses the rain.", "fr": "Semez à temps. Un retard fait perdre la pluie." }]
+    },
+    {
+      "id": "2-soil", "kind": "soil",
+      "sequence": [
+        { "crop": "maize", "month": 5, "water": ["risky", "enough", "enough"] },
+        { "crop": "soybean", "month": 5, "water": ["risky", "enough", "enough"] },
+        { "crop": "sorghum", "month": 5, "water": ["risky", "enough", "enough"] }
+      ],
+      "sub": { "money": 0.65, "water": 0.7, "soil": 0.93, "safety": 0.65 },
+      "scen": { "dry": 0.62, "normal": 0.85, "wet": 0.78 },
+      "reason": { "en": "Soybean after maize rebuilds weak soil.", "fr": "Le soja après le maïs reconstruit un sol faible." },
+      "why": [
+        { "en": "Soybean fixes nitrogen for the next cereal.", "fr": "Le soja fixe l'azote pour la céréale suivante." },
+        { "en": "Rotating cereals and legumes cuts pests.", "fr": "Alterner céréales et légumineuses réduit les ravageurs." }
+      ],
+      "warnings": [{ "en": "Soybean needs good rain at flowering.", "fr": "Le soja a besoin de bonne pluie à la floraison." }]
+    },
+    {
+      "id": "2-money", "kind": "money",
+      "sequence": [
+        { "crop": "maize", "month": 5, "water": ["risky", "enough", "enough"] },
+        { "crop": "groundnut", "month": 5, "water": ["risky", "enough", "enough"] },
+        { "crop": "rice", "month": 6, "water": ["not_enough", "risky", "enough"] }
+      ],
+      "sub": { "money": 0.88, "water": 0.55, "soil": 0.6, "safety": 0.45 },
+      "scen": { "dry": 0.45, "normal": 0.8, "wet": 0.75 },
+      "reason": { "en": "Best sales, but a dry year hurts more.", "fr": "Meilleures ventes, mais une année sèche fait plus mal." },
+      "why": [
+        { "en": "Maize and groundnut have steady local markets.", "fr": "Maïs et arachide ont des marchés locaux stables." },
+        { "en": "Rice pays well when water is plentiful.", "fr": "Le riz rapporte bien quand l'eau est abondante." }
+      ],
+      "warnings": [{ "en": "Rice may fail in a dry year.", "fr": "Le riz peut échouer en année sèche." }]
+    }
+  ]
+}

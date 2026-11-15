@@ -1,0 +1,17 @@
+{
+  "_note": "PLACEHOLDER: 12 starter questions. The spec asks for 20-30 reviewed ones. Answers come from the passage with the same id in advice-index.json.",
+  "items": [
+    {"id": "f1", "emoji": "🔄", "passage": "p2", "q": {"en": "Why change crops?", "fr": "Pourquoi changer de culture ?"}},
+    {"id": "f2", "emoji": "🥜", "passage": "p1", "q": {"en": "Which crop feeds the soil?", "fr": "Quelle culture nourrit le sol ?"}},
+    {"id": "f3", "emoji": "🌱", "passage": "p8", "q": {"en": "My soil is tired. What can I do?", "fr": "Mon sol est fatigué. Que faire ?"}},
+    {"id": "f4", "emoji": "☀️", "passage": "p4", "q": {"en": "When should I plant?", "fr": "Quand dois-je planter ?"}},
+    {"id": "f5", "emoji": "🌊", "passage": "p5", "q": {"en": "My field floods. What can I do?", "fr": "Mon champ est inondé. Que faire ?"}},
+    {"id": "f6", "emoji": "🫘", "passage": "p6", "q": {"en": "How do I choose seeds?", "fr": "Comment choisir les semences ?"}},
+    {"id": "f7", "emoji": "🏚️", "passage": "p7", "q": {"en": "How do I store grain?", "fr": "Comment stocker le grain ?"}},
+    {"id": "f8", "emoji": "🐛", "passage": "p10", "q": {"en": "Pests are in my field.", "fr": "Des ravageurs sont dans mon champ."}},
+    {"id": "f9", "emoji": "⛰️", "passage": "p9", "q": {"en": "Rain washes my soil away.", "fr": "La pluie emporte mon sol."}},
+    {"id": "f10", "emoji": "🍂", "passage": "p3", "q": {"en": "What is mulch?", "fr": "Qu'est-ce que le paillage ?"}},
+    {"id": "f11", "emoji": "💧", "passage": "p3", "q": {"en": "How do I keep water in the soil?", "fr": "Comment garder l'eau dans le sol ?"}},
+    {"id": "f12", "emoji": "💰", "passage": "p1", "q": {"en": "I cannot buy fertilizer.", "fr": "Je ne peux pas acheter d'engrais."}}
+  ]
+}

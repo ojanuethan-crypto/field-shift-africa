@@ -1,0 +1,18 @@
+{
+  "_note": "MOCK example data for the Douala demo. Real data comes from GET /api/twins.",
+  "origin": {"name": "Douala", "lat": 4.05, "lon": 9.70, "zone_id": 3},
+  "twins": [
+    {"name": "Kisangani region", "country": "DR Congo", "lat": 0.52, "lon": 25.19, "similarity": 0.91,
+     "crops": ["cassava", "plantain", "rice"],
+     "reason": {"en": "Very wet all year, with acid soils like yours.", "fr": "Très humide toute l'année, avec des sols acides comme chez vous."}},
+    {"name": "Libreville", "country": "Gabon", "lat": 0.39, "lon": 9.45, "similarity": 0.88,
+     "crops": ["cassava", "plantain", "cocoyam"],
+     "reason": {"en": "Same coast rains and the same flood risk.", "fr": "Mêmes pluies côtières et même risque d'inondation."}},
+    {"name": "Port Harcourt", "country": "Nigeria", "lat": 4.82, "lon": 7.03, "similarity": 0.85,
+     "crops": ["cassava", "cocoyam", "maize"],
+     "reason": {"en": "Heavy rains and soils that wash out.", "fr": "Fortes pluies et sols qui se lessivent."}},
+    {"name": "Kumasi", "country": "Ghana", "lat": 6.69, "lon": -1.62, "similarity": 0.8,
+     "crops": ["cocoyam", "plantain", "maize"],
+     "reason": {"en": "Wet forest land with two rainy seasons.", "fr": "Terres de forêt humide avec deux saisons des pluies."}}
+  ]
+}

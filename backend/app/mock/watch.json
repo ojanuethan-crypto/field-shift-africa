@@ -1,0 +1,7 @@
+{
+  "_note": "MOCK example for Douala, consistent with profile.json rainfall. Real data: watch_months in GET /api/profile.",
+  "location": {"name": "Douala", "lat": 4.05, "lon": 9.70},
+  "dry": [12, 1, 2],
+  "flood": [7, 8, 9],
+  "heat": [2, 3]
+}

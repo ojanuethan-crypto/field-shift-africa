@@ -1,0 +1,120 @@
+{
+  "_note": "MOCK values for UI development only. Illustrative, not real data.",
+  "1": {
+    "zone": {
+      "id": 1,
+      "icon": "🏜️",
+      "name": {
+        "en": "Dry Sahel land",
+        "fr": "Terres sèches du Sahel"
+      },
+      "pic": "zone-sahel"
+    },
+    "description": {
+      "en": "Short rains. Sandy soil.",
+      "fr": "Pluies courtes. Sol sableux."
+    },
+    "hazards": {
+      "drought": 5,
+      "flood": 2,
+      "heat": 5,
+      "erosion": 4
+    },
+    "rain_p50": [
+      0,
+      0,
+      2,
+      12,
+      40,
+      80,
+      190,
+      250,
+      120,
+      25,
+      0,
+      0
+    ],
+    "soil": {
+      "en": "Sandy soil. Holds little water.",
+      "fr": "Sol sableux. Retient peu d'eau."
+    }
+  },
+  "2": {
+    "zone": {
+      "id": 2,
+      "icon": "🌳",
+      "name": {
+        "en": "Savanna land",
+        "fr": "Terres de savane"
+      },
+      "pic": "zone-savanna"
+    },
+    "description": {
+      "en": "One long rainy season.",
+      "fr": "Une longue saison des pluies."
+    },
+    "hazards": {
+      "drought": 3,
+      "flood": 2,
+      "heat": 3,
+      "erosion": 3
+    },
+    "rain_p50": [
+      0,
+      5,
+      35,
+      100,
+      170,
+      190,
+      230,
+      270,
+      260,
+      150,
+      20,
+      0
+    ],
+    "soil": {
+      "en": "Tired soil. Low in nutrients.",
+      "fr": "Sol fatigué. Pauvre en nutriments."
+    }
+  },
+  "3": {
+    "zone": {
+      "id": 3,
+      "icon": "🌴",
+      "name": {
+        "en": "Wet forest land",
+        "fr": "Terres de forêt humide"
+      },
+      "pic": "zone-forest"
+    },
+    "description": {
+      "en": "Very wet. Acid soil.",
+      "fr": "Très humide. Sol acide."
+    },
+    "hazards": {
+      "drought": 1,
+      "flood": 5,
+      "heat": 2,
+      "erosion": 4
+    },
+    "rain_p50": [
+      30,
+      50,
+      140,
+      200,
+      280,
+      430,
+      590,
+      680,
+      540,
+      340,
+      110,
+      40
+    ],
+    "soil": {
+      "en": "Acid soil. Rain washes nutrients away.",
+      "fr": "Sol acide. La pluie lave les nutriments."
+    }
+  }
+}
